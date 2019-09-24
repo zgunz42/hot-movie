@@ -3,7 +3,7 @@
     <integer-array name="movies">
         <item>@array/aquaman_movie</item>
         <item>@array/astar_movie</item>
-        <item>@array/aquaman_movie</item>
+        <item>@array/avengerinfinity_movie</item>
         <item>@array/bohemian_movie</item>
         <item>@array/spiderman_movie</item>
         <item>@array/venom_movie</item>
@@ -131,7 +131,7 @@
         <item>Venom</item>
         <item>@drawable/poster_venom</item>
         <item>Journalist Eddie Brock is trying to take down Carlton Drake, the notorious and brilliant founder of the
-            Life Foundation. While investigating one of Drake\'s experiments, Eddie\'s body merges with the alien Venom —
+            Life Foundation. While investigating one of Drake\'s experiments, Eddie\'s body merges with the alien Venom
             leaving him with superhuman strength and power. Twisted, dark and fueled by rage, Venom tries to control the
             new and dangerous abilities that Eddie finds so intoxicating.</item>
         <item>horror, thriller, action, adventure, fantasy, superhero, Science fiction</item>
@@ -149,7 +149,7 @@
     </string-array>
     <string-array name="bumblebee_movie">
         <item>Bumblebee</item>
-        <item>@drawable/poster_dragon</item>
+        <item>@drawable/poster_bumblebee</item>
         <item>On the run in the year of 1987, Bumblebee finds refuge in a junkyard in a small Californian
             beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers
             Bumblebee, battle-scarred and broken.</item>
@@ -188,11 +188,11 @@
     <string-array name="birdbox_movie">
         <item>Bird Box</item>
         <item>@drawable/poster_birdbox</item>
-        <item>When a mysterious force decimates the population, only one thing is certain — if you see it, you die. The
+        <item>When a mysterious force decimates the population, only one thing is certain if you see it, you die. The
             survivors must now avoid coming face to face with an entity that takes the form of their worst fears.
             Searching for hope and a new beginning, a woman and her children embark on a dangerous journey through the
             woods and down a river to find the one place that may offer sanctuary. To make it, they\'ll have to cover
-            their eyes from the evil that chases them — and complete the trip blindfolded.</item>
+            their eyes from the evil that chases them and complete the trip blindfolded.</item>
         <item>drama, thirller, horror, Doomsday, Science fiction</item>
         <item>2h 4m</item>
         <item>(Susanne Bier)</item>
