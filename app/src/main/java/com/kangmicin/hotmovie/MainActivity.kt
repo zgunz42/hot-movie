@@ -3,7 +3,6 @@ package com.kangmicin.hotmovie
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
 
     override fun displayMovies(movies: List<Movie>) {
         val bundle = Bundle()
-        Log.i("TOPME", movies.size.toString())
         bundle.putParcelableArray("MOVIES", movies.toTypedArray())
         movieListFragment.arguments = bundle
     }

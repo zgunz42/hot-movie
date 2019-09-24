@@ -30,8 +30,6 @@ class MovieListFragment : Fragment() {
             movies = movies + it as Movie
         }
 
-        Log.i("TOPMOVIE", movies.size.toString())
-
         if (view is ListView) {
             with(view) {
                 adapter = MovieAdapter(movies, context, listener)

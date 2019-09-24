@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
 >
     <androidx.cardview.widget.CardView
+            android:id="@+id/movie_item"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"

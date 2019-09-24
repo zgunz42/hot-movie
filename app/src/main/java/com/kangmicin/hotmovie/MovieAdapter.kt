@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.kangmicin.hotmovie.model.Movie
 
 class MovieAdapter(
@@ -23,6 +24,7 @@ class MovieAdapter(
         } else {
             convertView
         }
+        val cardView = view.findViewById<CardView>(R.id.movie_item)
 
         with(movies[position], {
             val imageView: ImageView = view.findViewById(R.id.movie_poster)
@@ -36,11 +38,11 @@ class MovieAdapter(
             titleView.text = this.title
             plotView.text = this.plot
 
-            view.tag = this
+            cardView.tag = this
         })
 
         listener?.run {
-            view.setOnClickListener { v -> onListFragmentInteraction(v.tag as Movie) }
+            cardView.setOnClickListener { v -> onListFragmentInteraction(v.tag as Movie) }
         }
 
         return view
