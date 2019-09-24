@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="movies">
+        <item>@array/aquaman_movie</item>
+        <item>@array/astar_movie</item>
+        <item>@array/aquaman_movie</item>
+        <item>@array/bohemian_movie</item>
+        <item>@array/spiderman_movie</item>
+        <item>@array/venom_movie</item>
+        <item>@array/bumblebee_movie</item>
+        <item>@array/dragon_movie</item>
+        <item>@array/birdbox_movie</item>
+        <item>@array/marypoppins_movie</item>
+    </integer-array>
+    <!-- Format Movie
+        title: String
+        poster: String
+        plot: String
+        genre: String
+        length: Long
+        director: Person.
+        release: String
+        rating: Double
+        actors: HashMap<Person, String> -->
+    <string-array name="aquaman_movie">
+        <item>Aquaman</item>
+        <item>@drawable/poster_aquaman</item>
+        <item>Once home to the most advanced civilization on Earth, the city of Atlantis is now an underwater kingdom
+            ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining
+            oceanic people — and then the surface world. Standing in his way is Aquaman, Orm\'s half-human,
+            half-Atlantean brother and true heir to the throne. With help from royal counselor Vulko, Aquaman must
+            retrieve the legendary Trident of Atlan and embrace his destiny as protector of the deep.</item>
+        <item>action, adventure, fantasy, superhero, Science fiction</item>
+        <item>2h 22m</item>
+        <item>(‎James Wan)</item>
+        <item>December 21, 2018</item>
+        <item>(7/10, IMDb), (65%, Rotten Tomatoes), (55%, Metacritic)</item>
+        <item>
+            [Aquaman, (Jason Momoa, @drawable/jason_momoa)],
+            [Mera, (Amber Heard, @drawable/amber_heard)],
+            [Nuidis Vulko, (Willem Dafoe, @drawable/willem_dafoe)],
+            [Ocean Master, (Patrick Wilson, @drawable/patrick_wilson)],
+            [Atlanna, (Nicole Kidman, @drawable/nicole_kidman)],
+        </item>
+    </string-array>
+    <string-array name="astar_movie">
+        <item>A Star Is Born</item>
+        <item>@drawable/poster_a_star</item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer until Jackson coaxes her into the spotlight. But even
+            as Ally\'s career takes off, the personal side of their relationship is breaking down, as Jackson fights an
+            ongoing battle with his own internal demons.</item>
+        <item>drama, romance</item>
+        <item>2h 14m</item>
+        <item>(‎Bradley Cooper)</item>
+        <item>October 19, 2018</item>
+        <item>(7.7/10, IMDb), (90%, Rotten Tomatoes), (88%, Metacritic)</item>
+        <item>
+            [Ally Campana, (Lady Gaga, @drawable/lady_gaga)],
+            [Jackson Maine, (Bradley Cooper, @drawable/bradley_cooper)],
+            [Bobby Maine, (Sam Elliott, @drawable/sam_elliott)],
+            [Lorenzo Campana, (Andrew Dice Clay, @drawable/andrew_dice_clay)],
+            [Rez Gavron, (Rafi Gavron, @drawable/rafi_gavron)],
+        </item>
+    </string-array>
+    <string-array name="avengerinfinity_movie">
+        <item>Avengers: Infinity War</item>
+        <item>@drawable/poster_avengerinfinity</item>
+        <item>Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet — the
+            evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict
+            his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as
+            everything the Avengers have fought for has led up to this moment.</item>
+        <item>action, adventure, fantasy, superhero, Science fiction</item>
+        <item>2h 40m</item>
+        <item>(Anthony Russo)</item>
+        <item>April 25, 2018</item>
+        <item>(8.5/10, IMDb), (68%, Metacritic), (85%, Rotten Tomatoes)</item>
+        <item>
+            [Tony Stark / Iron Man, (Robert Downey Jr., @drawable/robert_downey)],
+            [Thor Odinson, (Chris Hemsworth, @drawable/chris_hemsworth)],
+            [Steve Rogers / Captain America, (Chris Evans, @drawable/chris_evans)],
+            [Bruce Banner / The Hulk, (Mark Ruffalo, @drawable/ark_ruffalo)],
+            [natasha romanoff / black widow, (Scarlett Johansson, @drawable/scarlett_johansson)],
+        </item>
+    </string-array>
+    <string-array name="bohemian_movie">
+        <item>Bohemian Rhapsody</item>
+        <item>@drawable/poster_bohemian</item>
+        <item>Bohemian Rhapsody is a foot-stomping celebration of Queen, their music and their extraordinary lead
+            singer Freddie Mercury. Freddie defied stereotypes and shattered convention to become one of the most
+            beloved entertainers on the planet. The film traces the meteoric rise of the band through their
+            iconic songs and revolutionary sound. They reach unparalleled success,
+            but in an unexpected turn Freddie, surrounded by darker influences, shuns
+            Queen in pursuit of his solo career. Having suffered greatly without the collaboration of Queen,
+            Freddie manages to reunite with his bandmates just in time for Live Aid. While bravely facing a recent
+            AIDS diagnosis, Freddie leads the band in one of the greatest performances
+            in the history of rock music. Queen cements a legacy that continues to inspire outsiders,
+            dreamers and music lovers to this day</item>
+        <item>music, biography, drama</item>
+        <item>2h 13m</item>
+        <item>(Bryan Singer)</item>
+        <item>October 27, 2018</item>
+        <item>(8/10, IMDb), (49%, Metacritic), (61%, Rotten Tomatoes)</item>
+        <item>
+            [Freddie Mercury, (Rami Malek, @drawable/rami_malek)],
+            [Brian May, (Gwilym Lee, @drawable/gwilym_lee)],
+            [Roger Taylor, (Ben Hardy, @drawable/ben_hardy)],
+            [Joseph Mazzello, (Joseph Mazzello, @drawable/joseph_mazzello)],
+            [Mary Austin, (Lucy Boynton, @drawable/lucy_boynton)],
+        </item>
+    </string-array>
+    <string-array name="spiderman_movie">
+        <item>Spider-Man: Into the Spider-Verse</item>
+        <item>@drawable/poster_spiderman</item>
+        <item>Teen Miles Morales becomes Spider-Man of his reality, crossing his path with five counterparts
+            from another dimensions to stop a threat for all realities.</item>
+        <item>comedy, animation, cartoon, action, adventure, fantasy, superhero, Science fiction</item>
+        <item>2h 13m</item>
+        <item>(Peter Ramsey), (Bob Persichetti), (Rodney Rothman)</item>
+        <item>December 12, 2018</item>
+        <item>(8.4/10, IMDb), (97%, Rotten Tomatoes), (87%, Metacritic)</item>
+        <item>
+            [Miles Morales / Spider-Man (voice), (Shameik Moore, @drawable/shameik_moore)],
+            [Peter B. Parker / Spider-Man (voice), (Jake Johnson, @drawable/jake_johnson)],
+            [Gwen Stacy / Spider-Woman (voice), (Hailee Steinfeld, @drawable/hailee_steinfeld)],
+            [Aaron Davis / Prowler (voice), (Mahershala Ali, @drawable/mahershala_ali)],
+            [Jefferson Davis (voice), (Brian Tyree Henry, @drawable/brian_tyree)],
+        </item>
+    </string-array>
+    <string-array name="venom_movie">
+        <item>Venom</item>
+        <item>@drawable/poster_venom</item>
+        <item>Journalist Eddie Brock is trying to take down Carlton Drake, the notorious and brilliant founder of the
+            Life Foundation. While investigating one of Drake\'s experiments, Eddie\'s body merges with the alien Venom —
+            leaving him with superhuman strength and power. Twisted, dark and fueled by rage, Venom tries to control the
+            new and dangerous abilities that Eddie finds so intoxicating.</item>
+        <item>horror, thriller, action, adventure, fantasy, superhero, Science fiction</item>
+        <item>2h 13m</item>
+        <item>(Ruben Fleischer)</item>
+        <item>October 3, 2018</item>
+        <item>(6.7/10, IMDb), (29%, Rotten Tomatoes), (35%, Metacritic)</item>
+        <item>
+            [Eddie Brock / Venom, (Tom Hardy, @drawable/tom_hardy)],
+            [Anne Weying, (Michelle Williams, @drawable/michelle_williams)],
+            [Carlton Drake / Riot, (Riz Ahmed, @drawable/riz_ahmed)],
+            [Security Chief Roland Treece, (Scott Haze, @drawable/scott_haze)],
+            [Dr. Dan Lewis, (Reid Scott, @drawable/reid_scott)],
+        </item>
+    </string-array>
+    <string-array name="bumblebee_movie">
+        <item>Bumblebee</item>
+        <item>@drawable/poster_dragon</item>
+        <item>On the run in the year of 1987, Bumblebee finds refuge in a junkyard in a small Californian
+            beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers
+            Bumblebee, battle-scarred and broken.</item>
+        <item>action, adventure, Science fiction</item>
+        <item>1h 54m</item>
+        <item>(Travis Knight)</item>
+        <item>December 19, 2018</item>
+        <item>(6.8/10, IMDb), (93%, Rotten Tomatoes), (3.4/5, Letterboxd)</item>
+        <item>
+            [Charlie Watson, (Hailee Steinfeld, @drawable/hailee_steinfeld)],
+            [Memo, (Jorge Lendeborg Jr., @drawable/jorge_lendeborg)],
+            [Agent Jack Burns, (John Cena, @drawable/john_cena)],
+            [Otis Watson, (Jason Ian Drucker, @drawable/jason_ian)],
+            [Sally Watson, (Pamela Adlon, @drawable/pamela_adlon)],
+        </item>
+    </string-array>
+    <string-array name="dragon_movie">
+        <item>How to Train Your Dragon: The Hidden World</item>
+        <item>@drawable/poster_dragon</item>
+        <item>On the run in the year of 1987, Bumblebee finds refuge in a junkyard in a small Californian
+            beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers
+            Bumblebee, battle-scarred and broken.</item>
+        <item>action, adventure, Science fiction</item>
+        <item>1h 54m</item>
+        <item>(Travis Knight)</item>
+        <item>December 19, 2018</item>
+        <item>(6.8/10, IMDb), (93%, Rotten Tomatoes), (3.4/5, Letterboxd)</item>
+        <item>
+            [Hiccup (voice), (Jay Baruchel, @drawable/jay_baruchel)],
+            [Astrid (voice), (America Ferrera, @drawable/america_ferrera)],
+            [Valka (voice), (Cate Blanchett, @drawable/cate_blanchett)],
+            [Gobber the Belch (voice), (Craig Ferguson, @drawable/craig_ferguson)],
+            [Snotlout Jorgenson (voice), (Jonah Hill, @drawable/jonah_hill)],
+        </item>
+    </string-array>
+    <string-array name="birdbox_movie">
+        <item>Bird Box</item>
+        <item>@drawable/poster_birdbox</item>
+        <item>When a mysterious force decimates the population, only one thing is certain — if you see it, you die. The
+            survivors must now avoid coming face to face with an entity that takes the form of their worst fears.
+            Searching for hope and a new beginning, a woman and her children embark on a dangerous journey through the
+            woods and down a river to find the one place that may offer sanctuary. To make it, they\'ll have to cover
+            their eyes from the evil that chases them — and complete the trip blindfolded.</item>
+        <item>drama, thirller, horror, Doomsday, Science fiction</item>
+        <item>2h 4m</item>
+        <item>(Susanne Bier)</item>
+        <item>December 14, 2018</item>
+        <item>(6.6/10, IMDb), (63%, Rotten Tomatoes), (51%, Metacritic)</item>
+        <item>
+            [Malorie Hayes, (Sandra Bullock, @drawable/sandra_bullock)],
+            [Tom, (Trevante Rhodes, @drawable/trevante_rhodes)],
+            [Douglas, (John Malkovich, @drawable/john_malkovich)],
+            [Jessica, (Sarah Paulson, @drawable/sarah_paulson)],
+            [Cheryl, (Jacki Weaver, @drawable/jacki_weaver)],
+        </item>
+    </string-array>
+    <string-array name="marypoppins_movie">
+        <item>Mary Poppins Returns</item>
+        <item>@drawable/poster_marrypopins</item>
+        <item>In Depression-era London, a now-grown Jane and Michael Banks, along with Michael\'s three children,
+            are visited by the enigmatic Mary Poppins following a personal loss. Through her unique magical skills,
+            and with the aid of her friend Jack, she helps the family rediscover
+            the joy and wonder missing in their lives.</item>
+        <item>action, adventure, Science fiction</item>
+        <item>2h 10m</item>
+        <item>(Rob Marshall)</item>
+        <item>December 22, 2018</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [Mary Poppins, (Emily Blunt, @drawable/emily_blunt)],
+            [Jack, (Lin-Manuel Miranda, @drawable/lintrevante_rhodes)],
+            [Michael Banks, (Ben Whishaw, @drawable/ben_whishaw)],
+            [Jane Banks, (Emily Mortimer, @drawable/emily_mortimer)],
+            [Annabel Banks, (Pixie Davies, @drawable/pixie_davies)],
+        </item>
+    </string-array>
+</resources>
