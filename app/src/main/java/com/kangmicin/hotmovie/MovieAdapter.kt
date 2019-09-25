@@ -1,6 +1,9 @@
 package com.kangmicin.hotmovie
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +12,10 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.graphics.drawable.RoundedBitmapDrawable
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.kangmicin.hotmovie.model.Movie
+import org.xmlpull.v1.XmlPullParser
 
 class MovieAdapter(
     var movies: List<Movie>,
@@ -30,11 +36,12 @@ class MovieAdapter(
             val imageView: ImageView = view.findViewById(R.id.movie_poster)
             val titleView: TextView = view.findViewById(R.id.movie_title)
             val plotView: TextView = view.findViewById(R.id.movie_plot)
+            val identifier = Utils.getIdentity(context, this.poster, Utils.ResType.DRAWABLE)
+            val bitmap = BitmapFactory.decodeResource(view.resources, identifier)
+            val rImage = RoundedBitmapDrawableFactory.create(view.resources, bitmap)
+            rImage.cornerRadius = view.resources.getDimension(R.dimen.corner)
 
-            val name = this.poster.split('/').last().split('.').first()
-            val identifier = context.resources.getIdentifier(name, "drawable", context.packageName)
-
-            imageView.setImageResource(identifier)
+            imageView.setImageDrawable(rImage)
             titleView.text = this.title
             plotView.text = this.plot
 

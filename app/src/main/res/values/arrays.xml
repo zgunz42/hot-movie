@@ -13,7 +13,7 @@
         <item>@array/marypoppins_movie</item>
     </integer-array>
     <!-- Format Movie
-        title: String
+        plotView: String
         poster: String
         plot: String
         genre: String

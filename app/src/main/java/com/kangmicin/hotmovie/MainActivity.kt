@@ -1,6 +1,7 @@
 package com.kangmicin.hotmovie
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -47,10 +48,9 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
     }
 
     override fun onListFragmentInteraction(item: Movie?) {
-        val message: String = when {
-            item !== null -> item.title
-            else -> ""
-        }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        val openIntent = Intent(this, MovieActivity::class.java)
+
+        openIntent.putExtra("movie", item)
+        startActivity(openIntent)
     }
 }

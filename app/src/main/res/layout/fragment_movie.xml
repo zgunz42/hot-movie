@@ -19,6 +19,8 @@
             android:elevation="3dp"
             app:cardUseCompatPadding="true"
             app:cardMaxElevation="0dp"
+            android:background="@drawable/round_outline_poster"
+            android:outlineProvider="background"
             app:cardPreventCornerOverlap="true"
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
