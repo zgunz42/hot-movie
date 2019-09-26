@@ -88,7 +88,6 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int) -> Array<St
         val plot = data[2]
         val genres = data[3].split(',').toList()
         val length = getMovieLength(data[4])
-//        Log.i("LABEL", extractArgs(data[5]).size.toString())
         val director = Person(uuid(), extractArgs(data[5]).first(), null)
         val releaseYear = SimpleDateFormat("MMMM dd, yyyy", Locale.US).parse(data[6])
         val ratings = splitObjects(data[7]).map { Rating(uuid(), it[0], it[1]) }

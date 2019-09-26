@@ -36,10 +36,7 @@ class MovieAdapter(
             val imageView: ImageView = view.findViewById(R.id.movie_poster)
             val titleView: TextView = view.findViewById(R.id.movie_title)
             val plotView: TextView = view.findViewById(R.id.movie_plot)
-            val identifier = Utils.getIdentity(context, this.poster, Utils.ResType.DRAWABLE)
-            val bitmap = BitmapFactory.decodeResource(view.resources, identifier)
-            val rImage = RoundedBitmapDrawableFactory.create(view.resources, bitmap)
-            rImage.cornerRadius = view.resources.getDimension(R.dimen.corner)
+            val rImage = Utils.roundedImage(context, this.poster, R.dimen.corner)
 
             imageView.setImageDrawable(rImage)
             titleView.text = this.title

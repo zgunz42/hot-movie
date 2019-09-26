@@ -11,11 +11,131 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         tools:context=".MovieActivity">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/movie_plot"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:text="Hello"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false">
+            <LinearLayout android:orientation="vertical" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/imdb_rating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="7/10"
+                        android:textSize="18sp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:gravity="center"
+                        android:layout_marginBottom="6dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                <TextView
+                        android:text="@string/imdb"
+                        app:layout_constraintStart_toEndOf="@+id/imdb_rating"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/rotten_tomatoes_rating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="55%"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:layout_marginBottom="6dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                <TextView
+                        android:text="@string/rotten_tomatoes"
+                        app:layout_constraintStart_toEndOf="@+id/imdb_rating"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/metacritic_rating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="55%"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="6dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                <TextView
+                        android:text="@string/metacritic"
+                        app:layout_constraintStart_toEndOf="@+id/imdb_rating"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="@dimen/activity_vertical_margin"
+                    android:paddingStart="0dp"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/movie_release"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        tools:text="Release Date: January 9, 2019"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/movie_director"
+                        tools:text="Director: Joko Anwar"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <ImageView
+                    android:layout_height="150dp"
+                    android:layout_width="120dp"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/movie_poster"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:paddingEnd="@dimen/content_spacing"
+                    android:paddingStart="0dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:contentDescription="@string/movie_poster"/>
+        </LinearLayout>
+        <TextView
+                android:textColor="@color/colorHeading"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/head_plot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_bold"/>
+        <TextView
+                android:id="@+id/movie_plot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="Hello"/>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

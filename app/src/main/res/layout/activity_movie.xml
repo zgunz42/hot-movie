@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         style="@style/AppTheme.NoActionBar"
+        android:background="@android:color/white"
         tools:context=".MovieActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -14,7 +15,8 @@
             android:fitsSystemWindows="true"
             android:layout_height="@dimen/app_bar_height"
             android:layout_width="match_parent"
-            android:background="@android:color/white"
+            app:elevation="0dp"
+            android:background="@android:color/transparent"
             android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -24,21 +26,34 @@
                 android:layout_height="match_parent"
                 app:titleEnabled="false"
                 app:toolbarId="@+id/toolbar"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:background="@android:color/transparent"
+                app:layout_scrollFlags="snapMargins"
                 app:contentScrim="?attr/colorPrimary">
-            <ImageView
-                    android:id="@+id/movie_poster_hero"
-                    android:layout_width="match_parent"
+            <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="Movie Poster Hero"
-                    app:layout_collapseMode="parallax"
                     android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop"
-                    tools:ignore="HardcodedText"/>
-            <TextView
-                    android:id="@+id/movie_title"
-                    android:gravity="start|bottom"
+                    app:layout_collapseMode="parallax">
+                <ImageView
+                        android:id="@+id/movie_poster_hero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="Movie Poster Hero"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:tint="#50000000"
+                        tools:src="@tools:sample/avatars"
+                        tools:ignore="HardcodedText"/>
+            </FrameLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/movie_length"
+                    android:gravity="top"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:layout_marginStart="46dp"
+                    android:layout_marginBottom="76dp"
                     app:layout_collapseMode="pin"
+                    android:textColor="@color/colorTitleSpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.Toolbar
@@ -47,7 +62,45 @@
                     android:layout_width="match_parent"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="wrap_content"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_collapseParallaxMultiplier="1.0"
+                    android:maxLines="2"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="74dp"
+                    android:layout_marginStart="46dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginBottom="104dp"
+                    android:textStyle="bold"
+                    app:layout_collapseMode="pin"
+                    android:layout_gravity="bottom|start"
+                    android:gravity="start|bottom"
+                    tools:text="@sample/movie_title"
+                    android:scrollHorizontally="true"
+                    android:singleLine="false"/>
+            <HorizontalScrollView
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginStart="46dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_width="wrap_content"
+                    android:requiresFadingEdge="horizontal"
+                    android:fadingEdgeLength="25dp"
+                    android:layout_marginEnd="74dp"
+                    android:verticalScrollbarPosition="left"
+                    android:isScrollContainer="true"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:id="@+id/movie_genres"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </HorizontalScrollView>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -59,7 +112,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             app:layout_anchor="@id/app_bar"
+            android:elevation="10dp"
+            android:fadingEdgeLength="5dp"
+            android:background="@color/colorPrimary"
             app:layout_anchorGravity="center_vertical|end"
-            app:srcCompat="@android:drawable/ic_menu_share"/>
+            app:srcCompat="@drawable/ic_play_arrow_black_24dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
