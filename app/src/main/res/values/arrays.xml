@@ -36,11 +36,11 @@
         <item>December 21, 2018</item>
         <item>(7/10, IMDb), (65%, Rotten Tomatoes), (55%, Metacritic)</item>
         <item>
-            [Aquaman, (Jason Momoa, @drawable/jason_momoa)],
-            [Mera, (Amber Heard, @drawable/amber_heard)],
-            [Nuidis Vulko, (Willem Dafoe, @drawable/willem_dafoe)],
-            [Ocean Master, (Patrick Wilson, @drawable/patrick_wilson)],
-            [Atlanna, (Nicole Kidman, @drawable/nicole_kidman)],
+            [Aquaman, (Jason Momoa, @drawable/jason_momoa)],\n
+            [Mera, (Amber Heard, @drawable/amber_heard)],\n
+            [Nuidis Vulko, (Willem Dafoe, @drawable/willem_dafoe)],\n
+            [Ocean Master, (Patrick Wilson, @drawable/patrick_wilson)],\n
+            [Atlanna, (Nicole Kidman, @drawable/nicole_kidman)],\n
         </item>
     </string-array>
     <string-array name="astar_movie">
@@ -56,11 +56,11 @@
         <item>October 19, 2018</item>
         <item>(7.7/10, IMDb), (90%, Rotten Tomatoes), (88%, Metacritic)</item>
         <item>
-            [Ally Campana, (Lady Gaga, @drawable/lady_gaga)],
-            [Jackson Maine, (Bradley Cooper, @drawable/bradley_cooper)],
-            [Bobby Maine, (Sam Elliott, @drawable/sam_elliott)],
-            [Lorenzo Campana, (Andrew Dice Clay, @drawable/andrew_dice_clay)],
-            [Rez Gavron, (Rafi Gavron, @drawable/rafi_gavron)],
+            [Ally Campana, (Lady Gaga, @drawable/lady_gaga)],\n
+            [Jackson Maine, (Bradley Cooper, @drawable/bradley_cooper)],\n
+            [Bobby Maine, (Sam Elliott, @drawable/sam_elliott)],\n
+            [Lorenzo Campana, (Andrew Dice Clay, @drawable/andrew_dice_clay)],\n
+            [Rez Gavron, (Rafi Gavron, @drawable/rafi_gavron)],\n
         </item>
     </string-array>
     <string-array name="avengerinfinity_movie">
@@ -76,11 +76,11 @@
         <item>April 25, 2018</item>
         <item>(8.5/10, IMDb), (68%, Metacritic), (85%, Rotten Tomatoes)</item>
         <item>
-            [Tony Stark / Iron Man, (Robert Downey Jr., @drawable/robert_downey)],
-            [Thor Odinson, (Chris Hemsworth, @drawable/chris_hemsworth)],
-            [Steve Rogers / Captain America, (Chris Evans, @drawable/chris_evans)],
-            [Bruce Banner / The Hulk, (Mark Ruffalo, @drawable/ark_ruffalo)],
-            [natasha romanoff / black widow, (Scarlett Johansson, @drawable/scarlett_johansson)],
+            [Tony Stark / Iron Man, (Robert Downey Jr., @drawable/robert_downey)],\n
+            [Thor Odinson, (Chris Hemsworth, @drawable/chris_hemsworth)],\n
+            [Steve Rogers / Captain America, (Chris Evans, @drawable/chris_evans)],\n
+            [Bruce Banner / The Hulk, (Mark Ruffalo, @drawable/ark_ruffalo)],\n
+            [natasha romanoff / black widow, (Scarlett Johansson, @drawable/scarlett_johansson)],\n
         </item>
     </string-array>
     <string-array name="bohemian_movie">
@@ -102,11 +102,11 @@
         <item>October 27, 2018</item>
         <item>(8/10, IMDb), (49%, Metacritic), (61%, Rotten Tomatoes)</item>
         <item>
-            [Freddie Mercury, (Rami Malek, @drawable/rami_malek)],
-            [Brian May, (Gwilym Lee, @drawable/gwilym_lee)],
-            [Roger Taylor, (Ben Hardy, @drawable/ben_hardy)],
-            [Joseph Mazzello, (Joseph Mazzello, @drawable/joseph_mazzello)],
-            [Mary Austin, (Lucy Boynton, @drawable/lucy_boynton)],
+            [Freddie Mercury, (Rami Malek, @drawable/rami_malek)],\n
+            [Brian May, (Gwilym Lee, @drawable/gwilym_lee)],\n
+            [Roger Taylor, (Ben Hardy, @drawable/ben_hardy)],\n
+            [Joseph Mazzello, (Joseph Mazzello, @drawable/joseph_mazzello)],\n
+            [Mary Austin, (Lucy Boynton, @drawable/lucy_boynton)],\n
         </item>
     </string-array>
     <string-array name="spiderman_movie">
@@ -116,15 +116,15 @@
             from another dimensions to stop a threat for all realities.</item>
         <item>comedy, animation, cartoon, action, adventure, fantasy, superhero, Science fiction</item>
         <item>2h 13m</item>
-        <item>(Peter Ramsey), (Bob Persichetti), (Rodney Rothman)</item>
+        <item>(Peter Ramsey)</item>
         <item>December 12, 2018</item>
         <item>(8.4/10, IMDb), (97%, Rotten Tomatoes), (87%, Metacritic)</item>
         <item>
-            [Miles Morales / Spider-Man (voice), (Shameik Moore, @drawable/shameik_moore)],
-            [Peter B. Parker / Spider-Man (voice), (Jake Johnson, @drawable/jake_johnson)],
-            [Gwen Stacy / Spider-Woman (voice), (Hailee Steinfeld, @drawable/hailee_steinfeld)],
-            [Aaron Davis / Prowler (voice), (Mahershala Ali, @drawable/mahershala_ali)],
-            [Jefferson Davis (voice), (Brian Tyree Henry, @drawable/brian_tyree)],
+            [Miles Morales / Spider-Man (voice), (Shameik Moore, @drawable/shameik_moore)],\n
+            [Peter B. Parker / Spider-Man (voice), (Jake Johnson, @drawable/jake_johnson)],\n
+            [Gwen Stacy / Spider-Woman (voice), (Hailee Steinfeld, @drawable/hailee_steinfeld)],\n
+            [Aaron Davis / Prowler (voice), (Mahershala Ali, @drawable/mahershala_ali)],\n
+            [Jefferson Davis (voice), (Brian Tyree Henry, @drawable/brian_tyree)],\n
         </item>
     </string-array>
     <string-array name="venom_movie">
@@ -140,11 +140,11 @@
         <item>October 3, 2018</item>
         <item>(6.7/10, IMDb), (29%, Rotten Tomatoes), (35%, Metacritic)</item>
         <item>
-            [Eddie Brock / Venom, (Tom Hardy, @drawable/tom_hardy)],
-            [Anne Weying, (Michelle Williams, @drawable/michelle_williams)],
-            [Carlton Drake / Riot, (Riz Ahmed, @drawable/riz_ahmed)],
-            [Security Chief Roland Treece, (Scott Haze, @drawable/scott_haze)],
-            [Dr. Dan Lewis, (Reid Scott, @drawable/reid_scott)],
+            [Eddie Brock / Venom, (Tom Hardy, @drawable/tom_hardy)],\n
+            [Anne Weying, (Michelle Williams, @drawable/michelle_williams)],\n
+            [Carlton Drake / Riot, (Riz Ahmed, @drawable/riz_ahmed)],\n
+            [Security Chief Roland Treece, (Scott Haze, @drawable/scott_haze)],\n
+            [Dr. Dan Lewis, (Reid Scott, @drawable/reid_scott)],\n
         </item>
     </string-array>
     <string-array name="bumblebee_movie">
@@ -159,11 +159,11 @@
         <item>December 19, 2018</item>
         <item>(6.8/10, IMDb), (93%, Rotten Tomatoes), (3.4/5, Letterboxd)</item>
         <item>
-            [Charlie Watson, (Hailee Steinfeld, @drawable/hailee_steinfeld)],
-            [Memo, (Jorge Lendeborg Jr., @drawable/jorge_lendeborg)],
-            [Agent Jack Burns, (John Cena, @drawable/john_cena)],
-            [Otis Watson, (Jason Ian Drucker, @drawable/jason_ian)],
-            [Sally Watson, (Pamela Adlon, @drawable/pamela_adlon)],
+            [Charlie Watson, (Hailee Steinfeld, @drawable/hailee_steinfeld)],\n
+            [Memo, (Jorge Lendeborg Jr., @drawable/jorge_lendeborg)],\n
+            [Agent Jack Burns, (John Cena, @drawable/john_cena)],\n
+            [Otis Watson, (Jason Ian Drucker, @drawable/jason_ian)],\n
+            [Sally Watson, (Pamela Adlon, @drawable/pamela_adlon)],\n
         </item>
     </string-array>
     <string-array name="dragon_movie">
@@ -178,11 +178,11 @@
         <item>December 19, 2018</item>
         <item>(6.8/10, IMDb), (93%, Rotten Tomatoes), (3.4/5, Letterboxd)</item>
         <item>
-            [Hiccup (voice), (Jay Baruchel, @drawable/jay_baruchel)],
-            [Astrid (voice), (America Ferrera, @drawable/america_ferrera)],
-            [Valka (voice), (Cate Blanchett, @drawable/cate_blanchett)],
-            [Gobber the Belch (voice), (Craig Ferguson, @drawable/craig_ferguson)],
-            [Snotlout Jorgenson (voice), (Jonah Hill, @drawable/jonah_hill)],
+            [Hiccup (voice), (Jay Baruchel, @drawable/jay_baruchel)],\n
+            [Astrid (voice), (America Ferrera, @drawable/america_ferrera)],\n
+            [Valka (voice), (Cate Blanchett, @drawable/cate_blanchett)],\n
+            [Gobber the Belch (voice), (Craig Ferguson, @drawable/craig_ferguson)],\n
+            [Snotlout Jorgenson (voice), (Jonah Hill, @drawable/jonah_hill)],\n\n
         </item>
     </string-array>
     <string-array name="birdbox_movie">
@@ -199,11 +199,11 @@
         <item>December 14, 2018</item>
         <item>(6.6/10, IMDb), (63%, Rotten Tomatoes), (51%, Metacritic)</item>
         <item>
-            [Malorie Hayes, (Sandra Bullock, @drawable/sandra_bullock)],
-            [Tom, (Trevante Rhodes, @drawable/trevante_rhodes)],
-            [Douglas, (John Malkovich, @drawable/john_malkovich)],
-            [Jessica, (Sarah Paulson, @drawable/sarah_paulson)],
-            [Cheryl, (Jacki Weaver, @drawable/jacki_weaver)],
+            [Malorie Hayes, (Sandra Bullock, @drawable/sandra_bullock)],\n
+            [Tom, (Trevante Rhodes, @drawable/trevante_rhodes)],\n
+            [Douglas, (John Malkovich, @drawable/john_malkovich)],\n
+            [Jessica, (Sarah Paulson, @drawable/sarah_paulson)],\n
+            [Cheryl, (Jacki Weaver, @drawable/jacki_weaver)],\n
         </item>
     </string-array>
     <string-array name="marypoppins_movie">
@@ -219,11 +219,11 @@
         <item>December 22, 2018</item>
         <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
-            [Mary Poppins, (Emily Blunt, @drawable/emily_blunt)],
-            [Jack, (Lin-Manuel Miranda, @drawable/lintrevante_rhodes)],
-            [Michael Banks, (Ben Whishaw, @drawable/ben_whishaw)],
-            [Jane Banks, (Emily Mortimer, @drawable/emily_mortimer)],
-            [Annabel Banks, (Pixie Davies, @drawable/pixie_davies)],
+            [Mary Poppins, (Emily Blunt, @drawable/emily_blunt)],\n
+            [Jack, (Lin-Manuel Miranda, @drawable/lintrevante_rhodes)],\n
+            [Michael Banks, (Ben Whishaw, @drawable/ben_whishaw)],\n
+            [Jane Banks, (Emily Mortimer, @drawable/emily_mortimer)],\n
+            [Annabel Banks, (Pixie Davies, @drawable/pixie_davies)],\n\n
         </item>
     </string-array>
 </resources>

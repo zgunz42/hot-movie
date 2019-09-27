@@ -136,6 +136,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:text="Hello"/>
+        <TextView
+                android:textColor="@color/colorHeading"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/header_top_actors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_bold"/>
+        <HorizontalScrollView
+                android:layout_gravity="bottom|start"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_width="wrap_content"
+                android:requiresFadingEdge="horizontal"
+                android:fadingEdgeLength="25dp"
+                android:verticalScrollbarPosition="left"
+                android:isScrollContainer="true"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:id="@+id/movie_actors"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </HorizontalScrollView>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

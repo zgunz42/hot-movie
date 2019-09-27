@@ -1,42 +1,28 @@
 package com.kangmicin.hotmovie
 
-import android.content.res.ColorStateList
 import android.graphics.*
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginEnd
-import androidx.core.view.setPadding
 import androidx.core.view.updatePadding
 import com.kangmicin.hotmovie.model.Movie
+import com.kangmicin.hotmovie.model.Person
 import kotlinx.android.synthetic.main.activity_movie.*
+import kotlinx.android.synthetic.main.actor_card.view.*
+import kotlinx.android.synthetic.main.content_movie.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MovieActivity : AppCompatActivity() {
-
-    lateinit var plotView: TextView
-    lateinit var titleView: TextView
-    lateinit var plotHeroView: ImageView
-    lateinit var imdbRatingView: TextView
-    lateinit var rotttenTommatoes: TextView
-    lateinit var metacriticView: TextView
-    lateinit var movieLengthView: TextView
-    lateinit var moviePosterView: ImageView
-    lateinit var movieDirectorView: TextView
-    lateinit var movieReleaseView: TextView
-    lateinit var movieGenresLayout: LinearLayout
     lateinit var movie: Movie
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,24 +30,12 @@ class MovieActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie)
         setSupportActionBar(toolbar)
 
-        plotHeroView = findViewById(R.id.movie_poster_hero)
-        plotView = findViewById(R.id.movie_plot)
-        moviePosterView = findViewById(R.id.movie_poster)
-        movieDirectorView = findViewById(R.id.movie_director)
-        movieReleaseView = findViewById(R.id.movie_release)
-        titleView = findViewById(R.id.movie_title)
-        imdbRatingView = findViewById(R.id.imdb_rating)
-        movieLengthView = findViewById(R.id.movie_length)
-        rotttenTommatoes = findViewById(R.id.rotten_tomatoes_rating)
-        metacriticView = findViewById(R.id.metacritic_rating)
-        movieGenresLayout = findViewById(R.id.movie_genres)
-
         movie = intent.getParcelableExtra("movie")
 
         val identity = Utils.getIdentity(this, movie.poster, Utils.ResType.DRAWABLE)
 
-        plotHeroView.clipToOutline = true
-        plotHeroView.outlineProvider = object : ViewOutlineProvider() {
+        movie_poster_hero.clipToOutline = true
+        movie_poster_hero.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {
                 outline?.setRoundRect(0, -20, view!!.width, view.height, 50f)
             }
@@ -70,21 +44,21 @@ class MovieActivity : AppCompatActivity() {
 
         movie.rating.forEach {
             if (it.source === "IMDb") {
-                imdbRatingView.text = it.amount
+                imdb_rating.text = it.amount
             }
 
             if (it.source === "Rotten Tomatoes") {
-                rotttenTommatoes.text = it.amount
+                rotten_tomatoes_rating.text = it.amount
             }
 
             if (it.source === "Metacritic") {
-                metacriticView.text = it.amount
+                metacritic_rating.text = it.amount
             }
         }
 
-        plotHeroView.setImageResource(identity)
+        movie_poster_hero.setImageResource(identity)
 
-        plotView.text = movie.plot
+        movie_plot.text = movie.plot
         val yearFormat = SimpleDateFormat("yyyy", Locale.getDefault())
         val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)
         val year = "( ${yearFormat.format(movie.release)} )"
@@ -99,19 +73,26 @@ class MovieActivity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
 
-        titleView.text = spannable
-        moviePosterView.setImageDrawable(rImage)
-        movieReleaseView.text = createDetailText("Release Date",releaseFormat.format(movie.release))
-        movieDirectorView.text = createDetailText("Director", movie.director.name)
-        plotHeroView.setImageResource(identity)
+        movie_title.text = spannable
+        movie_poster.setImageDrawable(rImage)
+        movie_release.text = createDetailText("Release Date",releaseFormat.format(movie.release))
+        movie_director.text = createDetailText("Director", movie.director.name)
 
-        movieLengthView.text = Utils.getTimeFormat(movie.length)
+        movie_length.text = Utils.getTimeFormat(movie.length)
 
         val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
         movie.genre.forEach {
             movie_genres.addView(makeGenreView(it), param)
+        }
+
+        val actorParam = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        param.gravity = Gravity.START
+        param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
+
+        movie.actors.forEach {
+            movie_actors.addView(makeActorView(it.value, it.key), actorParam)
         }
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -141,5 +122,19 @@ class MovieActivity : AppCompatActivity() {
         textView.setTextColor(Color.WHITE)
         textView.background = getDrawable(R.drawable.round_outline_poster)
         return textView
+    }
+
+    private fun makeActorView(role: String, actor: Person): View {
+        val view = layoutInflater.inflate(R.layout.actor_card, movie_actors, false)
+
+        actor.profileUrl?.let {
+
+            val drawable = Utils.roundedImage(this, it, R.dimen.corner)
+            view.movie_actor_picture?.setImageDrawable(drawable)
+        }
+        view.movie_actor_name?.text = actor.name
+        view.movie_actor_role?.text = role
+
+        return view
     }
 }

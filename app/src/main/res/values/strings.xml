@@ -96,4 +96,5 @@
     <string name="imdb">IMDb</string>
     <string name="rotten_tomatoes">Rotten Tomatoes</string>
     <string name="metacritic">Metacritic</string>
+    <string name="header_top_actors">Top Actors</string>
 </resources>

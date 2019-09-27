@@ -27,7 +27,7 @@
                 app:titleEnabled="false"
                 app:toolbarId="@+id/toolbar"
                 android:background="@android:color/transparent"
-                app:layout_scrollFlags="snapMargins"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:contentScrim="?attr/colorPrimary">
             <FrameLayout
                     android:layout_width="wrap_content"
@@ -56,34 +56,6 @@
                     android:textColor="@color/colorTitleSpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_width="match_parent"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/movie_title"
-                    android:layout_width="wrap_content"
-                    android:visibility="visible"
-                    tools:visibility="visible"
-                    android:ellipsize="end"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_collapseParallaxMultiplier="1.0"
-                    android:maxLines="2"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="74dp"
-                    android:layout_marginStart="46dp"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_marginBottom="104dp"
-                    android:textStyle="bold"
-                    app:layout_collapseMode="pin"
-                    android:layout_gravity="bottom|start"
-                    android:gravity="start|bottom"
-                    tools:text="@sample/movie_title"
-                    android:scrollHorizontally="true"
-                    android:singleLine="false"/>
             <HorizontalScrollView
                     android:layout_gravity="bottom|start"
                     android:layout_marginStart="46dp"
@@ -101,6 +73,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </HorizontalScrollView>
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_width="match_parent"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="wrap_content"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:maxLines="2"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="74dp"
+                    android:layout_marginStart="46dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginBottom="104dp"
+                    android:textStyle="bold"
+                    app:layout_collapseMode="pin"
+                    android:layout_gravity="bottom|start"
+                    android:gravity="start|bottom"
+                    tools:text="@sample/movie_title"
+                    android:scrollHorizontally="true"
+                    android:singleLine="false"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

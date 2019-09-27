@@ -52,7 +52,7 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int) -> Array<St
         val hashMap = HashMap<String, Array<String>>()
         val innerRe = Regex(""".+(?=,\s\()|(?<=,\s).+""")
 
-        Regex("""(?<=\[).+(?=])""").findAll(string).forEach {
+        Regex("""(?<=\[).+(?=])""", RegexOption.UNIX_LINES).findAll(string).forEach {
             val parsed = innerRe.findAll(it.value)
             val key = parsed.elementAt(0).value
             val value = parsed.elementAt(1).value

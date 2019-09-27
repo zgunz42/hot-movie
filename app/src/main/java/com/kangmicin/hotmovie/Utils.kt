@@ -32,7 +32,7 @@ object Utils {
         val bitmap = BitmapFactory.decodeResource(context.resources, identifier)
         val rImage = RoundedBitmapDrawableFactory.create(context.resources, bitmap)
 
-        rImage.cornerRadius = context.resources.getDimension(R.dimen.corner)
+        rImage.cornerRadius = corner
 
         return rImage
     }
