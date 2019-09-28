@@ -23,14 +23,10 @@
                         android:id="@+id/imdb_rating"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:text="7/10"
-                        android:textSize="18sp"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_condensed_bold"
-                        android:gravity="center"
-                        android:layout_marginBottom="6dp"
+                        tools:text="7/10"
+                        style="@style/AppTheme.Rating"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                        android:layout_height="wrap_content"/>
                 <TextView
                         android:text="@string/imdb"
                         app:layout_constraintStart_toEndOf="@+id/imdb_rating"
@@ -45,14 +41,10 @@
                         android:id="@+id/rotten_tomatoes_rating"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:text="55%"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/roboto_condensed_bold"
-                        android:layout_marginBottom="6dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
+                        tools:text="55%"
+                        style="@style/AppTheme.Rating"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                        android:layout_height="wrap_content"/>
                 <TextView
                         android:text="@string/rotten_tomatoes"
                         app:layout_constraintStart_toEndOf="@+id/imdb_rating"
@@ -67,14 +59,10 @@
                         android:id="@+id/metacritic_rating"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:text="55%"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/roboto_condensed_bold"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_marginBottom="6dp"
+                        tools:text="55%"
+                        style="@style/AppTheme.Rating"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+                        android:layout_height="wrap_content"/>
                 <TextView
                         android:text="@string/metacritic"
                         app:layout_constraintStart_toEndOf="@+id/imdb_rating"
@@ -125,36 +113,26 @@
                     android:contentDescription="@string/movie_poster"/>
         </LinearLayout>
         <TextView
-                android:textColor="@color/colorHeading"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textStyle="bold"
-                android:textSize="18sp"
+                style="@style/AppTheme.Heading"
                 android:text="@string/head_plot"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_condensed_bold"/>
+                android:layout_height="wrap_content"/>
         <TextView
                 android:id="@+id/movie_plot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:text="Hello"/>
+                tools:text="@sample/movie_plot"/>
         <TextView
-                android:textColor="@color/colorHeading"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textStyle="bold"
-                android:textSize="18sp"
+                style="@style/AppTheme.Heading"
                 android:text="@string/header_top_actors"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_condensed_bold"/>
+                android:layout_height="wrap_content"/>
         <HorizontalScrollView
                 android:layout_gravity="bottom|start"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_width="wrap_content"
                 android:requiresFadingEdge="horizontal"
-                android:fadingEdgeLength="25dp"
+                android:fadingEdgeLength="@dimen/fading_edge_large"
                 android:verticalScrollbarPosition="left"
                 android:isScrollContainer="true"
                 android:layout_height="wrap_content">

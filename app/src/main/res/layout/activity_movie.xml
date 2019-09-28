@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 app:toolbarId="@+id/toolbar"
                 app:expandedTitleMarginBottom="104dp"
-                app:expandedTitleMarginStart="24dp"
+                app:expandedTitleMarginStart="@dimen/app_header_margin_start"
                 app:collapsedTitleGravity="center_vertical|start"
                 app:collapsedTitleTextAppearance="@android:style/android:TextAppearance.Material.Widget.Toolbar.Title"
                 app:expandedTitleTextAppearance="@android:style/TextAppearance.Material.Headline"
@@ -42,19 +42,18 @@
                         android:id="@+id/movie_poster_hero"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:contentDescription="Movie Poster Hero"
+                        android:contentDescription="@string/movie_poster_hero"
                         android:fitsSystemWindows="true"
                         android:scaleType="centerCrop"
-                        android:tint="#50000000"
-                        tools:src="@tools:sample/avatars"
-                        tools:ignore="HardcodedText"/>
+                        android:tint="@color/image_hero_filter_color"
+                        tools:src="@tools:sample/avatars"/>
             </FrameLayout>
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/movie_length"
                     android:gravity="top"
                     android:layout_gravity="bottom|start"
                     android:layout_marginTop="?attr/actionBarSize"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="@dimen/app_header_margin_start"
                     android:layout_marginBottom="76dp"
                     app:layout_collapseParallaxMultiplier="1.0"
                     app:layout_collapseMode="parallax"
@@ -63,14 +62,14 @@
                     android:layout_height="wrap_content"/>
             <HorizontalScrollView
                     android:layout_gravity="bottom|start"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginStart="@dimen/app_header_margin_start"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_width="wrap_content"
                     android:requiresFadingEdge="horizontal"
-                    android:fadingEdgeLength="25dp"
+                    android:fadingEdgeLength="@dimen/fading_edge_large"
                     app:layout_collapseParallaxMultiplier="1.0"
                     app:layout_collapseMode="parallax"
-                    android:layout_marginEnd="74dp"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin"
                     android:verticalScrollbarPosition="left"
                     android:isScrollContainer="true"
                     android:layout_height="wrap_content">
