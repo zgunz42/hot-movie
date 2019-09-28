@@ -25,23 +25,47 @@ import java.util.*
 class MovieActivity : AppCompatActivity() {
     lateinit var movie: Movie
 
+
+    companion object {
+        const val MOVIE_KEY = "MOVIE"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
         setSupportActionBar(toolbar)
 
-        movie = intent.getParcelableExtra("movie")
+        movie = intent.getParcelableExtra(MOVIE_KEY)
 
-        val identity = Utils.getIdentity(this, movie.poster, Utils.ResType.DRAWABLE)
+        movie_plot.text = movie.plot
+        movie_length.text = Utils.getTimeFormat(movie.length)
+        movie_director.text = createInfoText("Director", movie.director.name)
 
-        movie_poster_hero.clipToOutline = true
-        movie_poster_hero.outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View?, outline: Outline?) {
-                outline?.setRoundRect(0, -50, view!!.width, view.height, 50f)
-            }
+        displayTitle()
+        displayHeroPoster()
+        displayGenres()
+        displayMoviePoster()
+        displayRatings()
+        displayReleaseDate()
+        displayTopActor()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    private fun displayMoviePoster() {
+        val rImage = Utils.roundedImage(this, movie.poster, R.dimen.corner)
+        movie_poster.setImageDrawable(rImage)
+    }
+
+    private fun displayGenres() {
+        val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        param.gravity = Gravity.START
+        param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
+        movie.genre.forEach {
+            movie_genres.addView(makeGenreView(it), param)
         }
+    }
 
+    private fun displayRatings() {
         movie.rating.forEach {
             if (it.source == "IMDb") {
                 imdb_rating.text = it.amount
@@ -55,16 +79,43 @@ class MovieActivity : AppCompatActivity() {
                 metacritic_rating.text = it.amount
             }
         }
+    }
+
+    private fun displayHeroPoster() {
+        val identity = Utils.getIdentity(this, movie.poster, Utils.ResType.DRAWABLE)
+
+        movie_poster_hero.clipToOutline = true
+        movie_poster_hero.outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View?, outline: Outline?) {
+                outline?.setRoundRect(0, -50, view!!.width, view.height, 50f)
+            }
+
+        }
 
         movie_poster_hero.setImageResource(identity)
+    }
 
-        movie_plot.text = movie.plot
+    private fun displayTopActor() {
+        val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        param.gravity = Gravity.START
+        param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
+
+        movie.actors.forEach {
+            movie_actors.addView(makeActorView(it.value, it.key), param)
+        }
+    }
+
+    private fun displayReleaseDate() {
+        val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)  // date in US Language
+        val content = releaseFormat.format(movie.release)
+
+        movie_release.text = createInfoText("Release Date", content)
+    }
+
+    private fun displayTitle() {
         val yearFormat = SimpleDateFormat("yyyy", Locale.getDefault())
-        val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)
         val year = "( ${yearFormat.format(movie.release)} )"
-
         val spannable = SpannableStringBuilder("${movie.title} $year")
-        val rImage = Utils.roundedImage(this, movie.poster, R.dimen.corner)
 
         spannable.setSpan(
             ForegroundColorSpan(Color.parseColor("#CBFFFFFF")),
@@ -72,44 +123,22 @@ class MovieActivity : AppCompatActivity() {
             spannable.length,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
-
-        movie_poster.setImageDrawable(rImage)
-        movie_release.text = createDetailText("Release Date",releaseFormat.format(movie.release))
-        movie_director.text = createDetailText("Director", movie.director.name)
-
-        movie_length.text = Utils.getTimeFormat(movie.length)
-
-        val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        param.gravity = Gravity.START
-        param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
-        movie.genre.forEach {
-            movie_genres.addView(makeGenreView(it), param)
-        }
-
-        val actorParam = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        param.gravity = Gravity.START
-        param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
-
-        movie.actors.forEach {
-            movie_actors.addView(makeActorView(it.value, it.key), actorParam)
-        }
-
-        supportActionBar?.title = spannable
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = null
+        toolbar?.title = spannable
     }
 
-    private fun createDetailText(tag: String, content: String): SpannableStringBuilder {
-        val description = "$tag: "
-        val spannable = SpannableStringBuilder("$description$content")
+    private fun createInfoText(description: String, content: String): SpannableStringBuilder {
+        val infoLabel = "$description: "
+        val infoText = SpannableStringBuilder("$infoLabel$content")
 
-        spannable.setSpan(
+        infoText.setSpan(
             StyleSpan(Typeface.BOLD),
-            description.length,
-            spannable.length,
+            infoLabel.length,
+            infoText.length,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
 
-        return spannable
+        return infoText
     }
 
     private fun makeGenreView(genre: String): TextView {
