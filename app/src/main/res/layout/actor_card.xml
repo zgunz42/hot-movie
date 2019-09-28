@@ -11,7 +11,8 @@
             android:layout_gravity="center"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:layout_height="wrap_content" tools:ignore="ContentDescription"/>
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription"/>
     <TextView
             android:id="@+id/movie_actor_name"
             android:paddingLeft="8dp"
@@ -26,14 +27,16 @@
             android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/movie_actor_role"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:paddingLeft="@dimen/content_spacing"
+            android:paddingRight="@dimen/content_spacing"
             android:layout_gravity="center"
             android:maxLines="2"
             android:textColor="#444"
             android:ellipsize="end"
+            android:gravity="center"
             tools:text="@sample/movie_title"
             android:layout_marginTop="@dimen/content_spacing"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:lines="2"
             android:layout_height="wrap_content"/>
 </LinearLayout>

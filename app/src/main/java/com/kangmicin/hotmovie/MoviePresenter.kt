@@ -33,8 +33,9 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int) -> Array<St
 
     private fun extractArgs(string: String): Array<String> {
         Regex("""(?<=\().+(?=\))""").find(string)?.let {
-            return it.value.split(',').toTypedArray()
+            return it.value.split(',').map { i ->  i.trim() }.toTypedArray()
         }
+
         return emptyArray()
     }
 

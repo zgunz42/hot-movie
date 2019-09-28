@@ -37,21 +37,21 @@ class MovieActivity : AppCompatActivity() {
         movie_poster_hero.clipToOutline = true
         movie_poster_hero.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {
-                outline?.setRoundRect(0, -20, view!!.width, view.height, 50f)
+                outline?.setRoundRect(0, -50, view!!.width, view.height, 50f)
             }
 
         }
 
         movie.rating.forEach {
-            if (it.source === "IMDb") {
+            if (it.source == "IMDb") {
                 imdb_rating.text = it.amount
             }
 
-            if (it.source === "Rotten Tomatoes") {
+            if (it.source == "Rotten Tomatoes") {
                 rotten_tomatoes_rating.text = it.amount
             }
 
-            if (it.source === "Metacritic") {
+            if (it.source == "Metacritic") {
                 metacritic_rating.text = it.amount
             }
         }
@@ -73,7 +73,6 @@ class MovieActivity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
 
-        movie_title.text = spannable
         movie_poster.setImageDrawable(rImage)
         movie_release.text = createDetailText("Release Date",releaseFormat.format(movie.release))
         movie_director.text = createDetailText("Director", movie.director.name)
@@ -95,7 +94,7 @@ class MovieActivity : AppCompatActivity() {
             movie_actors.addView(makeActorView(it.value, it.key), actorParam)
         }
 
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.title = spannable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
