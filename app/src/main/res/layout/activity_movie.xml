@@ -7,7 +7,6 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         style="@style/AppTheme.NoActionBar"
-        android:background="@android:color/white"
         tools:context=".MovieActivity">
 
     <com.google.android.material.appbar.AppBarLayout

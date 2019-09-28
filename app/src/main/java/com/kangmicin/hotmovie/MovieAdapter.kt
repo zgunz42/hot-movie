@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.graphics.drawable.RoundedBitmapDrawable
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.kangmicin.hotmovie.model.Movie
+import kotlinx.android.synthetic.main.fragment_movie.view.*
 import org.xmlpull.v1.XmlPullParser
 
 class MovieAdapter(
@@ -33,14 +34,11 @@ class MovieAdapter(
         val cardView = view.findViewById<CardView>(R.id.movie_item)
 
         with(movies[position], {
-            val imageView: ImageView = view.findViewById(R.id.movie_poster)
-            val titleView: TextView = view.findViewById(R.id.movie_title)
-            val plotView: TextView = view.findViewById(R.id.movie_plot)
             val rImage = Utils.roundedImage(context, this.poster, R.dimen.corner)
 
-            imageView.setImageDrawable(rImage)
-            titleView.text = this.title
-            plotView.text = this.plot
+            view.movie_poster.setImageDrawable(rImage)
+            view.movie_title.text = this.title
+            view.movie_plot.text = this.plot
 
             cardView.tag = this
         })
