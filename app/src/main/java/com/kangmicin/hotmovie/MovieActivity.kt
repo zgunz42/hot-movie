@@ -19,6 +19,7 @@ import com.kangmicin.hotmovie.model.Person
 import kotlinx.android.synthetic.main.activity_movie.*
 import kotlinx.android.synthetic.main.actor_card.view.*
 import kotlinx.android.synthetic.main.content_movie.*
+import kotlinx.android.synthetic.main.review_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -66,18 +67,14 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun displayRatings() {
+        val  params = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT)
+        params.gravity = Gravity.CENTER
+        params.weight = 1F
         movie.rating.forEach {
-            if (it.source == "IMDb") {
-                imdb_rating.text = it.amount
-            }
-
-            if (it.source == "Rotten Tomatoes") {
-                rotten_tomatoes_rating.text = it.amount
-            }
-
-            if (it.source == "Metacritic") {
-                metacritic_rating.text = it.amount
-            }
+            val view = layoutInflater.inflate(R.layout.review_item, reviews_layout, false)
+            view.rating_tag?.text = it.source
+            view.rating_amount?.text = it.amount
+            reviews_layout.addView(view, params)
         }
     }
 
