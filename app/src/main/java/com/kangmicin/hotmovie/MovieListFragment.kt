@@ -20,13 +20,17 @@ class MovieListFragment : Fragment() {
     private var listener: OnListFragmentInteractionListener? = null
     private var movies: List<Movie> = emptyList()
 
+    companion object {
+        const val MOVIES_KEY = "MOVIES"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
 
-        arguments?.getParcelableArray("MOVIES")?.forEach {
+        arguments?.getParcelableArray(MOVIES_KEY)?.forEach {
             movies = movies + it as Movie
         }
 
@@ -49,7 +53,7 @@ class MovieListFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        listener = null
+        listener = null  // Remove listener
     }
 
     /**
@@ -64,7 +68,6 @@ class MovieListFragment : Fragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onListFragmentInteraction(item: Movie?)
     }
 }

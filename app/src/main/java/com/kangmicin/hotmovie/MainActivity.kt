@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
@@ -43,14 +42,14 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
 
     override fun displayMovies(movies: List<Movie>) {
         val bundle = Bundle()
-        bundle.putParcelableArray("MOVIES", movies.toTypedArray())
+        bundle.putParcelableArray(MovieListFragment.MOVIES_KEY, movies.toTypedArray())
         movieListFragment.arguments = bundle
     }
 
     override fun onListFragmentInteraction(item: Movie?) {
         val openIntent = Intent(this, MovieActivity::class.java)
 
-        openIntent.putExtra("movie", item)
+        openIntent.putExtra(MovieActivity.MOVIE_KEY, item)
         startActivity(openIntent)
     }
 }

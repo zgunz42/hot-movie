@@ -55,7 +55,6 @@
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
-                        android:textIsSelectable="true"
                         android:maxLines="2"
                         android:paddingBottom="@dimen/content_spacing"
                         android:layout_marginTop="8dp"

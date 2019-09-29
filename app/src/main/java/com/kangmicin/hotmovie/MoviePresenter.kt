@@ -1,6 +1,5 @@
 package com.kangmicin.hotmovie
 
-import android.util.Log
 import com.kangmicin.hotmovie.model.Movie
 import com.kangmicin.hotmovie.model.Person
 import com.kangmicin.hotmovie.model.Rating
