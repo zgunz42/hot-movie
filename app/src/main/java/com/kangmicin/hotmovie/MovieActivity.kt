@@ -1,6 +1,8 @@
 package com.kangmicin.hotmovie
 
-import android.graphics.*
+import android.graphics.Color
+import android.graphics.Outline
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -14,6 +16,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePadding
+import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.model.Movie
 import com.kangmicin.hotmovie.model.Person
 import kotlinx.android.synthetic.main.activity_movie.*
@@ -22,9 +25,11 @@ import kotlinx.android.synthetic.main.content_movie.*
 import kotlinx.android.synthetic.main.review_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.absoluteValue
 
 class MovieActivity : AppCompatActivity() {
     lateinit var movie: Movie
+    lateinit var collapseListener: AppBarLayout.OnOffsetChangedListener
 
 
     companion object {
@@ -42,6 +47,34 @@ class MovieActivity : AppCompatActivity() {
         movie_length.text = Utils.getTimeFormat(movie.length)
         movie_director.text = createInfoText("Director", movie.director.name)
 
+        supportActionBar?.title = null
+
+        collapseListener = object:AppBarLayout.OnOffsetChangedListener {
+            var preview: Int? = null
+            var isHide: Boolean = true
+            override fun onOffsetChanged(p0: AppBarLayout?, p1: Int) {
+
+                // escape from idle state
+                if (preview != p1) {
+                    //collapsed
+                    if (p1.absoluteValue == p0!!.totalScrollRange) {
+                        supportActionBar?.title = movie.title
+                        isHide = false
+                    }else {
+                        if (!isHide) {
+                            supportActionBar?.title = null
+                            toolbar?.title = null
+                            isHide = true
+                        }
+                    }
+
+                    preview = p1
+                }
+            }
+        }
+
+        app_bar?.addOnOffsetChangedListener(collapseListener)
+
         displayTitle()
         displayHeroPoster()
         displayGenres()
@@ -49,6 +82,7 @@ class MovieActivity : AppCompatActivity() {
         displayRatings()
         displayReleaseDate()
         displayTopActor()
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -120,8 +154,7 @@ class MovieActivity : AppCompatActivity() {
             spannable.length,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
-        supportActionBar?.title = null
-        toolbar?.title = spannable
+        movie_title?.text = spannable
     }
 
     private fun createInfoText(description: String, content: String): SpannableStringBuilder {
@@ -161,5 +194,10 @@ class MovieActivity : AppCompatActivity() {
         view.movie_actor_role?.text = role
 
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        app_bar?.removeOnOffsetChangedListener(collapseListener)
     }
 }
