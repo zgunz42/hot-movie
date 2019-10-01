@@ -12,15 +12,27 @@
         <item>@array/birdbox_movie</item>
         <item>@array/marypoppins_movie</item>
     </integer-array>
+    <integer-array name="shows">
+        <item>@array/arrow_show</item>
+        <item>@array/doom_patrol_show</item>
+        <item>@array/supergirl_show</item>
+        <item>@array/fairy_tail_show</item>
+        <item>@array/dragon_ball_show</item>
+        <item>@array/iron_fist_show</item>
+        <item>@array/family_guy_show</item>
+        <item>@array/iron_fist_show</item>
+        <item>@array/flash_show</item>
+        <item>@array/naruto_shipudden_show</item>
+    </integer-array>
     <!-- Format Movie
-        plotView: String
+        title: String
         poster: String
         plot: String
         genre: String
-        length: Long
-        director: Person.
+        length: String
+        director: Person
         release: String
-        rating: Double
+        rating: Rating[]
         actors: HashMap<Person, String> -->
     <string-array name="aquaman_movie">
         <item>Aquaman</item>
@@ -224,6 +236,223 @@
             [Michael Banks, (Ben Whishaw, @drawable/ben_whishaw)],\n
             [Jane Banks, (Emily Mortimer, @drawable/emily_mortimer)],\n
             [Annabel Banks, (Pixie Davies, @drawable/pixie_davies)],\n\n
+        </item>
+    </string-array>
+        <!-- Format SHOW
+        title: String
+        poster: String
+        plot: String
+        genre: String
+        runtime: String
+        creators: Person[]
+        rating: Rating[]
+        actors: HashMap<Person, String> -->
+    <!-- TODO: MISSING REVIEWS -->
+    <string-array name="arrow_show">
+        <item>The Arrow </item>
+        <item>@drawable/poster_arrow</item>
+        <item>Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He
+            returns five years later a changed man, determined to clean up the city as a hooded
+            vigilante armed with a bow.</item>
+        <item>CRIME, DRAMA, MYSTERY, ACTION &amp; ADVENTURE</item>
+        <item>42m</item>
+        <item>(Greg Berlanti), (Marc Guggenheim), (Andrew Kreisberg)</item>
+        <item>10 Oktober 2012</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Oliver Queen 166 Episodes), (Stephen Amell, @drawable/stephen_amell)],\n
+            [(John Diggle 166 Episodes), (David Ramsey, @drawable/david_ramsey)],\n
+            [(Laurel Lance 166 Episodes), (Katie Cassidy, @drawable/katie_cassidy)],\n
+            [(Felicity Smoak 160 Episodes), (Emily Bett Rickards, @drawable/emily_bett_rickards)],\n
+            [(Thea Queen 138 Episodes), (Willa Holland, @drawable/willa_holland)],\n
+        </item>
+    </string-array>
+    <string-array name="doom_patrol_show">
+        <item>Doom Patrol</item>
+        <item>@drawable/poster_doom_patrol</item>
+        <item>The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities
+            but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose
+            through The Chief, who brought them together to investigate the weirdest phenomena in existence
+            and to protect Earth from what they find.</item>
+        <item>SCI-FI &amp; FANTASY, ACTION &amp; ADVENTURE</item>
+        <item>60m</item>
+        <item>(Jeremy Carver)</item>
+        <item>15 Februari 2019</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Dr. Niles Caulder / The Chief 15 Episodes),(Timothy Dalton, @drawable/timothy_dalton)],\n
+            [(Negative Man (voice) / Larry Trainor 15 Episodes),(Matt Bomer, @drawable/matt_bomer)],\n
+            [(Robotman (voice) / Cliff Steele 15 Episodes),(Brendan Fraser, @drawable/brendan_fraser)],\n
+            [(Crazy Jane 15 Episodes),(Diane Guerrero, @drawable/diane_guerrero)],\n
+            [(Elasti-Woman / Rita Farr 15 Episodes),(April Bowlby, @drawable/april_bowlby)],\n
+        </item>
+    </string-array>
+    <string-array name="dragon_ball_show">
+        <item>Dragon Ball</item>
+        <item>@drawable/poster_dragon_ball</item>
+        <item>Long ago in the mountains, a fighting master known as Gohan discovered a strange boy whom he named Goku.
+            Gohan raised him and trained Goku in martial arts until he died. The young and very strong boy was on
+            his own, but easily managed. Then one day, Goku met a teenage girl named Bulma, whose search for the
+            mystical Dragon Balls brought her to Goku\'s home. Together, they set off to find all seven and to grant
+            her wish.</item>
+        <item>COMEDY, SCI-FI &amp; FANTASY, ANIMATION, ACTION &amp; ADVENTURE</item>
+        <item>25m</item>
+        <item>(Akira Toriyama)</item>
+        <item>26 Februari 1986</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Son Goku (voice) 153 Episodes),(Masako Nozawa, @drawable/masako_nozawa)],\n
+            [(Krillin (voice) 153 Episodes),(Mayumi Tanaka, @drawable/mayumi_tanaka)],\n
+            [(Bulma (voice) 153 Episodes),(Hiromi Tsuru, @drawable/hiromi_tsuru)],\n
+            [(Yamcha (voice) 153 Episodes),(Tōru Furuya, @drawable/toru_furuya)],\n
+            [(Oolong (voice) 153 Episodes),(Naoki Tatsuta, @drawable/naoki_tatsuta)],\n
+        </item>
+    </string-array>
+    <string-array name="fairy_tail_show">
+        <item>Fairy Tail</item>
+        <item>@drawable/poster_fairytail</item>
+        <item>Lucy is a 17-year-old girl, who wants to be a full-fledged mage. One day when visiting Harujion Town,
+            she meets Natsu, a young man who gets sick easily by any type of transportation.
+            But Natsu isn\'t just any ordinary kid, he\'s a member of one of the world\'s most infamous mage
+            guilds: Fairy Tail.</item>
+        <item>ACTION &amp; ADVENTURE, ANIMATION, COMEDY, SCI-FI &amp; FANTASY</item>
+        <item>25m</item>
+        <item>(Hiro Mashima)</item>
+        <item>October 12, 2009</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Natsu Dragneel (voice) 328 Episodes),(Tetsuya Kakihara, @drawable/tetsuya_kakihara)],\n
+            [(Lucy Heartfilia (voice) 328 Episodes),(Aya Hirano, @drawable/aya_hirano)],\n
+            [(Happy (voice) 328 Episodes),(Rie Kugimiya, @drawable/rie_kugimiya)],\n
+            [(Gray Fullbuster (voice) 328 Episodes),(Yuichi Nakamura, @drawable/yuichi_nakamura)],\n
+            [(Gajeel Redfox (voice) 328 Episodes),(Wataru Hatano, @drawable/wataru_hatano)],\n
+        </item>
+    </string-array>
+    <string-array name="family_guy_show">
+        <item>Family Guy</item>
+        <item>@drawable/poster_family_guy</item>
+        <item>Sick, twisted, politically incorrect and Freakin\' Sweet animated series featuring the adventures of the
+            dysfunctional Griffin family. Bumbling Peter and long-suffering Lois have three kids. Stewie
+            (a brilliant but sadistic baby bent on killing his mother and taking over the world),
+            Meg (the oldest, and is the most unpopular girl in town) and Chris (the middle kid, he\'s not
+            very bright but has a passion for movies). The final member of the family is Brian - a talking
+            dog and much more than a pet, he keeps Stewie in check whilst sipping Martinis and sorting through
+            his own life issues.</item>
+        <item>ANIMATION, COMEDY</item>
+        <item>22m</item>
+        <item>(Seth MacFarlane)</item>
+        <item>January 31, 1999</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Peter Griffin (voice) 330 Episodes),(Seth MacFarlane, @drawable/seth_mac_farlane)],\n
+            [(Lois Griffin (voice) 330 Episodes),(Alex Borstein, @drawable/alex_borstein)],\n
+            [(Chris Griffin (voice) 330 Episodes),(Seth Green, @drawable/seth_green)],\n
+            [(Meg Griffin (voice) 323 Episodes),(Mila Kunis, @drawable/mila_kunis)],\n
+            [(Cleveland Brown 254 Episodes),(Mike Henry, @drawable/mike_henry)],\n
+        </item>
+    </string-array>
+    <string-array name="flash_show">
+        <item>The Flash</item>
+        <item>@drawable/poster_flash</item>
+        <item>After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and
+            falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move
+            through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry
+            is shocked to discover he is not the only "meta-human" who was created in the wake of the accelerator
+            explosion — and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and
+            dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry
+            is literally the fastest man alive, but it won\'t be long before the world learns what Barry Allen has
+            become The Flash.</item>
+        <item>ANIMATION, COMEDY</item>
+        <item>44m</item>
+        <item>(жефф Джонс), (Andrew Kreisberg), (Greg Berlanti)</item>
+        <item>October 7, 2014</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Barry Allen / The Flash 116 Episodes),(Grant Gustin, @drawable/grant_gustin)],\n
+            [(Iris West 116 Episodes),(Candice Patton, @drawable/candice_patton)],\n
+            [(Cisco Ramon, Reverb 116 Episodes),(Carlos Valdes, @drawable/carlos_valdes)],\n
+            [(Caitlin Snow, Killer Frost 116 Episodes),(Danielle Panabaker, @drawable/danielle_panabaker)],\n
+            [(Harrison Wells 116 Episodes),(Tom Cavanagh, @drawable/tom_cavanagh)],\n
+        </item>
+    </string-array>
+    <string-array name="iron_fist_show">
+        <item>Marvel\'s Iron Fist</item>
+        <item>@drawable/poster_iron_fist</item>
+        <item>Danny Rand resurfaces 15 years after being presumed dead. Now, with the power of the Iron Fist, he seeks
+            to reclaim his past and fulfill his destiny</item>
+        <item>ACTION &amp; ADVENTURE, CRIME, DRAMA, SCI-FI &amp; FANTASY</item>
+        <item>55m</item>
+        <item>(Scott Buck)</item>
+        <item>March 17, 2017</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Danny Rand 23 Episodes),(Finn Jones, @drawable/finn_jones)],\n
+            [(Colleen Wing 23 Episodes),(Jessica Henwick, @drawable/jessica_henwick)],\n
+            [(Joy Meachum 23 Episodes),(Jessica Stroup, @drawable/jessica_stroup)],\n
+            [(Ward Meachum 23 Episodes),(Tom Pelphrey, @drawable/tom_pelphrey)],\n
+            [(Claire Temple 13 Episodes),(Rosario Dawson, @drawable/rosario_dawson)],\n
+        </item>
+    </string-array>
+    <string-array name="naruto_shipudden_show">
+        <item>Naruto Shippūden</item>
+        <item>@drawable/poster_naruto_shipudden</item>
+        <item>Naruto Shippuuden is the continuation of the original animated TV series Naruto.The story revolves around
+            an older and slightly more matured Uzumaki Naruto and his quest to save his friend Uchiha Sasuke from the
+            grips of the snake-like Shinobi, Orochimaru. After 2 and a half years Naruto finally returns to his village
+            of Konoha, and sets about putting his ambitions to work, though it will not be easy, as He has amassed a few
+            (more dangerous) enemies, in the likes of the shinobi organization; Akatsuki</item>
+        <item>ANIMATION, COMEDY, DRAMA</item>
+        <item>22m</item>
+        <item>(Masashi Kishimoto)</item>
+        <item>February 15, 2007</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Naruto Uzumaki (voice) 500 Episodes),(Junko Takeuchi, @drawable/junko_takeuchi)],\n
+            [(Sakura Haruno (voice) 500 Episodes),(Chie Nakamura, @drawable/chie_nakamura)],\n
+            [(Kakashi Hatake (voice) 500 Episodes),(Kazuhiko Inoue, @drawable/kazuhiko_inoue)],\n
+            [(Baki (voice), 500 Episodes),(Jouji Nakata, @drawable/jouji_nakata)],\n
+            [(Gaara (voice) 500 Episodes),(Akira Ishida, @drawable/akira_ishida)],\n
+        </item>
+    </string-array>
+    <string-array name="supergirl_show">
+        <item>Supergirl</item>
+        <item>@drawable/poster_supergirl</item>
+        <item>Twenty-four-year-old Kara Zor-El, who was taken in by the Danvers family when she was 13 after being sent
+            away from Krypton, must learn to embrace her powers after previously hiding them. The Danvers teach her to
+            be careful with her powers, until she has to reveal them during an unexpected disaster, setting her on her
+            journey of heroism</item>
+        <item>ACTION, ADVENTURE, DRAMA, SCIENCE FICTION</item>
+        <item>42m</item>
+        <item>(Greg Berlanti), (Andrew Kreisberg), (Ali Adler)</item>
+        <item>October 26, 2015</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Kara Danvers / Supergirl / Kara Zor-El 88 Episodes),(Melissa Benoist, @drawable/melissa_benoist)],\n
+            [(Alex Danvers 88 Episodes),(Chyler Leigh, @drawable/chyler_leigh)],\n
+            [(Cyborg Superman, J\'onn J\'onzz / Hank Henshaw / Cyborg Superman 88 Episodes),(David Harewood, @drawable/david_harewood)],\n
+            [(James Olsen / Guardian 88 Episodes),(Mehcad Brooks, @drawable/mehcad_brooks)],\n
+            [(Winn Schott 65 Episodes),(Jeremy Jordan, @drawable/jeremy_jordan)],\n
+        </item>
+    </string-array>
+    <string-array name="the_simpson_show">
+        <item>The Simpson</item>
+        <item>@drawable/poster_the_simpson</item>
+        <item>Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of
+            the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the
+            beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The
+            show has also made name for itself in its fearless satirical take on politics, media and American life in
+            general</item>
+        <item>ANIMATION, COMEDY</item>
+        <item>22m</item>
+        <item>(Matt Groening)</item>
+        <item>December 17, 1989</item>
+        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
+        <item>
+            [(Homer Simpson 666 Episodes),(Dan Castellaneta, @drawable/dan_castellaneta)],\n
+            [(Marge Simpson 666 Episodes),(Julie Kavner, @drawable/julie_kavner)],\n
+            [(Bart Simpson 666 Episodes),(Nancy Cartwright, @drawable/nancy_cartwright)],\n
+            [(Lisa Simpson 666 Episodes),(Yeardley Smith, @drawable/yeardley_smith)],\n
+            [(Apu 666 Episodes),(Hank Azaria, @drawable/hank_azaria)],\n
         </item>
     </string-array>
 </resources>
