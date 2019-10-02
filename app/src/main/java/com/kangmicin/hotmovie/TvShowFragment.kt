@@ -2,53 +2,43 @@ package com.kangmicin.hotmovie
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.kangmicin.hotmovie.model.Movie
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.kangmicin.hotmovie.model.TvShow
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [MovieListFragment.OnListFragmentInteractionListener] interface.
+ * [TvShowFragment.OnListFragmentInteractionListener] interface.
  */
-class MovieListFragment : Fragment() {
+class TvShowFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
-    private var movies: List<Movie> = emptyList()
+    private var tvShow: List<TvShow> = emptyList()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val MOVIES_KEY = "MOVIES"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(tvShows: List<Movie>) =
-            MovieListFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelableArray(MOVIES_KEY, tvShows.toTypedArray())
-                }
-            }
+        arguments?.getParcelableArray(TV_SHOWS)?.forEach {
+            tvShow = tvShow + it as TvShow
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_tvshow_list, container, false)
 
-        arguments?.getParcelableArray(MOVIES_KEY)?.forEach {
-            movies = movies + it as Movie
-        }
-
-        if (view is ListView) {
+        // Set the adapter
+        if (view is RecyclerView) {
             with(view) {
-                adapter = MovieAdapter(movies, context, listener)
+                layoutManager = LinearLayoutManager(context)
+                adapter = TvShowRecyclerViewAdapter(tvShow, listener)
             }
         }
         return view
@@ -65,7 +55,7 @@ class MovieListFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        listener = null  // Remove listener
+        listener = null
     }
 
     /**
@@ -80,6 +70,22 @@ class MovieListFragment : Fragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: Movie?)
+        // TODO: Update argument type and name
+        fun onListFragmentInteraction(item: TvShow?)
+    }
+
+    companion object {
+
+        // TODO: Customize parameter argument names
+        private const val TV_SHOWS = "tv-shows"
+
+        // TODO: Customize parameter initialization
+        @JvmStatic
+        fun newInstance(tvShows: List<TvShow>) =
+            TvShowFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelableArray(TV_SHOWS, tvShows.toTypedArray())
+                }
+            }
     }
 }

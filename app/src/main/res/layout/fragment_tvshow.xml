@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/content_spacing"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingBottom="0dp"
+        android:layout_width="match_parent"
+>
+    <androidx.cardview.widget.CardView
+            android:id="@+id/tvshow_item"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="2dp"
+            android:elevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardMaxElevation="0dp"
+            android:background="@drawable/round_outline_poster"
+            android:outlineProvider="background"
+            app:cardPreventCornerOverlap="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        <LinearLayout
+                android:padding="@dimen/activity_vertical_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_height="150dp"
+                    android:layout_width="120dp"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/tvshow_poster"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:paddingEnd="@dimen/content_spacing"
+                    android:paddingStart="0dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:contentDescription="@string/tvshow_poster"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                <TextView
+                        tools:hint="TvShow Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvshow_title"
+                        android:textSize="18sp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:textAlignment="textStart"
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:paddingBottom="@dimen/content_spacing"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        app:layout_constrainedHeight="false"
+                        app:layout_constraintHeight_max="wrap"/>
+                <TextView
+                        tools:hint="TvShow Description"
+                        android:layout_marginTop="4dp"
+                        android:textColor="#616060"
+                        android:lines="4"
+                        android:ellipsize="end"
+                        android:layout_width="wrap_content"
+                        app:layout_constraintWidth_max="wrap"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvshow_plot"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

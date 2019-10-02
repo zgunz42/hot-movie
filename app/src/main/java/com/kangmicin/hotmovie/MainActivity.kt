@@ -1,25 +1,21 @@
 package com.kangmicin.hotmovie
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
+import android.view.MenuItem
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kangmicin.hotmovie.model.Movie
 import com.kangmicin.hotmovie.model.TvShow
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.OnListFragmentInteractionListener {
-    override fun displayTvShows(shows: List<TvShow>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.OnListFragmentInteractionListener, TvShowFragment.OnListFragmentInteractionListener {
 
     lateinit var presenter: MovieContract.Presenter
-    lateinit var movieListFragment: MovieListFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val data = resources.obtainTypedArray(R.array.movies)
         val tvShowData = resources.obtainTypedArray(R.array.shows)
         val snapshot = Array<Array<String>>(data.length()) { i: Int ->
@@ -39,17 +35,21 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
             }
         }, 10)
 
-        supportFragmentManager.registerFragmentLifecycleCallbacks(object : FragmentLifecycleCallbacks() {
-            override fun onFragmentPreAttached(fm: FragmentManager, f: Fragment, context: Context) {
-                if (f is MovieListFragment) {
-                    movieListFragment = f
-                    presenter.loadMovies()
-                }
-                super.onFragmentPreAttached(fm, f, context)
-            }
-        }, false)
-
         setContentView(R.layout.activity_main)
+
+        bottom_navigation?.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.show_movie_menu -> {
+                    presenter.loadMovies()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.show_tvshow_menu -> {
+                    presenter.loadTvShows()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> return@setOnNavigationItemSelectedListener false
+            }
+        }
 
         presenter.loadMovies()
         data.recycle()
@@ -57,9 +57,18 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
     }
 
     override fun displayMovies(movies: List<Movie>) {
-        val bundle = Bundle()
-        bundle.putParcelableArray(MovieListFragment.MOVIES_KEY, movies.toTypedArray())
-        movieListFragment.arguments = bundle
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_fragment_container, MovieListFragment.newInstance(movies))
+            .commit()
+    }
+
+
+    override fun displayTvShows(shows: List<TvShow>) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_fragment_container, TvShowFragment.newInstance(shows))
+            .commit()
     }
 
     override fun onListFragmentInteraction(item: Movie?) {
@@ -67,5 +76,9 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
 
         openIntent.putExtra(MovieActivity.MOVIE_KEY, item)
         startActivity(openIntent)
+    }
+
+    override fun onListFragmentInteraction(item: TvShow?) {
+
     }
 }

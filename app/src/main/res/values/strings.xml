@@ -98,4 +98,8 @@
     <string name="metacritic">Metacritic</string>
     <string name="header_top_actors">Top Actors</string>
     <string name="movie_poster_hero">Movie Poster Hero</string>
+    <string name="tvshow_poster">TvShow Poster</string>
+    <string name="no_content">No Content</string>
+    <string name="movies">Movies</string>
+    <string name="tv_show">Tv Show</string>
 </resources>
