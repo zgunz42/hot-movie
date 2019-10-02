@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         style="@style/AppTheme.NoActionBar"
-        tools:context=".MovieActivity">
+        tools:context=".DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"

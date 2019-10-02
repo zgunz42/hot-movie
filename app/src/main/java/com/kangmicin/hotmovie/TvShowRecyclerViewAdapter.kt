@@ -45,7 +45,7 @@ class TvShowRecyclerViewAdapter(
         holder.mContent.text = item.plot
         holder.mPoster.setImageDrawable(posterImage)
 
-        with(holder.mView) {
+        with(holder.mView.tvshow_item) {
             tag = item
             setOnClickListener(mOnClickListener)
         }
