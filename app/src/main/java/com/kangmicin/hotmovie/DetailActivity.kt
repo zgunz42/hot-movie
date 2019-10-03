@@ -27,8 +27,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.absoluteValue
 
-abstract class DetailActivity: AppCompatActivity() {
+abstract class DetailActivity: AppActivity() {
     lateinit var collapseListener: AppBarLayout.OnOffsetChangedListener
+
+
+    override fun appTitle(): String? {
+        return null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

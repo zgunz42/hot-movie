@@ -1,38 +1,37 @@
 package com.kangmicin.hotmovie
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kangmicin.hotmovie.model.Movie
 import com.kangmicin.hotmovie.model.TvShow
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.OnListFragmentInteractionListener, TvShowFragment.OnListFragmentInteractionListener {
+class MainActivity : AppActivity(), MovieContract.View, MovieListFragment.OnListFragmentInteractionListener, TvShowFragment.OnListFragmentInteractionListener {
+    override fun appTitle(): String {
+        return getString(R.string.app_name)
+    }
 
     lateinit var presenter: MovieContract.Presenter
 
-    companion object {
-        var LAST_TAB = "LAST_TAB"
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_movie, menu)
+        return true
     }
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        super.onSaveInstanceState(outState, outPersistentState)
-
-        outPersistentState?.run {
-            putInt(LAST_TAB, bottom_navigation.selectedItemId)
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.action_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
-    }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        savedInstanceState?.run {
-            bottom_navigation.selectedItemId = getInt(LAST_TAB, bottom_navigation.selectedItemId)
-            bottom_navigation.dispatchSetSelected(false)
-        }
+        return false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +47,6 @@ class MainActivity : AppCompatActivity(), MovieContract.View, MovieListFragment.
         val tvShowSnapshot =  Array<Array<String>>(data.length()) { i: Int ->
             val resourceId = tvShowData.getResourceId(i, 0)
             resources.getStringArray(resourceId)
-        }
-
-        savedInstanceState?.run {
-            initView = getInt(LAST_TAB, initView)
         }
 
         presenter = MoviePresenter(this, {i, type ->

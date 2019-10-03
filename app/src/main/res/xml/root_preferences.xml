@@ -1,0 +1,15 @@
+<androidx.preference.PreferenceScreen
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.preference.PreferenceCategory
+            app:iconSpaceReserved="false"
+            app:title="@string/display_header">
+        <androidx.preference.ListPreference
+                app:key="language"
+                app:title="@string/language_title"
+                app:iconSpaceReserved="false"
+                app:entries="@array/language_entries"
+                app:entryValues="@array/language_values"
+                app:defaultValue="english_us"
+                app:useSimpleSummaryProvider="true"/>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

@@ -13,10 +13,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".TvShowActivity"
-                  android:label="@string/title_activity_movie"
-                  android:parentActivityName=".MainActivity"
-                  android:theme="@style/AppTheme.DetailScreen">
+        <activity
+                android:name=".SettingsActivity"
+                android:label="@string/title_activity_settings"
+                android:configChanges="locale|orientation"
+                android:parentActivityName=".MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.kangmicin.hotmovie.MainActivity"/>
+        </activity>
+        <activity
+                android:name=".TvShowActivity"
+                android:label="@string/title_activity_movie"
+                android:parentActivityName=".MainActivity"
+                android:configChanges="locale|orientation"
+                android:theme="@style/AppTheme.DetailScreen">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.kangmicin.hotmovie.MainActivity"/>
@@ -28,6 +39,7 @@
         <activity
                 android:name=".MovieActivity"
                 android:label="@string/title_activity_movie"
+                android:configChanges="locale|orientation"
                 android:parentActivityName=".MainActivity"
                 android:theme="@style/AppTheme.DetailScreen">
             <meta-data

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Hot Movie</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="action_settings">Settings</string>
+    <string name="head_plot">Storyline</string>
+    <string name="imdb">IMDb</string>
+    <string name="rotten_tomatoes" translatable="false">Rotten Tomatoes</string>
+    <string name="metacritic" translatable="false">Metacritic</string>
+    <string name="header_top_actors" translatable="false">Top Actors</string>
+    <string name="movie_poster_hero" translatable="false">Movie Poster Hero</string>
+    <string name="tvshow_poster" translatable="false">TvShow Poster</string>
+    <string name="movies" translatable="false">Movies</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="title_activity_settings" translatable="false">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="display_header">Common</string>
+
+    <!-- Messages Preferences -->
+    <string name="language_title">Language</string>
+    <string name="no_content">Empty Content</string>
+
+</resources>

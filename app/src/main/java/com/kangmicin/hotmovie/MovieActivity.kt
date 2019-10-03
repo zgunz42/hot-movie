@@ -6,8 +6,6 @@ import com.kangmicin.hotmovie.model.Movie
 class MovieActivity : DetailActivity() {
     lateinit var movie: Movie
 
-
-
     companion object {
         const val MOVIE_KEY = "MOVIE"
     }

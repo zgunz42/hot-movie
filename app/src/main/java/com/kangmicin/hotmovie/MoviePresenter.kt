@@ -8,7 +8,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
-class MoviePresenter(view: MovieContract.View, handler: (index: Int, type: ModelType) -> Array<String>, size: Int) : MovieContract.ViewPresenter(view) {
+class MoviePresenter(view: MovieContract.View,
+                     handler: (index: Int, type: ModelType) -> Array<String>,
+                     size: Int) : MovieContract.ViewPresenter(view) {
     override fun loadTvShows() {
         view.displayTvShows(tvShows)
     }
@@ -84,8 +86,15 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int, type: Model
     private fun parseDuration(string: String): Int {
         var hours = 0
         var minutes = 0
-        Regex("""\d+(?=[hH])""").find(string)?.run {
-            hours = this.value.toInt() * 60 * 60
+
+        if (getLocale().language == Locale.US.language) {
+            Regex("""\d+(?=[hH])""").find(string)?.run {
+                hours = this.value.toInt() * 60 * 60
+            }
+        }else {
+            Regex("""\d+(?=[jJ])""").find(string)?.run {
+                hours = this.value.toInt() * 60 * 60
+            }
         }
 
         Regex("""\d+(?=[mM])""").find(string)?.run {
@@ -95,14 +104,32 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int, type: Model
         return hours + minutes
     }
 
+    private fun getLocale(): Locale {
+        val default = Locale.getDefault()
+        val localeId = Locale("in", "ID")
+
+        if (default.language == Locale.US.language
+            || default.language == localeId.language) {
+            return default
+        }
+
+        return Locale.US
+    }
+
+    private fun dateLocale(date: String): Date {
+        val pattern = "MMMM dd, yyyy"
+        return SimpleDateFormat(pattern, getLocale()).parse(date)
+    }
+
     private fun createMovieItem(data: Array<String>, position: Int): Movie {
+
         val title = data[0]
         val poster = data[1]
         val plot = data[2]
         val genres = data[3].split(',').toList()
         val length = parseDuration(data[4])
         val director = Person(uuid(), extractArgs(data[5]).first(), null)
-        val releaseYear = SimpleDateFormat("MMMM dd, yyyy", Locale.US).parse(data[6])
+        val releaseYear = dateLocale(data[6])
         val ratings = splitObjects(data[7]).map { Rating(uuid(), it[0], it[1]) }
         val actors = HashMap<Person, String>()
 
@@ -132,7 +159,7 @@ class MoviePresenter(view: MovieContract.View, handler: (index: Int, type: Model
         val genres = data[3].split(',').toList()
         val length = parseDuration(data[4])
         val creators = splitObjects(data[5]).map { Person(uuid(), it[0], null) }
-        val release = SimpleDateFormat("MMMM dd, yyyy", Locale.US).parse(data[6])
+        val release = dateLocale(data[6])
         val ratings = splitObjects(data[7]).map { Rating(uuid(), it[0], it[1]) }
         val actors = HashMap<Person, String>()
 
