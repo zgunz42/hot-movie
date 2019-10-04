@@ -8,5 +8,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".TvShowFragment"
-        tools:listitem="@layout/fragment_tvshow"/>
+        tools:context=".ListItemFragment"
+        tools:listitem="@layout/item_card"/>

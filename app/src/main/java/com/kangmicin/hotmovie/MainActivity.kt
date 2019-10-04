@@ -2,6 +2,7 @@ package com.kangmicin.hotmovie
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -9,12 +10,12 @@ import com.kangmicin.hotmovie.model.Movie
 import com.kangmicin.hotmovie.model.TvShow
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppActivity(), MovieContract.View, MovieListFragment.OnListFragmentInteractionListener, TvShowFragment.OnListFragmentInteractionListener {
+class MainActivity : AppActivity(), Contract.View, ListItemFragment.OnListFragmentInteractionListener {
     override fun appTitle(): String {
         return getString(R.string.app_name)
     }
 
-    lateinit var presenter: MovieContract.Presenter
+    lateinit var presenter: Contract.Presenter
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -36,7 +37,7 @@ class MainActivity : AppActivity(), MovieContract.View, MovieListFragment.OnList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var initView = R.id.show_movie_menu
+        val initView = R.id.show_movie_menu
         val data = resources.obtainTypedArray(R.array.movies)
         val tvShowData = resources.obtainTypedArray(R.array.shows)
         val snapshot = Array<Array<String>>(data.length()) { i: Int ->
@@ -49,10 +50,10 @@ class MainActivity : AppActivity(), MovieContract.View, MovieListFragment.OnList
             resources.getStringArray(resourceId)
         }
 
-        presenter = MoviePresenter(this, {i, type ->
+        presenter = Presenter(this, { i, type ->
             when(type) {
-                MoviePresenter.ModelType.MOVIE -> snapshot[i]
-                MoviePresenter.ModelType.TV_SHOW -> tvShowSnapshot[i]
+                Presenter.ModelType.MOVIE -> snapshot[i]
+                Presenter.ModelType.TV_SHOW -> tvShowSnapshot[i]
             }
         }, 10)
 
@@ -81,28 +82,32 @@ class MainActivity : AppActivity(), MovieContract.View, MovieListFragment.OnList
     override fun displayMovies(movies: List<Movie>) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_fragment_container, MovieListFragment.newInstance(movies))
+            .replace(R.id.main_fragment_container, ListItemFragment.newInstance(movies))
             .commit()
     }
 
     override fun displayTvShows(shows: List<TvShow>) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_fragment_container, TvShowFragment.newInstance(shows))
+            .replace(R.id.main_fragment_container, ListItemFragment.newInstance(shows))
             .commit()
     }
 
-    override fun onListFragmentInteraction(item: Movie?) {
-        val openIntent = Intent(this, MovieActivity::class.java)
+    override fun onListFragmentInteraction(item: Parcelable?) {
 
-        openIntent.putExtra(MovieActivity.MOVIE_KEY, item)
-        startActivity(openIntent)
-    }
+        if (item is Movie) {
+            val openIntent = Intent(this, MovieActivity::class.java)
 
-    override fun onListFragmentInteraction(item: TvShow?) {
-        val openIntent = Intent(this, TvShowActivity::class.java)
+            openIntent.putExtra(MovieActivity.MOVIE_KEY, item)
+            startActivity(openIntent)
+        }
 
-        openIntent.putExtra(TvShowActivity.TV_SHOW_KEY, item)
-        startActivity(openIntent)
+        if(item is TvShow) {
+            val openIntent = Intent(this, TvShowActivity::class.java)
+
+            openIntent.putExtra(TvShowActivity.TV_SHOW_KEY, item)
+            startActivity(openIntent)
+        }
+
     }
 }

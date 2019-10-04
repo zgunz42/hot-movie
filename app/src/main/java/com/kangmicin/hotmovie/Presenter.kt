@@ -8,9 +8,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
-class MoviePresenter(view: MovieContract.View,
-                     handler: (index: Int, type: ModelType) -> Array<String>,
-                     size: Int) : MovieContract.ViewPresenter(view) {
+class Presenter(view: Contract.View,
+                handler: (index: Int, type: ModelType) -> Array<String>,
+                size: Int) : Contract.ViewPresenter(view) {
     override fun loadTvShows() {
         view.displayTvShows(tvShows)
     }

@@ -15,8 +15,8 @@ import org.junit.Test
 class ContentLoadUnitTest {
     @Test
     fun load_all_movies_isAll() {
-        val mockView = mock<MovieContract.View>()
-        val presenter = MoviePresenter(mockView, { _, _ -> stubMovie() }, 1)
+        val mockView = mock<Contract.View>()
+        val presenter = Presenter(mockView, { _, _ -> stubMovie() }, 1)
 
         presenter.loadMovies()
 
@@ -34,8 +34,8 @@ class ContentLoadUnitTest {
 
     @Test
     fun load_all_tv_show_isAll() {
-        val mockView = mock<MovieContract.View>()
-        val presenter = MoviePresenter(mockView, { _, _ -> stubTvShow() }, 1)
+        val mockView = mock<Contract.View>()
+        val presenter = Presenter(mockView, { _, _ -> stubTvShow() }, 1)
         presenter.loadTvShows()
 
         verify(mockView).displayTvShows(argThat {

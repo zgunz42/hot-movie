@@ -14,14 +14,13 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.model.Person
 import com.kangmicin.hotmovie.model.Rating
-import kotlinx.android.synthetic.main.activity_movie.*
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.actor_card.view.*
-import kotlinx.android.synthetic.main.content_movie.*
+import kotlinx.android.synthetic.main.content_detail.*
 import kotlinx.android.synthetic.main.review_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,7 +36,7 @@ abstract class DetailActivity: AppActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie)
+        setContentView(R.layout.activity_detail)
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
         collapseListener = object:AppBarLayout.OnOffsetChangedListener {
@@ -49,7 +48,7 @@ abstract class DetailActivity: AppActivity() {
                 if (preview != p1) {
                     //collapsed
                     if (p1.absoluteValue == p0!!.totalScrollRange) {
-                        supportActionBar?.title = movie_title?.text
+                        supportActionBar?.title = detail_title?.text
                         isHide = false
                     }else {
                         if (!isHide) {
@@ -70,19 +69,19 @@ abstract class DetailActivity: AppActivity() {
 
     protected fun displayMoviePoster(poster: String) {
         val rImage = Utils.roundedImage(this, poster, R.dimen.corner)
-        movie_poster.setImageDrawable(rImage)
+        detail_poster.setImageDrawable(rImage)
     }
 
     protected fun displayPlot(plot: String) {
-        movie_plot.text = plot
+        detail_plot.text = plot
     }
 
     protected fun displayInfoDirector(directors: List<String>) {
-        movie_director.text = createInfoText("Director", directors.joinToString(", "))
+        detail_author.text = createInfoText("Director", directors.joinToString(", "))
     }
 
     protected fun displayInfoLength(duration: Long) {
-        movie_length.text = Utils.getTimeFormat(duration)
+        detail_length.text = Utils.getTimeFormat(duration)
     }
 
     protected fun displayTitle(title: String, release: Date) {
@@ -96,7 +95,7 @@ abstract class DetailActivity: AppActivity() {
             spannable.length,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
-        movie_title?.text = spannable
+        detail_title?.text = spannable
     }
 
     protected fun displayGenres(genres: List<String>) {
@@ -104,7 +103,7 @@ abstract class DetailActivity: AppActivity() {
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
         genres.forEach {
-            movie_genres.addView(makeGenreView(it), param)
+            detail_genres.addView(makeGenreView(it), param)
         }
     }
 
@@ -114,7 +113,7 @@ abstract class DetailActivity: AppActivity() {
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
 
         actors.forEach {
-            movie_actors.addView(makeActorView(it.value, it.key), param)
+            detail_actors.addView(makeActorView(it.value, it.key), param)
         }
     }
 
@@ -124,7 +123,7 @@ abstract class DetailActivity: AppActivity() {
     }
 
     private fun makeActorView(role: String, actor: Person): View {
-        val view = layoutInflater.inflate(R.layout.actor_card, movie_actors, false)
+        val view = layoutInflater.inflate(R.layout.actor_card, detail_actors, false)
 
         actor.profileUrl?.let {
 
@@ -142,7 +141,7 @@ abstract class DetailActivity: AppActivity() {
         val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)  // date in US Language
         val content = releaseFormat.format(release)
 
-        movie_release.text = createInfoText("Release Date", content)
+        detail_release.text = createInfoText("Release Date", content)
     }
 
     private fun createInfoText(description: String, content: String): SpannableStringBuilder {
@@ -164,25 +163,25 @@ abstract class DetailActivity: AppActivity() {
         params.gravity = Gravity.CENTER
         params.weight = 1F
         ratings.forEach {
-            val view = layoutInflater.inflate(R.layout.review_item, reviews_layout, false)
+            val view = layoutInflater.inflate(R.layout.review_item, detail_reviews_container, false)
             view.rating_tag?.text = it.source
             view.rating_amount?.text = it.amount
-            reviews_layout.addView(view, params)
+            detail_reviews_container.addView(view, params)
         }
     }
 
     protected fun displayHeroPoster(poster: String) {
         val identity = Utils.getIdentity(this, poster, Utils.ResType.DRAWABLE)
 
-        movie_poster_hero.clipToOutline = true
-        movie_poster_hero.outlineProvider = object : ViewOutlineProvider() {
+        detail_poster_hero.clipToOutline = true
+        detail_poster_hero.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {
                 outline?.setRoundRect(0, -50, view!!.width, view.height, 50f)
             }
 
         }
 
-        movie_poster_hero.setImageResource(identity)
+        detail_poster_hero.setImageResource(identity)
     }
 
     private fun makeGenreView(genre: String): TextView {

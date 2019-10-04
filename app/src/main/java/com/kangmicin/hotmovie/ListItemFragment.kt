@@ -2,6 +2,7 @@ package com.kangmicin.hotmovie
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +14,18 @@ import com.kangmicin.hotmovie.model.TvShow
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [TvShowFragment.OnListFragmentInteractionListener] interface.
+ * [ListItemFragment.OnListFragmentInteractionListener] interface.
  */
-class TvShowFragment : Fragment() {
+class ListItemFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
-    private var tvShow: List<TvShow> = emptyList()
+    private var items: List<Parcelable> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.getParcelableArray(TV_SHOWS)?.forEach {
-            tvShow = tvShow + it as TvShow
+        arguments?.getParcelableArray(LIST_ITEM)?.forEach {
+            items = items + it
         }
     }
 
@@ -32,13 +33,13 @@ class TvShowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_tvshow_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_lists_item, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = TvShowRecyclerViewAdapter(tvShow, listener)
+                adapter = ListItemAdapter(items, listener)
             }
         }
         return view
@@ -71,20 +72,18 @@ class TvShowFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: TvShow?)
+        fun onListFragmentInteraction(item: Parcelable?)
     }
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        private const val TV_SHOWS = "tv-shows"
+        private const val LIST_ITEM = "LIST_ITEM"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(tvShows: List<TvShow>) =
-            TvShowFragment().apply {
+        fun newInstance(tvShows: List<Parcelable>) =
+            ListItemFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelableArray(TV_SHOWS, tvShows.toTypedArray())
+                    putParcelableArray(LIST_ITEM, tvShows.toTypedArray())
                 }
             }
     }
