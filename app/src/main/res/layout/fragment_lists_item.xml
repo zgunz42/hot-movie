@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
+<androidx.recyclerview.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/list"
+        android:name="com.kangmicin.hotmovie.TvShowFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:dividerHeight="0dp"
-        android:divider="#00FFFFFF"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".MovieListFragment"
-        tools:listitem="@layout/fragment_movie"/>
+        tools:context=".ListItemFragment"
+        tools:listitem="@layout/item_card"/>

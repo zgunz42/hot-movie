@@ -20,7 +20,7 @@
         <item>@array/dragon_ball_show</item>
         <item>@array/iron_fist_show</item>
         <item>@array/family_guy_show</item>
-        <item>@array/iron_fist_show</item>
+        <item>@array/the_simpson_show</item>
         <item>@array/flash_show</item>
         <item>@array/naruto_shipudden_show</item>
     </integer-array>
@@ -375,7 +375,7 @@
         </item>
         <item>ANIMATION, COMEDY</item>
         <item>44m</item>
-        <item>(жефф Джонс), (Andrew Kreisberg), (Greg Berlanti)</item>
+        <item>(Jeff Jones), (Andrew Kreisberg), (Greg Berlanti)</item>
         <item>October 7, 2014</item>
         <item>
             [(Barry Allen / The Flash 116 Episodes),(Grant Gustin, @drawable/grant_gustin)],\n
@@ -473,7 +473,7 @@
     </string-array>
 
     <string-array name="language_values">
-        <item>id</item>
+        <item>in</item>
         <item>en</item>
     </string-array>
 </resources>

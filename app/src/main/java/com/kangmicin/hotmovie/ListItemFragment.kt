@@ -2,41 +2,44 @@ package com.kangmicin.hotmovie
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.kangmicin.hotmovie.model.Movie
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.kangmicin.hotmovie.model.TvShow
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [MovieListFragment.OnListFragmentInteractionListener] interface.
+ * [ListItemFragment.OnListFragmentInteractionListener] interface.
  */
-class MovieListFragment : Fragment() {
+class ListItemFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
-    private var movies: List<Movie> = emptyList()
+    private var items: List<Parcelable> = emptyList()
 
-    companion object {
-        const val MOVIES_KEY = "MOVIES"
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.getParcelableArray(LIST_ITEM)?.forEach {
+            items = items + it
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_lists_item, container, false)
 
-        arguments?.getParcelableArray(MOVIES_KEY)?.forEach {
-            movies = movies + it as Movie
-        }
-
-        if (view is ListView) {
+        // Set the adapter
+        if (view is RecyclerView) {
             with(view) {
-                adapter = MovieAdapter(movies, context, listener)
+                layoutManager = LinearLayoutManager(context)
+                adapter = ListItemAdapter(items, listener)
             }
         }
         return view
@@ -53,7 +56,7 @@ class MovieListFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        listener = null  // Remove listener
+        listener = null
     }
 
     /**
@@ -68,6 +71,20 @@ class MovieListFragment : Fragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: Movie?)
+        // TODO: Update argument type and name
+        fun onListFragmentInteraction(item: Parcelable?)
+    }
+
+    companion object {
+
+        private const val LIST_ITEM = "LIST_ITEM"
+
+        @JvmStatic
+        fun newInstance(tvShows: List<Parcelable>) =
+            ListItemFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelableArray(LIST_ITEM, tvShows.toTypedArray())
+                }
+            }
     }
 }
