@@ -10,84 +10,92 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         tools:context=".MovieActivity">
-    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="parent"
                 android:paddingTop="@dimen/content_spacing"
                 android:id="@+id/reviews_layout"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"/>
-        <LinearLayout
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_width="wrap_content"
-                android:weightSum="1"
-                android:layout_height="wrap_content">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:paddingEnd="@dimen/activity_vertical_margin"
-                    android:paddingStart="0dp"
-                    android:layout_weight="0.65"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:id="@+id/movie_release"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        tools:text="Release Date: January 9, 2019"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:id="@+id/movie_director"
-                        tools:text="Director: Joko Anwar"
-                        android:layout_width="wrap_content"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <ImageView
-                    android:layout_height="150dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.35"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:id="@+id/movie_poster"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:paddingEnd="@dimen/content_spacing"
-                    android:paddingStart="0dp"
-                    android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:contentDescription="@string/movie_poster"/>
-        </LinearLayout>
+                android:baselineAligned="false" app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
+                android:id="@+id/movie_release"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Release Date: January 9, 2019"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/movie_poster"
+                app:layout_constraintEnd_toStartOf="@+id/movie_poster"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"/>
+        <TextView
+                android:id="@+id/movie_director"
+                tools:text="Director: Joko Anwar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_release"
+                android:layout_marginTop="@dimen/content_spacing"
+                app:layout_constraintEnd_toStartOf="@+id/movie_poster"
+                android:layout_marginEnd="16dp"/>
+        <ImageView
+                android:layout_height="150dp"
+                android:layout_width="120dp"
+                tools:srcCompat="@tools:sample/avatars"
+                android:id="@+id/movie_poster"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/movie_poster"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reviews_layout" android:layout_marginTop="16dp"/>
+        <TextView
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="parent"
                 style="@style/AppTheme.Heading"
                 android:text="@string/head_plot"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/movie_poster" android:id="@+id/textView"/>
         <TextView
                 android:id="@+id/movie_plot"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:text="@sample/movie_plot"/>
+                android:layout_height="120dp"
+                tools:text="@sample/movie_plot"
+                android:layout_marginTop="@dimen/content_spacing"
+                tools:layout_editor_absoluteX="0dp" app:layout_constraintTop_toBottomOf="@+id/textView"/>
         <TextView
                 style="@style/AppTheme.Heading"
                 android:text="@string/header_top_actors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:id="@+id/top_actor"
+                app:layout_constraintTop_toBottomOf="@+id/movie_plot"/>
         <HorizontalScrollView
                 android:layout_gravity="bottom|start"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="8dp"
                 android:layout_width="wrap_content"
                 android:requiresFadingEdge="horizontal"
                 android:fadingEdgeLength="@dimen/fading_edge_large"
+                android:layout_marginTop="@dimen/content_spacing"
                 android:verticalScrollbarPosition="left"
                 android:isScrollContainer="true"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_actor">
             <LinearLayout
                     android:id="@+id/movie_actors"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </HorizontalScrollView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

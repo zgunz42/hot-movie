@@ -22,7 +22,6 @@ class TvShowActivity : DetailActivity() {
         displayHeroPoster(tvShow.poster)
         displayGenres(tvShow.genre)
         displayMoviePoster(tvShow.poster)
-        displayRatings(tvShow.rating)
         displayReleaseDate(tvShow.release)
         displayTopActor(tvShow.actors)
         displayInfoDirector(tvShow.creators.map { it.name })
