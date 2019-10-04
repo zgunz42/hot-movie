@@ -35,9 +35,9 @@ class SettingsActivity : AppActivity() {
                 if (key == "language") {
                     val intent = activity?.intent
 
-                    intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
-                    activity?.recreate() // apply change
+//                    activity?.recreate() // apply change
                     activity?.overridePendingTransition(0, 0)
                     activity?.finish()
                     activity?.overridePendingTransition(0, 0)
