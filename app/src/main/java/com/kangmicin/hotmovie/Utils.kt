@@ -15,11 +15,11 @@ object Utils {
         return resources.getIdentifier(name, "drawable", context.packageName)
     }
 
-    fun getTimeFormat(seconds: Long): String {
+    fun getTimeFormat(seconds: Long): Pair<Long, Long> {
         val hours = seconds / 3600
         val minutes = (seconds / 60) % 60
 
-        return "${hours}h ${minutes}m"
+        return Pair(hours, minutes)
     }
 
     fun roundedImage(context: Context, name: String, @DimenRes corner: Int): RoundedBitmapDrawable {

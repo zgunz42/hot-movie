@@ -12,6 +12,10 @@
     <string name="tvshow_poster">TvShow Poster</string>
     <string name="movies">Movies</string>
     <string name="tv_show">Tv Show</string>
+    <string name="date_format">%1$dh %2$dm</string>
+    <string name="release_format"><b>Release Date:</b> %1$s</string>
+    <string name="director_format"><b>Producer:</b> %1$s</string>
+    <string name="creator_format"><b>Creator:</b> %1$s</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->

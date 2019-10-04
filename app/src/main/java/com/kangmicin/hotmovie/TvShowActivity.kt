@@ -24,7 +24,7 @@ class TvShowActivity : DetailActivity() {
         displayMoviePoster(tvShow.poster)
         displayReleaseDate(tvShow.release)
         displayTopActor(tvShow.actors)
-        displayInfoDirector(tvShow.creators.map { it.name })
+        displayInfoDirector(R.string.creator_format, tvShow.creators.map { it.name })
         displayPlot(tvShow.plot)
         displayInfoLength(tvShow.length)
     }

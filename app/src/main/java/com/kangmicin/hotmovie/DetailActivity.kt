@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Outline
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
@@ -14,6 +15,9 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.IntegerRes
+import androidx.annotation.StringRes
+import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.model.Person
@@ -76,12 +80,13 @@ abstract class DetailActivity: AppActivity() {
         detail_plot.text = plot
     }
 
-    protected fun displayInfoDirector(directors: List<String>) {
-        detail_author.text = createInfoText("Director", directors.joinToString(", "))
+    protected fun displayInfoDirector(@StringRes format: Int, directors: List<String>) {
+        detail_author.text = HtmlCompat.fromHtml(getString(format, directors.joinToString()), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
     protected fun displayInfoLength(duration: Long) {
-        detail_length.text = Utils.getTimeFormat(duration)
+        val (hours, minutes) = Utils.getTimeFormat(duration)
+        detail_length.text = getString(R.string.date_format, hours, minutes)
     }
 
     protected fun displayTitle(title: String, release: Date) {
@@ -141,21 +146,7 @@ abstract class DetailActivity: AppActivity() {
         val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)  // date in US Language
         val content = releaseFormat.format(release)
 
-        detail_release.text = createInfoText("Release Date", content)
-    }
-
-    private fun createInfoText(description: String, content: String): SpannableStringBuilder {
-        val infoLabel = "$description: "
-        val infoText = SpannableStringBuilder("$infoLabel$content")
-
-        infoText.setSpan(
-            StyleSpan(Typeface.BOLD),
-            infoLabel.length,
-            infoText.length,
-            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-        )
-
-        return infoText
+        detail_release.text = HtmlCompat.fromHtml(getString(R.string.release_format, content), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
     protected fun displayRatings(ratings: List<Rating>) {
