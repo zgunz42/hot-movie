@@ -20,7 +20,7 @@ class MovieActivity : DetailActivity() {
         displayGenres(movie.genre)
         displayMoviePoster(movie.poster)
         displayRatings(movie.rating)
-        displayReleaseDate(movie.release)
+        displayInfoReleaseDate(movie.release)
         displayTopActor(movie.actors)
         displayInfoDirector(R.string.director_format, listOf(movie.director.name))
         displayPlot(movie.plot)

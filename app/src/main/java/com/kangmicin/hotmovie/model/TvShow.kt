@@ -16,7 +16,6 @@ class TvShow(
     var length: Long,
     var creators: List<Person>,
     var release: Date,
-    var rating: List<Rating>,
     val actors: HashMap<Person, String>
 ) : Parcelable, ViewModel() {
     override fun toString(): String {

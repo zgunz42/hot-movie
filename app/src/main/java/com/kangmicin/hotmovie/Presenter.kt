@@ -160,10 +160,10 @@ class Presenter(view: Contract.View,
         val length = parseDuration(data[4])
         val creators = splitObjects(data[5]).map { Person(uuid(), it[0], null) }
         val release = dateLocale(data[6])
-        val ratings = splitObjects(data[7]).map { Rating(uuid(), it[0], it[1]) }
+//        val ratings = splitObjects(data[7]).map { Rating(uuid(), it[0], it[1]) }
         val actors = HashMap<Person, String>()
 
-        splitMaps(data[8]).forEach { (t, u) ->
+        splitMaps(data[7]).forEach { (t, u) ->
             val person = Person(uuid(), u[0], u[1])
             actors[person] = t
         }
@@ -177,7 +177,6 @@ class Presenter(view: Contract.View,
             length.toLong(),
             creators,
             release,
-            ratings,
             actors
         )
     }

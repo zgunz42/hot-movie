@@ -1,9 +1,6 @@
 package com.kangmicin.hotmovie
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.kangmicin.hotmovie.model.Movie
-import com.kangmicin.hotmovie.model.Person
 import com.kangmicin.hotmovie.model.TvShow
 
 class TvShowActivity : DetailActivity() {
@@ -22,7 +19,7 @@ class TvShowActivity : DetailActivity() {
         displayHeroPoster(tvShow.poster)
         displayGenres(tvShow.genre)
         displayMoviePoster(tvShow.poster)
-        displayReleaseDate(tvShow.release)
+        displayInfoReleaseDate(tvShow.release)
         displayTopActor(tvShow.actors)
         displayInfoDirector(R.string.creator_format, tvShow.creators.map { it.name })
         displayPlot(tvShow.plot)

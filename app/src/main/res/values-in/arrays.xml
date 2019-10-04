@@ -40,7 +40,7 @@
         <item>2j 22m</item>
         <item>(James Wan)</item>
         <item>Desember 21, 2018</item>
-        <item>(7/10, IMDb), (65%, Tomat busuk), (55%, Metakritik)</item>
+        <item>(7/10, IMDb), (65%, Rotten Tomatoes), (55%, Metacritic)</item>
         <item>
             [Aquaman, (Jason Momoa, @drawable/jason_momoa)],\n
             [Mera, (Amber Heard, @drawable/amber_heard)],\n
@@ -61,7 +61,7 @@
         <item>2j 14m</item>
         <item>(Bradley Cooper)</item>
         <item>Oktober 19, 2018</item>
-        <item>(7,7/10, IMDb), (90%, Rotten Tomatoes), (88%, Metacritic)</item>
+        <item>(7.7/10, IMDb), (90%, Rotten Tomatoes), (88%, Metacritic)</item>
         <item>
             [Ally Campana, (Lady Gaga, @drawable/lady_gaga)],\n
             [Jackson Maine, (Bradley Cooper, @drawable/bradley_cooper)],\n
@@ -82,7 +82,7 @@
         <item>2j 40m</item>
         <item>(Anthony Russo)</item>
         <item>April 25, 2018</item>
-        <item>(8,5/10, IMDb), (68%, Metakritik), (85%, Tomat busuk)</item>
+        <item>(8.5/10, IMDb), (68%, Metacritic), (85%, Rotten Tomatoes)</item>
         <item>
             [Tony Stark/Iron Man, (Robert Downey Jr., @drawable/robert_downey)],\n
             [Thor Odinson, (Chris Hemsworth, @drawable/chris_hemsworth)],\n
@@ -108,7 +108,7 @@
         <item>2j 13m</item>
         <item>(Bryan Singer)</item>
         <item>Oktober 27, 2018</item>
-        <item>(8/10, IMDb), (49%, Metakritik), (61%, Tomat busuk)</item>
+        <item>(8/10, IMDb), (49%, Metacritic), (61%, Rotten Tomatoes)</item>
         <item>
             [Freddie Mercury, (Rami Malek, @drawable/rami_malek)],\n
             [Brian May, (Gwilym Lee, @drawable/gwilym_lee)],\n
@@ -137,7 +137,7 @@
         </item>
     </string-array>
     <string-array name="venom_movie">
-        <item>Bisa ular</item>
+        <item>Venom</item>
         <item>@drawable/poster_venom</item>
         <item>Wartawan Eddie Brock sedang mencoba untuk menjatuhkan Carlton Drake, pendiri terkenal dan brilian
             dariYayasan Kehidupan. Saat menyelidiki salah satu eksperimen Drake, tubuh Eddie bergabung dengan alien
@@ -178,7 +178,7 @@
         </item>
     </string-array>
     <string-array name="dragon_movie">
-        <item>Cara Melatih Naga Anda: Dunia Tersembunyi</item>
+        <item>How to Train Your Dragon: The Hidden World</item>
         <item>@drawable/poster_dragon</item>
         <item>Dalam pelarian di tahun 1987, Bumblebee menemukan tempat perlindungan di tempat barang rongsokan di
             California kecilkota pantai. Charlie, di puncak usia 18 dan berusaha menemukan tempatnya di dunia,
@@ -198,7 +198,7 @@
         </item>
     </string-array>
     <string-array name="birdbox_movie">
-        <item>Kotak Burung</item>
+        <item>Bird Box</item>
         <item>@drawable/poster_birdbox</item>
         <item>Ketika kekuatan misterius menghancurkan populasi, hanya satu hal yang pasti jika Anda melihatnya, Anda
             mati. Ituselamat sekarang harus menghindari berhadapan muka dengan entitas yang mengambil bentuk ketakutan
@@ -221,7 +221,7 @@
         </item>
     </string-array>
     <string-array name="marypoppins_movie">
-        <item>Mary Poppins Kembali</item>
+        <item>Mary Poppins Returns</item>
         <item>@drawable/poster_marrypopins</item>
         <item>Dalam London era Depresi, Jane dan Michael Banks yang sudah dewasa, bersama dengan tiga anak
             Michael,dikunjungi oleh Mary Poppins yang penuh teka-teki setelah kehilangan pribadi. Melalui keterampilan
@@ -244,7 +244,7 @@
 
 
     <string-array name="arrow_show">
-        <item>Panah</item>
+        <item>The Arrow</item>
         <item>@drawable/poster_arrow</item>
         <item>Playboy miliarder manja, Oliver Queen, hilang dan diduga tewas ketika kapal pesiarnya hilang di laut.
             Diakembali lima tahun kemudian seorang pria yang berubah, bertekad untuk membersihkan kota sebagai
@@ -254,7 +254,6 @@
         <item>42m</item>
         <item>(Greg Berlanti), (Marc Guggenheim), (Andrew Kreisberg)</item>
         <item>Oktober 10, 2012</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Episode Oliver Queen 166), (Stephen Amell, @drawable/stephen_amell)],\n
             [(John Diggle 166 Episode), (David Ramsey, @drawable/david_ramsey)],\n
@@ -264,18 +263,17 @@
         </item>
     </string-array>
     <string-array name="doom_patrol_show">
-        <item>Patroli Doom</item>
+        <item>Doom Patrol</item>
         <item>@drawable/poster_doom_patrol</item>
         <item>Anggota Patroli Doom masing-masing mengalami kecelakaan mengerikan yang memberi mereka kemampuan manusia
             supertetapi juga meninggalkan mereka bekas luka dan cacat. Trauma dan tertindas, tim menemukan tujuanmelalui
             Kepala, yang menyatukan mereka untuk menyelidiki fenomena paling aneh yang adadan untuk melindungi Bumi dari
             apa yang mereka temukan…
         </item>
-        <item>SCI-FI</item>
+        <item>SCI-FI &amp; FANTASY, AKSI &amp; PETUALANGAN</item>
         <item>60m</item>
         <item>(Jeremy Carver)</item>
         <item>Februari 15, 2019</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Dr. Niles Caulder/Kepala 15 Episode), (Timothy Dalton, @drawable/timothy_dalton)],\n
             [(Pria Negatif (suara)/Larry Trainor 15 Episode), (Matt Bomer, @drawable/matt_bomer)],\n
@@ -285,7 +283,7 @@
         </item>
     </string-array>
     <string-array name="dragon_ball_show">
-        <item>bola naga</item>
+        <item>Dragon Ball</item>
         <item>@drawable/poster_dragon_ball</item>
         <item>Dahulu kala di pegunungan, seorang master pertempuran yang dikenal sebagai Gohan menemukan seorang bocah
             aneh yang ia beri nama Goku.Gohan membesarkannya dan melatih Goku dalam seni bela diri sampai dia mati.
@@ -293,11 +291,10 @@
             bertemu dengan seorang gadis remaja bernama Bulma, yang mencariDragon Balls mistis membawanya ke rumah Goku.
             Bersama-sama, mereka berangkat untuk menemukan ketujuh dan memberikankeinginannya…
         </item>
-        <item>COMEDY, SCI-FI</item>
+        <item>KOMEDI, SCI-FI &amp; FANTASY, ANIMASI, AKSI &amp; PETUALANGAN</item>
         <item>25m</item>
         <item>(Akira Toriyama)</item>
         <item>Februari 26, 1986</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Son Goku (suara) 153 Episode), (Masako Nozawa, @drawable/masako_nozawa)],\n
             [(Krillin (suara) 153 Episode), (Mayumi Tanaka, @drawable/mayumi_tanaka)],\n
@@ -314,11 +311,10 @@
             transportasi.Tapi Natsu bukan sembarang anak biasa, dia adalah anggota dari salah satu penyihir paling
             terkenal di duniaguild: Fairy Tail…
         </item>
-        <item>AKSI LAGA</item>
+        <item>AKSI LAGA, ANIMASI, KOMEDI, SCI-FI &amp; FANTASY</item>
         <item>25m</item>
         <item>(Hiro Mashima)</item>
         <item>Oktober 12, 2009</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Natsu Dragneel (suara) 328 Episode), (Tetsuya Kakihara, @drawable/tetsuya_kakihara)],\n
             [(Lucy Heartfilia (suara) 328 Episode), (Aya Hirano, @drawable/aya_hirano)],\n
@@ -328,7 +324,7 @@
         </item>
     </string-array>
     <string-array name="family_guy_show">
-        <item>Pria keluarga</item>
+        <item>Family Guy</item>
         <item>@drawable/poster_family_guy</item>
         <item>Seri animasi yang manis, memutar, salah secara politis, dan Freakin \ \'manis menampilkan petualangan
             parakeluarga Griffin yang disfungsional. Peter yang kikuk dan Lois yang sudah lama menderita memiliki tiga
@@ -342,7 +338,6 @@
         <item>22m</item>
         <item>(Seth MacFarlane)</item>
         <item>Januari 31, 1999</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Peter Griffin (suara) 330 Episode), (Seth MacFarlane, @drawable/seth_mac_farlane)],\n
             [(Lois Griffin (suara) 330 Episode), (Alex Borstein, @drawable/alex_borstein)],\n
@@ -352,7 +347,7 @@
         </item>
     </string-array>
     <string-array name="flash_show">
-        <item>Kilat</item>
+        <item>The Flash</item>
         <item>@drawable/poster_flash</item>
         <item>Setelah akselerator partikel menyebabkan badai aneh, Penyelidik CSI Barry Allen tersambar petir danjatuh
             koma. Beberapa bulan kemudian dia bangun dengan kekuatan kecepatan super, memberinya kemampuan untuk
@@ -367,7 +362,6 @@
         <item>44m</item>
         <item>(Jeff Jones), (Andrew Kreisberg), (Greg Berlanti)</item>
         <item>Oktober 7, 2014</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Barry Allen/Episode The Flash 116), (Grant Gustin, @drawable/grant_gustin)],\n
             [(Iris West 116 Episodes), (Candice Patton, @drawable/candice_patton)],\n
@@ -377,7 +371,7 @@
         </item>
     </string-array>
     <string-array name="iron_fist_show">
-        <item>Iron Fist dari Marvel</item>
+        <item>Marvel\'s Iron Fist</item>
         <item>@drawable/poster_iron_fist</item>
         <item>Danny Rand muncul kembali 15 tahun setelah dianggap mati. Sekarang, dengan kekuatan Iron Fist, dia
             mencariuntuk merebut kembali masa lalunya dan memenuhi takdirnya…
@@ -386,7 +380,6 @@
         <item>55m</item>
         <item>(Scott Buck)</item>
         <item>Maret 17, 2017</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Episode Danny Rand 23), (Finn Jones, @drawable/finn_jones)],\n
             [(Episode Colleen Wing 23), (Jessica Henwick, @drawable/jessica_henwick)],\n
@@ -408,7 +401,6 @@
         <item>22m</item>
         <item>(Masashi Kishimoto)</item>
         <item>Februari 15, 2007</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Naruto Uzumaki (suara) 500 Episode), (Junko Takeuchi, @drawable/junko_takeuchi)],\n
             [(Sakura Haruno (suara) 500 Episode), (Chie Nakamura, @drawable/chie_nakamura)],\n
@@ -418,7 +410,7 @@
         </item>
     </string-array>
     <string-array name="supergirl_show">
-        <item>Perempuan super</item>
+        <item>Supergirl</item>
         <item>@drawable/poster_supergirl</item>
         <item>Kara Zor-El, 24 tahun, yang dibawa oleh keluarga Danvers ketika dia berusia 13 tahun setelah dikirimjauh
             dari Krypton, harus belajar merangkul kekuatannya setelah sebelumnya menyembunyikannya. Danvers
@@ -429,7 +421,6 @@
         <item>42m</item>
         <item>(Greg Berlanti), (Andrew Kreisberg), (Ali Adler)</item>
         <item>Oktober 26, 2015</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Episode Kara Danvers/Supergirl/Kara Zor-El 88), (Melissa Benoist, @drawable/melissa_benoist)],\n
             [(Episode Alex Danvers 88), (Chyler Leigh, @drawable/chyler_leigh)],\n
@@ -451,7 +442,6 @@
         <item>22m</item>
         <item>(Matt Groening)</item>
         <item>Desember 17, 1989</item>
-        <item>(6.8/10, IMDb), (79%, Rotten Tomatoes), (4.7/5, Facebook)</item>
         <item>
             [(Episode Homer Simpson 666), (Dan Castellaneta, @drawable/dan_castellaneta)],\n
             [(Marge Simpson 666 Episode), (Julie Kavner, @drawable/julie_kavner)],\n

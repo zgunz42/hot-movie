@@ -1,15 +1,9 @@
 package com.kangmicin.hotmovie
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.ListPreference
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import java.util.*
 
 class SettingsActivity : AppActivity() {
 

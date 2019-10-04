@@ -9,7 +9,8 @@ import java.util.*
 
 abstract class AppActivity: AppCompatActivity() {
 
-    private var language: String? = null
+    protected var language: String? = null
+    protected var locale: Locale = Locale.getDefault()
     private var isChangeLanguage = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,8 @@ abstract class AppActivity: AppCompatActivity() {
     override fun onStart() {
         val manager = PreferenceManager(this)
         val language = manager.sharedPreferences.getString("language", Locale.getDefault().language)
+
+        locale = Locale(language, locale.country)
         isChangeLanguage = getAppLanguage(this) != language
         super.onStart()
     }

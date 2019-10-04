@@ -4,18 +4,15 @@ import android.graphics.Color
 import android.graphics.Outline
 import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.IntegerRes
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
@@ -81,7 +78,7 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayInfoDirector(@StringRes format: Int, directors: List<String>) {
-        detail_author.text = HtmlCompat.fromHtml(getString(format, directors.joinToString()), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        detail_author.text = HtmlCompat.fromHtml(getString(format, directors.joinToString()), HtmlCompat.FROM_HTML_MODE_COMPACT)
     }
 
     protected fun displayInfoLength(duration: Long) {
@@ -142,11 +139,12 @@ abstract class DetailActivity: AppActivity() {
     }
 
 
-    protected fun displayReleaseDate(release: Date) {
-        val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.US)  // date in US Language
+    protected fun displayInfoReleaseDate(release: Date) {
+        val releaseFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
         val content = releaseFormat.format(release)
 
-        detail_release.text = HtmlCompat.fromHtml(getString(R.string.release_format, content), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        detail_release.text = HtmlCompat.fromHtml(getString(R.string.release_format, content),
+            HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS or HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
     protected fun displayRatings(ratings: List<Rating>) {
