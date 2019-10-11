@@ -21,6 +21,7 @@ class MovieDataSource private constructor(
     }
 
     fun fetchDiscoverMovie() {
+        dao.clearMovies()
         appExecutors.networkIO().execute {
             NetworkUtils.getDiscoverMovieFromServer(object : DisposableObserver<DiscoverMovie>() {
                 override fun onComplete() {

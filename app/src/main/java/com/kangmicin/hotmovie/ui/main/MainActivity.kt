@@ -50,7 +50,6 @@ class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionLi
         val movieModel = ViewModelProviders.of(this, movieFactory).get(MoviesViewModel::class.java)
         val tvModel = ViewModelProviders.of(this, tvFactory).get(TvViewModel::class.java)
 
-        bottom_navigation?.selectedItemId = R.id.show_movie_menu
         bottom_navigation?.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.show_movie_menu -> {
@@ -69,7 +68,7 @@ class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionLi
 
         tvModel.getTvs().observe(this, Observer<List<Tv>> {initUi(it)})
 
-        initLoading()
+        bottom_navigation?.selectedItemId = R.id.show_movie_menu
     }
 
     private fun initUi(data: List<Parcelable>) {
