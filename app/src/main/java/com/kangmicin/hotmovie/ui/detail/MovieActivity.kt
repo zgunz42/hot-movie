@@ -1,7 +1,8 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui.detail
 
 import android.os.Bundle
-import com.kangmicin.hotmovie.model.Movie
+import com.kangmicin.hotmovie.R
+import com.kangmicin.hotmovie.data.Movie
 
 class MovieActivity : DetailActivity() {
     lateinit var movie: Movie
@@ -22,8 +23,11 @@ class MovieActivity : DetailActivity() {
         displayRatings(movie.rating)
         displayInfoReleaseDate(movie.release)
         displayTopActor(movie.actors)
-        displayInfoDirector(R.string.director_format, listOf(movie.director.name))
         displayPlot(movie.plot)
         displayInfoLength(movie.length)
+
+        movie.director?.let {
+            displayInfoDirector(R.string.director_format, listOf(it.name))
+        }
     }
 }

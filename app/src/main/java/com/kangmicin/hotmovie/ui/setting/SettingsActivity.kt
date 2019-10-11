@@ -1,9 +1,11 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui.setting
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
+import com.kangmicin.hotmovie.ui.AppActivity
+import com.kangmicin.hotmovie.R
 
 class SettingsActivity : AppActivity() {
 
@@ -16,7 +18,10 @@ class SettingsActivity : AppActivity() {
         setContentView(R.layout.settings_activity)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.settings, SettingsFragment())
+            .replace(
+                R.id.settings,
+                SettingsFragment()
+            )
             .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

@@ -1,19 +1,26 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui.main
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.kangmicin.hotmovie.ListItemFragment.OnListFragmentInteractionListener
-import com.kangmicin.hotmovie.model.Movie
-import com.kangmicin.hotmovie.model.TvShow
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.kangmicin.hotmovie.R
+import com.kangmicin.hotmovie.Utils
+import com.kangmicin.hotmovie.ui.main.ListItemFragment.OnListFragmentInteractionListener
+import com.kangmicin.hotmovie.data.Movie
+import com.kangmicin.hotmovie.data.Tv
 import kotlinx.android.synthetic.main.item_card.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [TvShow] and makes a call to the
+ * [RecyclerView.Adapter] that can display a [Tv] and makes a call to the
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
@@ -36,12 +43,21 @@ class ListItemAdapter(
         return ViewHolder(view)
     }
 
-    private fun bindToModel(model: TvShow, holder: ViewHolder) {
-        val posterImage = Utils.roundedImage(holder.mView.context, model.poster, R.dimen.corner)
+    private fun bindToModel(model: Tv, holder: ViewHolder) {
 
         holder.mTitle.text = model.title
         holder.mContent.text = model.plot
-        holder.mPoster.setImageDrawable(posterImage)
+
+        Log.i("ThreadNetwork", model.poster)
+
+        Glide
+            .with(holder.mView)
+            .load(model.poster) // valid url
+            .apply(RequestOptions
+                .centerCropTransform()
+                .transform(RoundedCorners(10))
+            )
+            .into(holder.mPoster)
 
         with(holder.mView.tvshow_item) {
             tag = model
@@ -50,11 +66,26 @@ class ListItemAdapter(
     }
 
     private fun bindToModel(model: Movie, holder: ViewHolder) {
-        val posterImage = Utils.roundedImage(holder.mView.context, model.poster, R.dimen.corner)
+        val posterImage = Utils.roundedImage(
+            holder.mView.context,
+            model.poster,
+            R.dimen.corner
+        )
+
+        Log.i("ThreadNetwork", model.poster)
 
         holder.mTitle.text = model.title
         holder.mContent.text = model.plot
         holder.mPoster.setImageDrawable(posterImage)
+
+        Glide
+            .with(holder.mView)
+            .load(model.poster) // valid url
+            .apply(RequestOptions
+                .centerCropTransform()
+                .transform(RoundedCorners(10))
+            )
+            .into(holder.mPoster)
 
         with(holder.mView.tvshow_item) {
             tag = model
@@ -69,7 +100,7 @@ class ListItemAdapter(
             bindToModel(item, holder)
         }
 
-        if (item is TvShow) {
+        if (item is Tv) {
             bindToModel(item, holder)
         }
 

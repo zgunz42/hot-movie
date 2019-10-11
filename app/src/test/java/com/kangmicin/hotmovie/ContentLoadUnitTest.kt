@@ -1,7 +1,7 @@
 package com.kangmicin.hotmovie
 
-import com.kangmicin.hotmovie.model.Movie
-import com.kangmicin.hotmovie.model.TvShow
+import com.kangmicin.hotmovie.data.Movie
+import com.kangmicin.hotmovie.data.Tv
 import com.nhaarman.mockitokotlin2.argThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -39,7 +39,7 @@ class ContentLoadUnitTest {
         presenter.loadTvShows()
 
         verify(mockView).displayTvShows(argThat {
-            val first: TvShow = first()
+            val first: Tv = first()
             first.title == "The Simpson" &&
                     first.poster == "@drawable/poster_the_simpson" &&
                     first.genre.size == 2 &&

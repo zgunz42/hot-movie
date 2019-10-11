@@ -8,5 +8,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ListItemFragment"
+        tools:context=".ui.main.ListItemFragment"
         tools:listitem="@layout/item_card"/>

@@ -1,7 +1,7 @@
 package com.kangmicin.hotmovie
 
-import com.kangmicin.hotmovie.model.Movie
-import com.kangmicin.hotmovie.model.TvShow
+import com.kangmicin.hotmovie.data.Movie
+import com.kangmicin.hotmovie.data.Tv
 
 interface Contract {
     interface Presenter {
@@ -13,6 +13,6 @@ interface Contract {
 
     interface View {
         fun displayMovies(movies: List<Movie>)
-        fun displayTvShows(shows: List<TvShow>)
+        fun displayTvShows(shows: List<Tv>)
     }
 }

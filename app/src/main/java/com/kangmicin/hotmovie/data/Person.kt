@@ -1,4 +1,4 @@
-package com.kangmicin.hotmovie.model
+package com.kangmicin.hotmovie.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

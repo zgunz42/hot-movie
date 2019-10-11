@@ -1,4 +1,4 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui
 
 import android.content.Context
 import android.os.Build

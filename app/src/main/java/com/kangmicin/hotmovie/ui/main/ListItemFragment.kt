@@ -1,4 +1,4 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui.main
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kangmicin.hotmovie.model.TvShow
+import com.kangmicin.hotmovie.R
 
 /**
  * A fragment representing a list of Items.
@@ -23,7 +23,6 @@ class ListItemFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.getParcelableArray(LIST_ITEM)?.forEach {
             items = items + it
         }

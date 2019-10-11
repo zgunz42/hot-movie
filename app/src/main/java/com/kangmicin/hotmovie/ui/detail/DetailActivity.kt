@@ -1,4 +1,4 @@
-package com.kangmicin.hotmovie
+package com.kangmicin.hotmovie.ui.detail
 
 import android.graphics.Color
 import android.graphics.Outline
@@ -17,8 +17,11 @@ import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
 import com.google.android.material.appbar.AppBarLayout
-import com.kangmicin.hotmovie.model.Person
-import com.kangmicin.hotmovie.model.Rating
+import com.kangmicin.hotmovie.R
+import com.kangmicin.hotmovie.Utils
+import com.kangmicin.hotmovie.data.Person
+import com.kangmicin.hotmovie.data.Rating
+import com.kangmicin.hotmovie.ui.AppActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.actor_card.view.*
 import kotlinx.android.synthetic.main.content_detail.*
@@ -69,7 +72,11 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayMoviePoster(poster: String) {
-        val rImage = Utils.roundedImage(this, poster, R.dimen.corner)
+        val rImage = Utils.roundedImage(
+            this,
+            poster,
+            R.dimen.corner
+        )
         detail_poster.setImageDrawable(rImage)
     }
 
@@ -129,7 +136,11 @@ abstract class DetailActivity: AppActivity() {
 
         actor.profileUrl?.let {
 
-            val drawable = Utils.roundedImage(this, it, R.dimen.corner)
+            val drawable = Utils.roundedImage(
+                this,
+                it,
+                R.dimen.corner
+            )
             view.movie_actor_picture?.setImageDrawable(drawable)
         }
         view.movie_actor_name?.text = actor.name
@@ -160,7 +171,11 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayHeroPoster(poster: String) {
-        val identity = Utils.getIdentity(this, poster, Utils.ResType.DRAWABLE)
+        val identity = Utils.getIdentity(
+            this,
+            poster,
+            Utils.ResType.DRAWABLE
+        )
 
         detail_poster_hero.clipToOutline = true
         detail_poster_hero.outlineProvider = object : ViewOutlineProvider() {
