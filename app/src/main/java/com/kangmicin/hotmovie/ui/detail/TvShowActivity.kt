@@ -16,8 +16,8 @@ class TvShowActivity : DetailActivity() {
 
         tv = intent.getParcelableExtra(TV_SHOW_KEY)
 
-        displayTitle(tv.title, tv.release)
-        displayHeroPoster(tv.poster)
+        displayTitle(tv.name, tv.release)
+        displayHeroPoster(tv.backdrop)
         displayGenres(tv.genre)
         displayMoviePoster(tv.poster)
         displayInfoReleaseDate(tv.release)

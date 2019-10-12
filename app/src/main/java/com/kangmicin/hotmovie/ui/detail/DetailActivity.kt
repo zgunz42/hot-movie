@@ -2,7 +2,9 @@ package com.kangmicin.hotmovie.ui.detail
 
 import android.graphics.Color
 import android.graphics.Outline
+import android.graphics.Point
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -16,12 +18,16 @@ import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.R
-import com.kangmicin.hotmovie.Utils
 import com.kangmicin.hotmovie.data.Person
 import com.kangmicin.hotmovie.data.Rating
 import com.kangmicin.hotmovie.ui.AppActivity
+import com.kangmicin.hotmovie.utilities.Helper
+import com.kangmicin.hotmovie.utilities.Ui
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.actor_card.view.*
 import kotlinx.android.synthetic.main.content_detail.*
@@ -72,12 +78,16 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayMoviePoster(poster: String) {
-        val rImage = Utils.roundedImage(
-            this,
-            poster,
-            R.dimen.corner
-        )
-        detail_poster.setImageDrawable(rImage)
+        Glide
+            .with(this)
+            .load(poster) // valid url
+            .placeholder(ColorDrawable(Color.GRAY))
+            .apply(
+                RequestOptions
+                    .centerCropTransform()
+                    .transform(RoundedCorners(10))
+            )
+            .into(detail_poster)
     }
 
     protected fun displayPlot(plot: String) {
@@ -89,7 +99,7 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayInfoLength(duration: Long) {
-        val (hours, minutes) = Utils.getTimeFormat(duration)
+        val (hours, minutes) = Helper.getTimeFormat(duration)
         detail_length.text = getString(R.string.date_format, hours, minutes)
     }
 
@@ -136,7 +146,7 @@ abstract class DetailActivity: AppActivity() {
 
         actor.profileUrl?.let {
 
-            val drawable = Utils.roundedImage(
+            val drawable = Ui.roundedImage(
                 this,
                 it,
                 R.dimen.corner
@@ -171,21 +181,28 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayHeroPoster(poster: String) {
-        val identity = Utils.getIdentity(
-            this,
-            poster,
-            Utils.ResType.DRAWABLE
-        )
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
 
         detail_poster_hero.clipToOutline = true
         detail_poster_hero.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View?, outline: Outline?) {
-                outline?.setRoundRect(0, -50, view!!.width, view.height, 50f)
+                if (view != null && outline != null) {
+                    outline.setRoundRect(0, -50, view.width, view.height, 50f)
+                }
             }
 
         }
 
-        detail_poster_hero.setImageResource(identity)
+        val dimension = resources.getDimension(R.dimen.app_bar_height)
+
+        Glide
+            .with(detail_poster_hero.context)
+            .asDrawable()
+            .load(poster) // valid url
+            .override(size.x, dimension.toInt())
+            .into(detail_poster_hero)
     }
 
     private fun makeGenreView(genre: String): TextView {

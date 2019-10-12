@@ -48,13 +48,14 @@ abstract class AppActivity: AppCompatActivity() {
 
     private fun updateBaseContextLocal(context: Context): Context {
         val manager = PreferenceManager(context)
-        val language = manager.sharedPreferences.getString("language", Locale.getDefault().language)
+        val initLocale = Locale.getDefault()
+        val language = manager.sharedPreferences.getString("language", initLocale.language)
 
         isChangeLanguage = getAppLanguage(context) != language
 
 
         val mConfiguration = context.resources.configuration
-        val locale = Locale(language)
+        val locale = Locale(language, initLocale.country)
         Locale.setDefault(locale)
         mConfiguration.setLocale(locale)
         return context.createConfigurationContext(mConfiguration)

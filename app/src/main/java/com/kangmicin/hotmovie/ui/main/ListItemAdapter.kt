@@ -1,5 +1,7 @@
 package com.kangmicin.hotmovie.ui.main
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Parcelable
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
@@ -9,14 +11,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.kangmicin.hotmovie.R
-import com.kangmicin.hotmovie.Utils
 import com.kangmicin.hotmovie.ui.main.ListItemFragment.OnListFragmentInteractionListener
 import com.kangmicin.hotmovie.data.Movie
 import com.kangmicin.hotmovie.data.Tv
+import com.kangmicin.hotmovie.utilities.Ui
 import kotlinx.android.synthetic.main.item_card.view.*
 
 /**
@@ -45,7 +46,7 @@ class ListItemAdapter(
 
     private fun bindToModel(model: Tv, holder: ViewHolder) {
 
-        holder.mTitle.text = model.title
+        holder.mTitle.text = model.name
         holder.mContent.text = model.plot
 
         Log.i("ThreadNetwork", model.poster)
@@ -66,7 +67,7 @@ class ListItemAdapter(
     }
 
     private fun bindToModel(model: Movie, holder: ViewHolder) {
-        val posterImage = Utils.roundedImage(
+        val posterImage = Ui.roundedImage(
             holder.mView.context,
             model.poster,
             R.dimen.corner
@@ -81,6 +82,7 @@ class ListItemAdapter(
         Glide
             .with(holder.mView)
             .load(model.poster) // valid url
+            .placeholder(ColorDrawable(Color.GRAY))
             .apply(RequestOptions
                 .centerCropTransform()
                 .transform(RoundedCorners(10))

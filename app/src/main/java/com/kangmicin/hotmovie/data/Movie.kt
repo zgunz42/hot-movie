@@ -9,9 +9,10 @@ import kotlin.collections.HashMap
 @Parcelize
 data class Movie(
     var id: Int,
-    var title: String,
-    var poster: String,
-    var plot: String,
+    var title: String = "",
+    var backdrop: String = "",
+    var poster: String = "",
+    var plot: String = "",
     var genre: List<String> = emptyList(),
     var length: Long = 0,
     var director: Person? = null,

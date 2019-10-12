@@ -25,7 +25,7 @@
         <item>@array/naruto_shipudden_show</item>
     </integer-array>
     <!-- Format Movie
-        title: String
+        name: String
         poster: String
         plot: String
         genre: String
@@ -249,7 +249,7 @@
         </item>
     </string-array>
     <!-- Format SHOW
-        title: String
+        name: String
         poster: String
         plot: String
         genre: String

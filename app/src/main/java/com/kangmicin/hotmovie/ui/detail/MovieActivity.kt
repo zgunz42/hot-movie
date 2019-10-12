@@ -17,7 +17,7 @@ class MovieActivity : DetailActivity() {
         movie = intent.getParcelableExtra(MOVIE_KEY)
 
         displayTitle(movie.title, movie.release)
-        displayHeroPoster(movie.poster)
+        displayHeroPoster(movie.backdrop)
         displayGenres(movie.genre)
         displayMoviePoster(movie.poster)
         displayRatings(movie.rating)
