@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +17,13 @@ import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.StringRes
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
@@ -132,6 +137,7 @@ abstract class DetailActivity: AppActivity() {
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
 
         actors.forEach {
+            Log.i("actor", "actor: " + it)
             detail_actors.addView(makeActorView(it.value, it.key), param)
         }
     }
@@ -144,15 +150,27 @@ abstract class DetailActivity: AppActivity() {
     private fun makeActorView(role: String, actor: Person): View {
         val view = layoutInflater.inflate(R.layout.actor_card, detail_actors, false)
 
+        view.movie_actor_picture.clipToOutline = true
+        view.movie_actor_picture.outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View?, outline: Outline?) {
+                if (view != null && outline != null) {
+                    outline.setRoundRect(0, 0, view.width, view.height, 10f)
+                }
+            }
+
+        }
+
         actor.profileUrl?.let {
 
-            val drawable = Ui.roundedImage(
-                this,
-                it,
-                R.dimen.corner
-            )
-            view.movie_actor_picture?.setImageDrawable(drawable)
+            Glide
+                .with(view.context)
+                .load(it) // valid url
+                .placeholder(ColorDrawable(Color.GRAY))
+                .fallback(R.drawable.avatar)
+                .error(R.drawable.avatar)
+                .into(view.movie_actor_picture)
         }
+
         view.movie_actor_name?.text = actor.name
         view.movie_actor_role?.text = role
 

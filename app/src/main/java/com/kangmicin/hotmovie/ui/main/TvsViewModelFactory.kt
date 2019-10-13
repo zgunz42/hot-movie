@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kangmicin.hotmovie.repository.TvRepository
 
-class TvViewModelFactory (private val tvRepository: TvRepository):
+class TvsViewModelFactory (private val tvRepository: TvRepository):
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return TvViewModel(tvRepository) as T
+        return TvsViewModel(tvRepository) as T
     }
 }

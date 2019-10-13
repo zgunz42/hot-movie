@@ -1,7 +1,10 @@
 package com.kangmicin.hotmovie.network
 
 import android.util.Log
+import com.kangmicin.hotmovie.data.Person
+import com.kangmicin.hotmovie.network.poko.Credits
 import com.kangmicin.hotmovie.network.poko.DiscoverMovie
+import com.kangmicin.hotmovie.network.poko.MovieDetail
 import com.kangmicin.hotmovie.utilities.AppExecutors
 import com.kangmicin.hotmovie.storage.MovieDao
 import io.reactivex.observers.DisposableObserver
@@ -37,6 +40,80 @@ class MovieDataSource private constructor(
 
                 override fun onError(e: Throwable) {
 
+                }
+
+            })
+        }
+    }
+
+    fun fetchMovieDetail(id: Int) {
+        appExecutors.networkIO().execute {
+            NetworkUtils.getMovieDetailFromServer("$id", object : DisposableObserver<MovieDetail>() {
+                override fun onComplete() {
+                    Log.i("ThreadNetwork", "complete")
+                }
+
+                override fun onNext(t: MovieDetail) {
+                    val movies = dao.getMovies().value
+
+                    if (movies != null) {
+                        for (i in 0 until movies.size) {
+                            val movie = movies[i]
+                            if (movie.id == id) {
+                                movie.length = t.runtime + 0L
+                                t.genres.forEach { m ->
+                                    movie.genre = movie.genre + m.name
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.i("ThreadNetwork", "" + e.localizedMessage)
+                }
+
+            })
+        }
+        appExecutors.networkIO().execute  {
+            NetworkUtils.getMovieCrewFromServer("$id", object : DisposableObserver<Credits>() {
+                override fun onComplete() {
+                    Log.i("ThreadNetwork", "complete")
+                }
+
+                override fun onNext(t: Credits) {
+                    val movies = dao.getMovies().value
+
+                    if (movies != null) {
+                        for (i in 0 until movies.size) {
+                            val movie = movies[i]
+                            if (movie.id == id) {
+                                t.crew.forEach {
+                                    if (it.job == "Director") {
+                                        val director = Person("" + it.id, it.name, null)
+                                        movie.directors = movie.directors + director
+                                    }
+                                }
+                                t.cast.forEach {
+                                    val profileUrl = NetworkUtils.getImageUrl(
+                                        it.profilePath ?: "",
+                                        ImageSize.Small
+                                    )
+                                    val actor = Person("" + it.id, it.name, profileUrl)
+
+                                    movie.actors[actor] = it.character
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 
             })

@@ -10,6 +10,7 @@ class MovieRepository private constructor(
     private val appExecutors: AppExecutors,
     private val dao: MovieDao
 ){
+    val service = MovieDataSource.getInstance(appExecutors, dao)
 
     companion object {
         private const val ENDPOINT = "/discover/movie"
@@ -24,10 +25,12 @@ class MovieRepository private constructor(
     }
 
     fun loadServiceMovies() {
-        val service = MovieDataSource.getInstance(appExecutors, dao)
-
         service.fetchDiscoverMovie()
     }
 
     fun getMovies() = dao.getMovies()
+
+    fun loadServiceMovie(id: Int) {
+        service.fetchMovieDetail(id)
+    }
 }

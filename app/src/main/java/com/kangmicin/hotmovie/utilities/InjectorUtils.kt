@@ -4,7 +4,7 @@ import com.kangmicin.hotmovie.repository.MovieRepository
 import com.kangmicin.hotmovie.repository.TvRepository
 import com.kangmicin.hotmovie.storage.CacheStorage
 import com.kangmicin.hotmovie.ui.main.MoviesViewModelFactory
-import com.kangmicin.hotmovie.ui.main.TvViewModelFactory
+import com.kangmicin.hotmovie.ui.main.TvsViewModelFactory
 
 object InjectorUtils {
     fun provideMoviesViewModelFactory(): MoviesViewModelFactory {
@@ -14,10 +14,10 @@ object InjectorUtils {
         return MoviesViewModelFactory(movieRepository)
     }
 
-    fun provideTvViewModelFactory(): TvViewModelFactory {
+    fun provideTvViewModelFactory(): TvsViewModelFactory {
         val storage = CacheStorage.getInstance()
         val appExecutors = AppExecutors.getInstance()
         val movieRepository = TvRepository.getInstance(appExecutors, storage.tvDao)
-        return TvViewModelFactory(movieRepository)
+        return TvsViewModelFactory(movieRepository)
     }
 }

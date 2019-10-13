@@ -2,12 +2,12 @@ package com.kangmicin.hotmovie.network
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.kangmicin.hotmovie.network.poko.DiscoverMovie
 import com.kangmicin.hotmovie.data.Movie
 import com.kangmicin.hotmovie.data.Tv
-import com.kangmicin.hotmovie.network.poko.DiscoverTv
+import com.kangmicin.hotmovie.network.poko.*
 import com.kangmicin.hotmovie.utilities.Constant
 import com.kangmicin.hotmovie.utilities.Helper
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
@@ -37,15 +37,13 @@ object NetworkUtils {
 
     }
 
-    private fun getImageUrl(id: String, size: ImageSize): String {
+    fun getImageUrl(id: String, size: ImageSize): String {
         return Constant.ImageUrl + size.value + id
     }
 
     @SuppressLint("LongLogTag")
-    fun getDiscoverMovieFromServer(observer: DisposableObserver<DiscoverMovie>): DisposableObserver<DiscoverMovie>? {
+    fun <T> getFromServer(observer: DisposableObserver<T>, observable: Observable<T>): DisposableObserver<T>? {
         return try {
-            val apiService = getRetrofit().create(RestApi::class.java)
-            val observable = apiService.getDiscoverMovie(Constant.apiKey, Helper.languageParam())
             observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -57,19 +55,46 @@ object NetworkUtils {
         }
     }
 
+    fun getDiscoverMovieFromServer(observer: DisposableObserver<DiscoverMovie>): DisposableObserver<DiscoverMovie>? {
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getDiscoverMovie(Constant.apiKey, Helper.languageParam())
+
+        return getFromServer(observer, observable)
+    }
+
     fun getDiscoverTvFromServer(observer: DisposableObserver<DiscoverTv>): DisposableObserver<DiscoverTv>? {
-        return try {
-            val apiService = getRetrofit().create(RestApi::class.java)
-            val observable = apiService.getDiscoverTv(Constant.apiKey, Helper.languageParam())
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getDiscoverTv(Constant.apiKey, Helper.languageParam())
 
-            observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(observer)
+        return getFromServer(observer, observable)
+    }
 
-        }catch (e: Exception) {
-            null
-        }
+    fun getTvDetailFromServer(id: String, observer: DisposableObserver<TvDetail>): DisposableObserver<TvDetail>? {
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getTvDetail(id, Constant.apiKey, Helper.languageParam())
+
+        return getFromServer(observer, observable)
+    }
+
+    fun getMovieDetailFromServer(id: String, observer: DisposableObserver<MovieDetail>): DisposableObserver<MovieDetail>? {
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getMovieDetail(id, Constant.apiKey, Helper.languageParam())
+
+        return getFromServer(observer, observable)
+    }
+
+    fun getTvCrewFromServer(id: String, observer: DisposableObserver<Credits>): DisposableObserver<Credits>? {
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getTvCrew(id, Constant.apiKey, Helper.languageParam())
+
+        return getFromServer(observer, observable)
+    }
+
+    fun getMovieCrewFromServer(id: String, observer: DisposableObserver<Credits>): DisposableObserver<Credits>? {
+        val apiService = getRetrofit().create(RestApi::class.java)
+        val observable = apiService.getMovieCrew(id, Constant.apiKey, Helper.languageParam())
+
+        return getFromServer(observer, observable)
     }
 
     @SuppressLint("LongLogTag")

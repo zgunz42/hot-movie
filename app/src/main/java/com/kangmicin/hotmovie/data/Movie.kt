@@ -1,7 +1,6 @@
 package com.kangmicin.hotmovie.data
 
 import android.os.Parcelable
-import androidx.lifecycle.ViewModel
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 import kotlin.collections.HashMap
@@ -15,7 +14,7 @@ data class Movie(
     var plot: String = "",
     var genre: List<String> = emptyList(),
     var length: Long = 0,
-    var director: Person? = null,
+    var directors: List<Person> = emptyList(),
     var release: Date = Date(),
     var rating: List<Rating> = emptyList(),
     var actors: HashMap<Person, String> = HashMap()

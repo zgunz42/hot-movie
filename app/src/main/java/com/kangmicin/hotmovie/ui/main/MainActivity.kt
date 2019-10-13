@@ -19,6 +19,12 @@ import com.kangmicin.hotmovie.utilities.InjectorUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionListener {
+
+    private lateinit var movieFactory: MoviesViewModelFactory
+    private lateinit var  tvFactory: TvsViewModelFactory
+    private lateinit var  movieModel: MoviesViewModel
+    private lateinit var  tvModel: TvsViewModel
+
     override fun appTitle(): String {
         return getString(R.string.app_name)
     }
@@ -45,10 +51,10 @@ class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val movieFactory = InjectorUtils.provideMoviesViewModelFactory()
-        val tvFactory = InjectorUtils.provideTvViewModelFactory()
-        val movieModel = ViewModelProviders.of(this, movieFactory).get(MoviesViewModel::class.java)
-        val tvModel = ViewModelProviders.of(this, tvFactory).get(TvViewModel::class.java)
+        movieFactory = InjectorUtils.provideMoviesViewModelFactory()
+        tvFactory = InjectorUtils.provideTvViewModelFactory()
+        movieModel = ViewModelProviders.of(this, movieFactory).get(MoviesViewModel::class.java)
+        tvModel = ViewModelProviders.of(this, tvFactory).get(TvsViewModel::class.java)
 
         bottom_navigation?.setOnNavigationItemSelectedListener {
             when(it.itemId) {
@@ -65,7 +71,6 @@ class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionLi
         }
 
         movieModel.getMovies().observe(this, Observer<List<Movie>> {initUi(it)})
-
         tvModel.getTvs().observe(this, Observer<List<Tv>> {initUi(it)})
 
         bottom_navigation?.selectedItemId = R.id.show_movie_menu
