@@ -95,6 +95,8 @@ class MovieDataSource private constructor(
                         for (i in 0 until movies.size) {
                             val movie = movies[i]
                             if (movie.id == id) {
+                                movie.actors.clear()
+                                movie.directors = emptyList()
                                 t.crew.forEach {
                                     if (it.job == "Director") {
                                         val director = Person("" + it.id, it.name, null)

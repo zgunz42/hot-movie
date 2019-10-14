@@ -96,7 +96,8 @@ class TvDataSource  private constructor(
                         for (i in 0 until tvs.size) {
                             val tv = tvs[i]
                             if (tv.id == id) {
-
+                                tv.actors.clear()
+                                tv.creators = emptyList()
                                 t.cast.forEach {
                                     val profileUrl = NetworkUtils.getImageUrl(
                                         it.profilePath ?: "",
