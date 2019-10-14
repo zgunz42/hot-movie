@@ -28,4 +28,13 @@ class MoviesViewModel(private val movieRepository: MovieRepository) : ViewModel(
             result
         }
     }
+
+    fun hasError(): LiveData<Boolean> {
+        return Transformations.map(movieRepository.errorEvent()) { inError ->
+            if (inError) {
+                movieRepository.clearError()
+            }
+            inError
+        }
+    }
 }

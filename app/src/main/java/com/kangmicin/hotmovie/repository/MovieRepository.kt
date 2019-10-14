@@ -25,6 +25,10 @@ class MovieRepository private constructor(
         service.fetchDiscoverMovie()
     }
 
+    fun clearError() = dao.toggleError(false)
+
+    fun errorEvent() = dao.getErrorEvent()
+
     fun fetchEvent() = dao.getFetchEvent()
 
     fun getMovies() = dao.getMovies()

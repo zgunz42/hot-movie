@@ -24,6 +24,10 @@ class TvRepository private constructor(
 
     fun getTvShows() = dao.getTvShows()
 
+    fun clearError() = dao.toggleError(false)
+
+    fun errorEvent() = dao.getErrorEvent()
+
     fun fetchEvent() = dao.getFetchEvent()
 
     fun loadServiceTv(id: Int) = service.fetchTvDetail(id)

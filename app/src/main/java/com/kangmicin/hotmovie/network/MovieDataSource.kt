@@ -30,6 +30,7 @@ class MovieDataSource private constructor(
             NetworkUtils.getDiscoverMovieFromServer(object : DisposableObserver<DiscoverMovie>() {
                 override fun onComplete() {
                     dao.toggleFetch(false)
+                    dao.toggleError(false)
                 }
 
                 override fun onNext(t: DiscoverMovie) {
@@ -41,6 +42,7 @@ class MovieDataSource private constructor(
 
                 override fun onError(e: Throwable) {
                     dao.toggleFetch(false)
+                    dao.toggleError(true)
                 }
 
             })
@@ -53,6 +55,7 @@ class MovieDataSource private constructor(
             NetworkUtils.getMovieDetailFromServer("$id", object : DisposableObserver<MovieDetail>() {
                 override fun onComplete() {
                     dao.toggleFetch(false)
+                    dao.toggleError(false)
                     Log.i("ThreadNetwork", "complete")
                 }
 
@@ -76,6 +79,7 @@ class MovieDataSource private constructor(
 
                 override fun onError(e: Throwable) {
                     dao.toggleFetch(false)
+                    dao.toggleError(true)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 
@@ -84,6 +88,7 @@ class MovieDataSource private constructor(
         appExecutors.networkIO().execute  {
             NetworkUtils.getMovieCrewFromServer("$id", object : DisposableObserver<Credits>() {
                 override fun onComplete() {
+                    dao.toggleFetch(false)
                     dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "complete")
                 }
@@ -121,6 +126,7 @@ class MovieDataSource private constructor(
 
                 override fun onError(e: Throwable) {
                     dao.toggleFetch(false)
+                    dao.toggleError(true)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 

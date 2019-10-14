@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.annotation.IdRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kangmicin.hotmovie.R
@@ -18,7 +19,10 @@ import com.kangmicin.hotmovie.ui.setting.SettingsActivity
 import com.kangmicin.hotmovie.utilities.InjectorUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionListener {
+class MainActivity : AppActivity(),
+    ListItemFragment.OnListFragmentInteractionListener,
+    InfoErrorFragment.OnFragmentInteractionListener
+{
 
     private lateinit var movieFactory: MoviesViewModelFactory
     private lateinit var  tvFactory: TvsViewModelFactory
@@ -57,30 +61,68 @@ class MainActivity : AppActivity(), ListItemFragment.OnListFragmentInteractionLi
         tvModel = ViewModelProviders.of(this, tvFactory).get(TvsViewModel::class.java)
 
         bottom_navigation?.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.show_movie_menu -> {
-                    movieModel.loadMovies()
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.show_tvshow_menu -> {
-                    tvModel.loadTvShows()
-                    return@setOnNavigationItemSelectedListener true
-                }
-                else -> return@setOnNavigationItemSelectedListener false
-            }
+            return@setOnNavigationItemSelectedListener handleMenuItemClick(it.itemId)
         }
 
         movieModel.getMovies().observe(this, Observer<List<Movie>> {initUi(it)})
         tvModel.getTvs().observe(this, Observer<List<Tv>> {initUi(it)})
 
+        movieModel.hasError().observe(this, Observer<Boolean> {
+            if (it == true) {
+                displayError()
+            }
+        })
+
+        tvModel.hasError().observe(this, Observer<Boolean> {
+            if (it == true) {
+                displayError()
+            }
+        })
+
         bottom_navigation?.selectedItemId = R.id.show_movie_menu
     }
 
+    override fun onLanguageChange() {
+        super.onLanguageChange()
+        // reset on language changed
+        handleMenuItemClick(bottom_navigation.selectedItemId)
+    }
+
+    private fun handleMenuItemClick(@IdRes it: Int): Boolean {
+        return when (it) {
+            R.id.show_movie_menu -> {
+                movieModel.loadMovies()
+                true
+            }
+            R.id.show_tvshow_menu -> {
+                tvModel.loadTvShows()
+                true
+            }
+            else -> false
+        }
+    }
+
+    override fun onRetryInteraction() {
+        handleMenuItemClick(bottom_navigation.selectedItemId)
+    }
+
+    private fun displayError() {
+        val message = getString(R.string.error_subtitle)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.main_fragment_container,
+                InfoErrorFragment.newInstance(message)
+            )
+            .commit()
+
+    }
+
     private fun initUi(data: List<Parcelable>) {
-        if(data.isEmpty()) {
-            initLoading()
-        }else {
-            initView(data)
+        when {
+            data.isEmpty() -> initLoading()
+            else -> initView(data)
         }
     }
 

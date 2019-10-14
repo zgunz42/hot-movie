@@ -3,6 +3,7 @@ package com.kangmicin.hotmovie.ui
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import java.util.*
@@ -61,9 +62,14 @@ abstract class AppActivity: AppCompatActivity() {
         return context.createConfigurationContext(mConfiguration)
     }
 
+    @CallSuper
+    open fun onLanguageChange() {
+        recreate()
+    }
+
     override fun onResume() {
         if (isChangeLanguage) {
-            recreate()
+            onLanguageChange()
         }
         super.onResume()
     }

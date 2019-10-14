@@ -29,6 +29,7 @@ class TvDataSource  private constructor(
             NetworkUtils.getDiscoverTvFromServer(object : DisposableObserver<DiscoverTv>() {
                 override fun onComplete() {
                     dao.toggleFetch(false)
+                    dao.toggleFetch(false)
                 }
 
                 override fun onNext(t: DiscoverTv) {
@@ -38,7 +39,7 @@ class TvDataSource  private constructor(
                 }
 
                 override fun onError(e: Throwable) {
-
+                    dao.toggleError(true)
                 }
 
             })
@@ -50,6 +51,7 @@ class TvDataSource  private constructor(
         appExecutors.networkIO().execute {
             NetworkUtils.getTvDetailFromServer("$id", object : DisposableObserver<TvDetail>() {
                 override fun onComplete() {
+                    dao.toggleFetch(false)
                     dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "complete")
                 }
@@ -77,6 +79,8 @@ class TvDataSource  private constructor(
                 }
 
                 override fun onError(e: Throwable) {
+                    dao.toggleFetch(false)
+                    dao.toggleError(true)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 
@@ -85,6 +89,7 @@ class TvDataSource  private constructor(
         appExecutors.networkIO().execute  {
             NetworkUtils.getTvCrewFromServer("$id", object : DisposableObserver<Credits>() {
                 override fun onComplete() {
+                    dao.toggleFetch(false)
                     dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "complete")
                 }
@@ -115,6 +120,8 @@ class TvDataSource  private constructor(
                 }
 
                 override fun onError(e: Throwable) {
+                    dao.toggleFetch(false)
+                    dao.toggleError(true)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 

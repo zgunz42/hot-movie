@@ -28,4 +28,13 @@ class TvsViewModel (private val tvShowRepository: TvRepository) : ViewModel() {
             result
         }
     }
+
+    fun hasError(): LiveData<Boolean> {
+        return Transformations.map(tvShowRepository.errorEvent()) { inError ->
+            if (inError) {
+                tvShowRepository.clearError()
+            }
+            inError
+        }
+    }
 }

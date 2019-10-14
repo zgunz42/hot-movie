@@ -35,4 +35,9 @@
         <item name="android:fontFamily">@font/roboto_condensed_bold</item>
     </style>
 
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:color">@android:color/white</item>
+    </style>
+
 </resources>

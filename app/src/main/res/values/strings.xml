@@ -33,5 +33,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error">ERROR</string>
+    <string name="error_subtitle">can\'t complete your request. Try to check your internet</string>
+    <string name="retry">Retry</string>
+    <string name="icon_erorr">Icon Erorr</string>
 
 </resources>
