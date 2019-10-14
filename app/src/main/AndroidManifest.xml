@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.kangmicin.hotmovie">
+        xmlns:dist="http://schemas.android.com/apk/distribution"
+        package="com.kangmicin.hotmovie">
 
-    <dist:module dist:instant="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <dist:module dist:instant="true" />
 
     <application
             android:allowBackup="true"
@@ -14,53 +17,55 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".SettingsActivity"
+                android:name=".ui.setting.SettingsActivity"
+                android:configChanges="locale|orientation"
                 android:label="@string/title_activity_settings"
-                android:configChanges="locale|orientation"
-                android:parentActivityName=".MainActivity">
+                android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.kangmicin.hotmovie.MainActivity"/>
+                    android:value="com.kangmicin.hotmovie.ui.main.MainActivity" />
         </activity>
         <activity
-                android:name=".TvShowActivity"
-                android:label="@string/title_activity_movie"
-                android:parentActivityName=".MainActivity"
+                android:name=".ui.detail.TvShowActivity"
                 android:configChanges="locale|orientation"
+                android:label="@string/title_activity_movie"
+                android:parentActivityName=".ui.main.MainActivity"
                 android:theme="@style/AppTheme.DetailScreen">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.kangmicin.hotmovie.MainActivity"/>
+                    android:value="com.kangmicin.hotmovie.ui.main.MainActivity" />
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
-                android:name=".MovieActivity"
-                android:label="@string/title_activity_movie"
+                android:name=".ui.detail.MovieActivity"
                 android:configChanges="locale|orientation"
-                android:parentActivityName=".MainActivity"
+                android:label="@string/title_activity_movie"
+                android:parentActivityName=".ui.main.MainActivity"
                 android:theme="@style/AppTheme.DetailScreen">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.kangmicin.hotmovie.MainActivity"/>
+                    android:value="com.kangmicin.hotmovie.ui.main.MainActivity" />
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity
+                android:configChanges="locale|orientation"
+                android:name=".ui.main.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
                 android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts"/>
+                android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

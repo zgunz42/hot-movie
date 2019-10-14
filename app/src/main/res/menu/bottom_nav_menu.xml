@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.kangmicin.hotmovie.MovieActivity">
+      tools:context="com.kangmicin.hotmovie.ui.detail.MovieActivity">
     <item android:id="@+id/show_movie_menu"
           android:icon="@drawable/ic_movie_black_24dp"
           android:title="@string/movies"/>

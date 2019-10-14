@@ -7,11 +7,10 @@
     <ImageView
             android:id="@+id/movie_actor_picture"
             tools:src="@tools:sample/avatars"
-            android:layout_width="wrap_content"
+            android:layout_width="107dp"
             android:layout_gravity="center"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_height="wrap_content"
+            android:layout_height="125dp"
+            android:scaleType="centerCrop"
             tools:ignore="ContentDescription" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
