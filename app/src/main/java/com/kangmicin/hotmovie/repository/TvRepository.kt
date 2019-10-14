@@ -5,14 +5,12 @@ import com.kangmicin.hotmovie.storage.TvShowDao
 import com.kangmicin.hotmovie.utilities.AppExecutors
 
 class TvRepository private constructor(
-    private val appExecutors: AppExecutors,
+    appExecutors: AppExecutors,
     private val dao: TvShowDao
 ){
-    val service = TvDataSource.getInstance(appExecutors, dao)
+    private val service = TvDataSource.getInstance(appExecutors, dao)
 
     companion object {
-        private const val ENDPOINT = "/discover/movie"
-
         @Volatile private var instance: TvRepository? = null
 
         fun getInstance(appExecutors: AppExecutors, dao: TvShowDao) =
@@ -26,6 +24,7 @@ class TvRepository private constructor(
 
     fun getTvShows() = dao.getTvShows()
 
+    fun fetchEvent() = dao.getFetchEvent()
 
     fun loadServiceTv(id: Int) = service.fetchTvDetail(id)
 }

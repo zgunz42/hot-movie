@@ -17,13 +17,9 @@ import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.StringRes
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
@@ -32,7 +28,6 @@ import com.kangmicin.hotmovie.data.Person
 import com.kangmicin.hotmovie.data.Rating
 import com.kangmicin.hotmovie.ui.AppActivity
 import com.kangmicin.hotmovie.utilities.Helper
-import com.kangmicin.hotmovie.utilities.Ui
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.actor_card.view.*
 import kotlinx.android.synthetic.main.content_detail.*
@@ -42,7 +37,7 @@ import java.util.*
 import kotlin.math.absoluteValue
 
 abstract class DetailActivity: AppActivity() {
-    lateinit var collapseListener: AppBarLayout.OnOffsetChangedListener
+    private lateinit var collapseListener: AppBarLayout.OnOffsetChangedListener
 
 
     override fun appTitle(): String? {
@@ -137,7 +132,7 @@ abstract class DetailActivity: AppActivity() {
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
 
         actors.forEach {
-            Log.i("actor", "actor: " + it)
+            Log.i("actor", "actor: $it")
             detail_actors.addView(makeActorView(it.value, it.key), param)
         }
     }

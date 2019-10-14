@@ -7,6 +7,7 @@ import com.kangmicin.hotmovie.data.Tv
 class TvShowDao {
     private val tvShowList = mutableListOf<Tv>()
     private val tvShows = MutableLiveData<List<Tv>>()
+    private val fetchTvEvent = MutableLiveData<Boolean>()
 
     init {
         tvShows.value = tvShowList
@@ -24,4 +25,10 @@ class TvShowDao {
     }
 
     fun getTvShows() = tvShows as LiveData<List<Tv>>
+
+    fun toggleFetch(status: Boolean) {
+        fetchTvEvent.value = status
+    }
+
+    fun getFetchEvent() = fetchTvEvent as LiveData<Boolean>
 }

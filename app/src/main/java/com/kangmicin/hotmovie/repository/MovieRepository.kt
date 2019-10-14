@@ -2,18 +2,15 @@ package com.kangmicin.hotmovie.repository
 
 import com.kangmicin.hotmovie.network.MovieDataSource
 import com.kangmicin.hotmovie.storage.MovieDao
-import com.kangmicin.hotmovie.network.poko.DiscoverMovie
 import com.kangmicin.hotmovie.utilities.AppExecutors
-import java.util.*
 
 class MovieRepository private constructor(
-    private val appExecutors: AppExecutors,
+    appExecutors: AppExecutors,
     private val dao: MovieDao
 ){
-    val service = MovieDataSource.getInstance(appExecutors, dao)
+    private val service = MovieDataSource.getInstance(appExecutors, dao)
 
     companion object {
-        private const val ENDPOINT = "/discover/movie"
 
         @Volatile private var instance: MovieRepository? = null
 
@@ -27,6 +24,8 @@ class MovieRepository private constructor(
     fun loadServiceMovies() {
         service.fetchDiscoverMovie()
     }
+
+    fun fetchEvent() = dao.getFetchEvent()
 
     fun getMovies() = dao.getMovies()
 

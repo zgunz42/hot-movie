@@ -10,7 +10,7 @@ import java.util.*
 abstract class AppActivity: AppCompatActivity() {
 
     protected var language: String? = null
-    protected var locale: Locale = Locale.getDefault()
+    private var locale: Locale = Locale.getDefault()
     private var isChangeLanguage = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

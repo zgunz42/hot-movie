@@ -31,4 +31,7 @@
     <string name="language_title">Language</string>
     <string name="no_content">Empty Content</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

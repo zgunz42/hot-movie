@@ -10,6 +10,7 @@ import com.kangmicin.hotmovie.data.Movie
 class MovieDao {
     private val movieList = mutableListOf<Movie>()
     private val movies = MutableLiveData<List<Movie>>()
+    private val fetchMovieEvent = MutableLiveData<Boolean>()
 
     init {
         movies.value = movieList
@@ -25,6 +26,12 @@ class MovieDao {
         movieList.clear()
         movies.value = emptyList()
     }
+
+    fun toggleFetch(status: Boolean) {
+        fetchMovieEvent.value = status
+    }
+
+    fun getFetchEvent() = fetchMovieEvent as LiveData<Boolean>
 
     fun getMovies() = movies as LiveData<List<Movie>>
 }

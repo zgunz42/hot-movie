@@ -5,8 +5,8 @@ import com.kangmicin.hotmovie.data.Person
 import com.kangmicin.hotmovie.network.poko.Credits
 import com.kangmicin.hotmovie.network.poko.DiscoverMovie
 import com.kangmicin.hotmovie.network.poko.MovieDetail
-import com.kangmicin.hotmovie.utilities.AppExecutors
 import com.kangmicin.hotmovie.storage.MovieDao
+import com.kangmicin.hotmovie.utilities.AppExecutors
 import io.reactivex.observers.DisposableObserver
 
 
@@ -25,10 +25,11 @@ class MovieDataSource private constructor(
 
     fun fetchDiscoverMovie() {
         dao.clearMovies()
+        dao.toggleFetch(true)
         appExecutors.networkIO().execute {
             NetworkUtils.getDiscoverMovieFromServer(object : DisposableObserver<DiscoverMovie>() {
                 override fun onComplete() {
-                    Log.i("ThreadNetwork", "complete")
+                    dao.toggleFetch(false)
                 }
 
                 override fun onNext(t: DiscoverMovie) {
@@ -39,7 +40,7 @@ class MovieDataSource private constructor(
                 }
 
                 override fun onError(e: Throwable) {
-
+                    dao.toggleFetch(false)
                 }
 
             })
@@ -47,9 +48,11 @@ class MovieDataSource private constructor(
     }
 
     fun fetchMovieDetail(id: Int) {
+        dao.toggleFetch(true)
         appExecutors.networkIO().execute {
             NetworkUtils.getMovieDetailFromServer("$id", object : DisposableObserver<MovieDetail>() {
                 override fun onComplete() {
+                    dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "complete")
                 }
 
@@ -72,6 +75,7 @@ class MovieDataSource private constructor(
                 }
 
                 override fun onError(e: Throwable) {
+                    dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 
@@ -80,6 +84,7 @@ class MovieDataSource private constructor(
         appExecutors.networkIO().execute  {
             NetworkUtils.getMovieCrewFromServer("$id", object : DisposableObserver<Credits>() {
                 override fun onComplete() {
+                    dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "complete")
                 }
 
@@ -113,6 +118,7 @@ class MovieDataSource private constructor(
                 }
 
                 override fun onError(e: Throwable) {
+                    dao.toggleFetch(false)
                     Log.i("ThreadNetwork", "" + e.localizedMessage)
                 }
 

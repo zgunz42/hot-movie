@@ -1,6 +1,7 @@
 package com.kangmicin.hotmovie.ui.main
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.kangmicin.hotmovie.data.Movie
@@ -15,8 +16,16 @@ class MoviesViewModel(private val movieRepository: MovieRepository) : ViewModel(
     fun loadMovie(id: Int) = movieRepository.loadServiceMovie(id)
 
     fun getMovie(id: Int): LiveData<Movie> {
-        return Transformations.map(getMovies()) {
-            it.single { m ->  m.id == id }
+        return Transformations.switchMap(movieRepository.fetchEvent()) {
+            val result = MediatorLiveData<Movie>()
+            result.addSource(getMovies()) {
+                it.forEach { m ->
+                    if (m.id == id) {
+                        result.value = m
+                    }
+                }
+            }
+            result
         }
     }
 }

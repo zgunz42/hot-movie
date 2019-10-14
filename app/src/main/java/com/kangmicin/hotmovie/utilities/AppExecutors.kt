@@ -25,10 +25,6 @@ class AppExecutors private constructor(
             }
     }
 
-    fun diskIO(): Executor {
-        return diskIO
-    }
-
     fun mainThread(): Executor {
         return mainThread
     }

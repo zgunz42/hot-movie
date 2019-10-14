@@ -1,11 +1,11 @@
 package com.kangmicin.hotmovie.ui.setting
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
-import com.kangmicin.hotmovie.ui.AppActivity
 import com.kangmicin.hotmovie.R
+import com.kangmicin.hotmovie.ui.AppActivity
+import com.kangmicin.hotmovie.utilities.Ui
 
 class SettingsActivity : AppActivity() {
 
@@ -32,15 +32,7 @@ class SettingsActivity : AppActivity() {
             get() {
             return SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
                 if (key == "language") {
-                    val intent = activity?.intent
-
-                    intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NO_ANIMATION)
-
-//                    activity?.recreate() // apply change
-                    activity?.overridePendingTransition(0, 0)
-                    activity?.finish()
-                    activity?.overridePendingTransition(0, 0)
-                    startActivity(intent)
+                    activity?.let { Ui.updateActivity(it) }
                 }
             }
         }
