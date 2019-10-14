@@ -29,6 +29,7 @@ data class Credits(
         val character: String,
         val name: String,
         @field:Json(name = "profile_path")
-        val profilePath: String?
+        val profilePath: String?,
+        val order: Int
     )
 }

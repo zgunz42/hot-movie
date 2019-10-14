@@ -127,11 +127,12 @@ abstract class DetailActivity: AppActivity() {
     }
 
     protected fun displayTopActor(actors: Map<Person, String>) {
+        val topActors = actors.toSortedMap(compareBy { it.order })
         val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
 
-        actors.forEach {
+        topActors.forEach {
             Log.i("actor", "actor: $it")
             detail_actors.addView(makeActorView(it.value, it.key), param)
         }

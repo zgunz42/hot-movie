@@ -7,7 +7,8 @@ import kotlinx.android.parcel.Parcelize
 class Person(
     val id: String,
     val name: String,
-    val profileUrl: String?
+    val profileUrl: String?,
+    val order: Int = 0
 ): Parcelable {
     override fun toString(): String {
         return "Person($name, $profileUrl)"

@@ -106,7 +106,7 @@ class MovieDataSource private constructor(
                                         it.profilePath ?: "",
                                         ImageSize.Small
                                     )
-                                    val actor = Person("" + it.id, it.name, profileUrl)
+                                    val actor = Person("" + it.id, it.name, profileUrl, it.order)
 
                                     movie.actors[actor] = it.character
                                 }

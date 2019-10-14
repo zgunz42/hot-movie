@@ -2,7 +2,9 @@ package com.kangmicin.hotmovie.network
 
 import android.util.Log
 import com.kangmicin.hotmovie.data.Person
-import com.kangmicin.hotmovie.network.poko.*
+import com.kangmicin.hotmovie.network.poko.Credits
+import com.kangmicin.hotmovie.network.poko.DiscoverTv
+import com.kangmicin.hotmovie.network.poko.TvDetail
 import com.kangmicin.hotmovie.storage.TvShowDao
 import com.kangmicin.hotmovie.utilities.AppExecutors
 import io.reactivex.observers.DisposableObserver
@@ -88,20 +90,21 @@ class TvDataSource  private constructor(
                 }
 
                 override fun onNext(t: Credits) {
-                    val movies = dao.getTvShows().value
+                    val tvs = dao.getTvShows().value
 
-                    if (movies != null) {
-                        for (i in 0 until movies.size) {
-                            val movie = movies[i]
-                            if (movie.id == id) {
+                    if (tvs != null) {
+                        for (i in 0 until tvs.size) {
+                            val tv = tvs[i]
+                            if (tv.id == id) {
+
                                 t.cast.forEach {
                                     val profileUrl = NetworkUtils.getImageUrl(
                                         it.profilePath ?: "",
                                         ImageSize.Small
                                     )
-                                    val actor = Person("" + it.id, it.name, profileUrl)
+                                    val actor = Person("" + it.id, it.name, profileUrl, it.order)
 
-                                    movie.actors[actor] = it.character
+                                    tv.actors[actor] = it.character
                                 }
                             }
 
