@@ -132,6 +132,7 @@ abstract class DetailActivity: AppActivity() {
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
 
+        detail_actors.removeAllViews() // clear child
         topActors.forEach {
             Log.i("actor", "actor: $it")
             detail_actors.addView(makeActorView(it.value, it.key), param)
