@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.annotation.IdRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.kangmicin.hotmovie.R
 import com.kangmicin.hotmovie.data.Movie
 import com.kangmicin.hotmovie.data.Tv
@@ -64,22 +65,52 @@ class MainActivity : AppActivity(),
             return@setOnNavigationItemSelectedListener handleMenuItemClick(it.itemId)
         }
 
-        movieModel.getMovies().observe(this, Observer<List<Movie>> {initUi(it)})
-        tvModel.getTvs().observe(this, Observer<List<Tv>> {initUi(it)})
+        movieModel.getMovies().observe(this, Observer<List<Movie>> {initView(it)})
+        tvModel.getTvs().observe(this, Observer<List<Tv>> {initView(it)})
 
-        movieModel.hasError().observe(this, Observer<Boolean> {
+        movieModel.hasLoading().observe(this,  Observer<Boolean> {
             if (it == true) {
-                displayError()
+                initLoading()
             }
-        })
+        } )
 
         tvModel.hasError().observe(this, Observer<Boolean> {
             if (it == true) {
-                displayError()
+                val tvs = tvModel.getTvs().value
+                if (tvs == null || tvs.isEmpty()) {
+                    displayError()
+                }else {
+                    initView(tvs)
+                    displayErrorMessage()
+                }
             }
         })
 
-        bottom_navigation?.selectedItemId = R.id.show_movie_menu
+        tvModel.hasLoading().observe(this,  Observer<Boolean> {
+            if (it == true) {
+                initLoading()
+            }
+        } )
+
+        movieModel.hasError().observe(this, Observer<Boolean> {
+            if (it == true) {
+                val movies = movieModel.getMovies().value
+                if (movies == null || movies.isEmpty()) {
+                    displayError()
+                }else {
+                    initView(movies)
+                    displayErrorMessage()
+                }
+            }
+        })
+
+        bottom_navigation?.selectedItemId = bottom_navigation?.selectedItemId ?: R.id.show_movie_menu
+    }
+
+    private fun displayErrorMessage() {
+        Snackbar.make(main_fragment_container, R.string.error_subtitle, Snackbar.LENGTH_LONG)
+            .setAction(R.string.retry) {handleMenuItemClick(bottom_navigation.selectedItemId)}
+            .show()
     }
 
     override fun onLanguageChange() {

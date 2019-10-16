@@ -24,7 +24,6 @@ class MovieDataSource private constructor(
     }
 
     fun fetchDiscoverMovie() {
-        dao.clearMovies()
         dao.toggleFetch(true)
         appExecutors.networkIO().execute {
             NetworkUtils.getDiscoverMovieFromServer(object : DisposableObserver<DiscoverMovie>() {
@@ -34,7 +33,7 @@ class MovieDataSource private constructor(
                 }
 
                 override fun onNext(t: DiscoverMovie) {
-                    Log.i("ThreadNetwork", "complete" + t.page)
+                    dao.clearMovies()
                     NetworkUtils.convertToMovieList(t).forEach {
                         dao.addMovie(it)
                     }

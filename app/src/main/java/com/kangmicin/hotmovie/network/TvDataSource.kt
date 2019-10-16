@@ -23,18 +23,18 @@ class TvDataSource  private constructor(
     }
 
     fun fetchDiscoverTv() {
-        dao.clearMovies()
         dao.toggleFetch(true)
         appExecutors.networkIO().execute {
             NetworkUtils.getDiscoverTvFromServer(object : DisposableObserver<DiscoverTv>() {
                 override fun onComplete() {
-                    dao.toggleFetch(false)
+                    dao.toggleError(false)
                     dao.toggleFetch(false)
                 }
 
                 override fun onNext(t: DiscoverTv) {
+                    dao.clearTvs()
                     NetworkUtils.convertToTvShowList(t).forEach {
-                        dao.addMovie(it)
+                        dao.addTvShow(it)
                     }
                 }
 

@@ -15,12 +15,12 @@ class TvShowDao {
     }
 
 
-    fun addMovie(tv: Tv) {
+    fun addTvShow(tv: Tv) {
         tvShowList.add(tv)
         tvShows.value = tvShowList
     }
 
-    fun clearMovies() {
+    fun clearTvs() {
         tvShowList.clear()
         tvShows.value = emptyList()
     }
