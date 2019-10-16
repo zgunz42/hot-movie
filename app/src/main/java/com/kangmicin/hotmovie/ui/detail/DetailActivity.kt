@@ -57,7 +57,7 @@ abstract class DetailActivity: AppActivity() {
                 // escape from idle state
                 if (preview != p1) {
                     //collapsed
-                    if (p1.absoluteValue == p0!!.totalScrollRange) {
+                    if (p1.absoluteValue == p0?.totalScrollRange) {
                         supportActionBar?.title = detail_title?.text
                         isHide = false
                     }else {

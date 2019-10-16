@@ -29,5 +29,6 @@
     <string name="error_subtitle">can\'t complete your request. Try to check your internet</string>
     <string name="retry">Retry</string>
     <string name="icon_erorr">Icon Erorr</string>
+    <string name="title_activity_movie" translatable="false">MovieActivity</string>
 
 </resources>
