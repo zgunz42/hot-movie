@@ -20,7 +20,6 @@
     <string name="creator_format"><![CDATA[
     <b>Kreator:</b>
     ]]> %1$s</string>
-    <string name="no_content">Konten Kosong</string>
     <string name="error">ERROR</string>
     <string name="error_subtitle">Tidak bisa melanjutkan permintaan. Pastikan internet dalam keadaan aktif</string>
     <string name="retry">Coba lagi</string>

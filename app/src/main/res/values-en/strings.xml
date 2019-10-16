@@ -3,8 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="head_plot">Storyline</string>
     <string name="imdb">IMDb</string>
-    <string name="rotten_tomatoes" translatable="false">Rotten Tomatoes</string>
-    <string name="metacritic" translatable="false">Metacritic</string>
     <string name="header_top_actors" translatable="false">Top Actors</string>
     <string name="movie_poster_hero" translatable="false">Movie Poster Hero</string>
     <string name="tvshow_poster" translatable="false">TvShow Poster</string>
@@ -27,7 +25,6 @@
 
     <!-- Messages Preferences -->
     <string name="language_title">Language</string>
-    <string name="no_content">Empty Content</string>
     <string name="error">ERROR</string>
     <string name="error_subtitle">can\'t complete your request. Try to check your internet</string>
     <string name="retry">Retry</string>
