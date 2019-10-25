@@ -24,10 +24,12 @@
     <string-array name="language_entries">
         <item>Indonesia</item>
         <item>English</item>
+        <item>Portuguese</item>
     </string-array>
 
     <string-array name="language_values">
         <item>in</item>
         <item>en</item>
+        <item>pt-rBR</item>
     </string-array>
 </resources>
