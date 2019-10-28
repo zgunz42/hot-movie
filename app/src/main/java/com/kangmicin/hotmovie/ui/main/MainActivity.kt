@@ -69,15 +69,15 @@ class MainActivity : AppActivity(),
         tvModel.getTvs().observe(this, Observer<List<Tv>> {initView(it)})
 
         movieModel.hasLoading().observe(this,  Observer<Boolean> {
-            if (it == true) {
+            if (it) {
                 initLoading()
             }
         } )
 
         tvModel.hasError().observe(this, Observer<Boolean> {
-            if (it == true) {
+            if (it) {
                 val tvs = tvModel.getTvs().value
-                if (tvs == null || tvs.isEmpty()) {
+                if (tvs.isNullOrEmpty()) {
                     displayError()
                 }else {
                     initView(tvs)
@@ -87,15 +87,15 @@ class MainActivity : AppActivity(),
         })
 
         tvModel.hasLoading().observe(this,  Observer<Boolean> {
-            if (it == true) {
+            if (it) {
                 initLoading()
             }
         } )
 
         movieModel.hasError().observe(this, Observer<Boolean> {
-            if (it == true) {
+            if (it) {
                 val movies = movieModel.getMovies().value
-                if (movies == null || movies.isEmpty()) {
+                if (movies.isNullOrEmpty()) {
                     displayError()
                 }else {
                     initView(movies)

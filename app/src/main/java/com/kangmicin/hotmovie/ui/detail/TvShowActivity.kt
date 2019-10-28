@@ -10,7 +10,7 @@ import com.kangmicin.hotmovie.ui.main.TvsViewModelFactory
 import com.kangmicin.hotmovie.utilities.InjectorUtils
 
 class TvShowActivity : DetailActivity() {
-    lateinit var tv: Tv
+    private lateinit var tv: Tv
     private lateinit var tvFactory: TvsViewModelFactory
     private lateinit var tvModel: TvsViewModel
 
@@ -27,7 +27,7 @@ class TvShowActivity : DetailActivity() {
         tv = intent.getParcelableExtra(TV_SHOW_KEY)
 
         tvModel.getTv(tv.id).observe(this, Observer<Tv> {
-            if (it != null) {
+            it?.let {
                 initDisplay(it)
             }
         })

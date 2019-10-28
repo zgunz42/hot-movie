@@ -24,4 +24,5 @@
     <string name="error_subtitle">Tidak bisa melanjutkan permintaan. Pastikan internet dalam keadaan aktif</string>
     <string name="retry">Coba lagi</string>
     <string name="icon_erorr">Ikon Erorr</string>
+    <string name="app_name" translatable="false">Hot Movie</string>
 </resources>

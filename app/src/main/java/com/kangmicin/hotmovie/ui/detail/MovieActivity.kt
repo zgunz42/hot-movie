@@ -10,7 +10,7 @@ import com.kangmicin.hotmovie.ui.main.MoviesViewModelFactory
 import com.kangmicin.hotmovie.utilities.InjectorUtils
 
 class MovieActivity : DetailActivity() {
-    lateinit var movie: Movie
+    private lateinit var movie: Movie
     private lateinit var movieFactory: MoviesViewModelFactory
     private lateinit var movieModel: MoviesViewModel
 
@@ -29,7 +29,7 @@ class MovieActivity : DetailActivity() {
         movieModel.loadMovie(movie.id)
 
         movieModel.getMovie(movie.id).observe(this, Observer<Movie> {
-            if (it != null) {
+            it?.let {
                 initDisplay(it)
             }
         })

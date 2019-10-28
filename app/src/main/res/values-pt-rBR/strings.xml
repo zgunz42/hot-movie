@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hot Movie</string>
+    <string name="action_settings">Configurações</string>
+    <string name="creator_format"><![CDATA[     <b>Creator:</b>     ]]> %1$s</string>
+    <string name="date_format">%1$dh %2$dm</string>
+    <string name="director_format"><![CDATA[     <b>Producer:</b>     ]]> %1$s</string>
+    <string name="error">ERRO</string>
+    <string name="error_subtitle">não podemos completar a sua requisição. Verifique a sua internet</string>
+    <string name="display_header">Comum</string>
+    <string name="head_plot">Enredo</string>
+    <string name="header_top_actors" translatable="false">Top Atores</string>
+    <string name="icon_erorr">Erro no Ícone</string>
+    <string name="imdb" translatable="false">IMDb</string>
+    <string name="language_title">Idioma</string>
+    <string name="movie_poster">Poster do Filme</string>
+    <string name="movie_poster_hero" translatable="false">Poster do Filme de Herói</string>
+    <string name="movies" translatable="false">Filmes</string>
+    <string name="release_format"><![CDATA[     <b>Release Date:</b>     ]]> %1$s</string>
+    <string name="retry">Tentar novamente</string>
+    <string name="title_activity_movie" translatable="false">MovieActivity</string>
+    <string name="title_activity_settings" translatable="false">Configurações</string>
+    <string name="tv_show">Série</string>
+    <string name="tvshow_poster" translatable="false">Poster da Série</string>
+</resources>

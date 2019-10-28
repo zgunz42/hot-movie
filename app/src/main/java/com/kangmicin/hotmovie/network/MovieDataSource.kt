@@ -62,12 +62,11 @@ class MovieDataSource private constructor(
                     val movies = dao.getMovies().value
 
                     if (movies != null) {
-                        for (i in 0 until movies.size) {
-                            val movie = movies[i]
-                            if (movie.id == id) {
-                                movie.length = t.runtime + 0L
+                        for (element in movies) {
+                            if (element.id == id) {
+                                element.length = t.runtime + 0L
                                 t.genres.forEach { m ->
-                                    movie.genre = movie.genre + m.name
+                                    element.genre = element.genre + m.name
                                 }
                             }
 
@@ -96,15 +95,14 @@ class MovieDataSource private constructor(
                     val movies = dao.getMovies().value
 
                     if (movies != null) {
-                        for (i in 0 until movies.size) {
-                            val movie = movies[i]
-                            if (movie.id == id) {
-                                movie.actors.clear()
-                                movie.directors = emptyList()
+                        for (element in movies) {
+                            if (element.id == id) {
+                                element.actors.clear()
+                                element.directors = emptyList()
                                 t.crew.forEach {
                                     if (it.job == "Director") {
                                         val director = Person("" + it.id, it.name, null)
-                                        movie.directors = movie.directors + director
+                                        element.directors = element.directors + director
                                     }
                                 }
                                 t.cast.forEach {
@@ -114,7 +112,7 @@ class MovieDataSource private constructor(
                                     )
                                     val actor = Person("" + it.id, it.name, profileUrl, it.order)
 
-                                    movie.actors[actor] = it.character
+                                    element.actors[actor] = it.character
                                 }
                             }
 
