@@ -33,11 +33,13 @@ class MainModule {
             Executors.newFixedThreadPool(3))
     }
 
+    @Singleton
     @Provides
     internal fun provideMovieRepository(executors: AppExecutors, dao: MovieDAO, webClient: WebClient): MovieRepository {
         return MovieRepository(executors, dao, webClient)
     }
 
+    @Singleton
     @Provides
     internal fun provideTvRepository(executors: AppExecutors, dao: TvDAO, webClient: WebClient): TvRepository {
         return TvRepository(executors, dao, webClient)

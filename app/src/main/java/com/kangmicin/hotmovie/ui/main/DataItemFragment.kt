@@ -12,14 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.kangmicin.hotmovie.R
 import com.kangmicin.hotmovie.data.entity.DisplayData
-import com.kangmicin.hotmovie.data.entity.Movie
 import com.kangmicin.hotmovie.databinding.CollectionItemBinding
-import com.kangmicin.hotmovie.ui.detail.DetailActivity
 import com.kangmicin.hotmovie.utilities.Helper
 import dagger.android.support.DaggerFragment
 import io.reactivex.disposables.Disposable
 
-abstract class DataItemFragment : DaggerFragment() {
+abstract class DataItemFragment<T> : DaggerFragment() {
     lateinit var binding: CollectionItemBinding
     private lateinit var mAdapter: ListItemAdapter
 
@@ -49,14 +47,13 @@ abstract class DataItemFragment : DaggerFragment() {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     private val clickListener = View.OnClickListener {
-        val movie = it.tag as Movie
-        val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("id", movie.id)
-        //TODO: Enum and Dynamic
-        intent.putExtra("type", "movie")
+        val intent = startDetail(it.tag as T)
         activity?.startActivity(intent)
     }
+
+    abstract fun startDetail(t: T): Intent
 
     inner class Handler {
         @Suppress("UNUSED_PARAMETER")

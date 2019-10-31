@@ -1,7 +1,9 @@
 package com.kangmicin.hotmovie.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.kangmicin.hotmovie.utilities.AppExecutors
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -20,9 +22,20 @@ abstract class Repository<T, S, D>(
         mItems.postValue(items)
     }
 
-//    fun clearItems() {
-//        mItemList.clear()
-//    }
+    fun getItem(id: Long): LiveData<T> {
+        // do prefetch
+        return Transformations.switchMap(mItems){
+            val target = MediatorLiveData<T>()
+            if (it != null) {
+                val item = getItemId(id, it)
+                if (item != null) {
+                    target.value = item
+                }
+            }
+
+            return@switchMap target
+        }
+    }
 
     private fun doFetchSourceItems() {
         executors.networkIO().execute {
@@ -60,6 +73,8 @@ abstract class Repository<T, S, D>(
             }
         }
     }
+
+    abstract fun getItemId(id: Long, data: List<T>): T?
 
     abstract fun fetchLocale(): List<T>
 

@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class TvsViewModel @Inject constructor(private val tvShowRepository: TvRepository) : ViewModel() {
     fun getTvs() = tvShowRepository.getItems()
-    fun loadTv(id: Long) {}
+    fun loadTv(id: Long) = tvShowRepository.getItem(id)
 }

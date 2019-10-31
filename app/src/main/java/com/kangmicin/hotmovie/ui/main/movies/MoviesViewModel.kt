@@ -6,7 +6,5 @@ import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
     fun getMovies() = movieRepository.getItems()
-    fun loadMovie(id: Long) {
-
-    }
+    fun loadMovie(id: Long) = movieRepository.getItem(id)
 }

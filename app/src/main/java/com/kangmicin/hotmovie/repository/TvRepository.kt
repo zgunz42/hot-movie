@@ -14,6 +14,18 @@ class TvRepository @Inject constructor(
     private val dao: TvDAO,
     private val webClient: WebClient
 ): Repository<Tv, DiscoverTv, TvDetail>(executors) {
+
+    override fun getItemId(id: Long, data: List<Tv>): Tv? {
+        var tv: Tv? = null
+        data.forEach {
+            if (it.id == id) {
+                tv = it
+            }
+        }
+
+        return tv
+    }
+
     override fun fetchLocale() = dao.getAll()
 
     override fun fetchItemSource(observer: DisposableSingleObserver<DiscoverTv>) {

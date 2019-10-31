@@ -1,16 +1,19 @@
 package com.kangmicin.hotmovie.ui.detail
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.kangmicin.hotmovie.R
 import com.kangmicin.hotmovie.data.entity.Movie
 import com.kangmicin.hotmovie.ui.main.movies.MoviesViewModel
-import com.kangmicin.hotmovie.utilities.ViewModelProviderFactory
+import javax.inject.Inject
 
 class MovieActivity : DetailActivity() {
-    lateinit var movie: Movie
-    private lateinit var movieFactory: ViewModelProviderFactory<MoviesViewModel>
-    private lateinit var movieModel: MoviesViewModel
+//    lateinit var movie: Movie
+
+    @Inject
+    internal lateinit var factory: ViewModelProvider.Factory
 
     companion object {
         const val MOVIE_KEY = "MOVIE"
@@ -18,19 +21,14 @@ class MovieActivity : DetailActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val id = intent.getLongExtra(MOVIE_KEY, 0)
+        val movieModel = ViewModelProviders.of(this, factory).get(MoviesViewModel::class.java)
 
-        movieModel = ViewModelProviders.of(this, movieFactory).get(MoviesViewModel::class.java)
-
-        movie = intent.getParcelableExtra(MOVIE_KEY)
-
-        movieModel.loadMovie(movie.id)
-
-//        movieModel.getMovie(movie.id).observe(this, Observer<Movie> {
-//            if (it != null) {
-//                initDisplay(it)
-//            }
-//        })
-        initDisplay(movie)
+        movieModel.loadMovie(id).observe(this, Observer {
+            if (it.id == id) {
+                initDisplay(it)
+            }
+        })
     }
 
     private  fun initDisplay(movie: Movie) {

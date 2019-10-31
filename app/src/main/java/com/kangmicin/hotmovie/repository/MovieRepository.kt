@@ -14,6 +14,18 @@ class MovieRepository @Inject constructor(
     private val dao: MovieDAO,
     private val webClient: WebClient
 ): Repository<Movie, DiscoverMovie, MovieDetail>(executors){
+
+    override fun getItemId(id: Long, data: List<Movie>): Movie? {
+        var movie: Movie? = null
+        data.forEach {
+            if (it.id == id) {
+                movie = it
+            }
+        }
+
+        return movie
+    }
+
     override fun fetchLocale() = dao.getAll()
 
     override fun fetchItemSource(observer: DisposableSingleObserver<DiscoverMovie>) {

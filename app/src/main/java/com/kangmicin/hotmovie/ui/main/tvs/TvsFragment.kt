@@ -1,5 +1,6 @@
 package com.kangmicin.hotmovie.ui.main.tvs
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,19 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.kangmicin.hotmovie.data.entity.DisplayData
+import com.kangmicin.hotmovie.data.entity.Tv
+import com.kangmicin.hotmovie.ui.detail.TvShowActivity
 import com.kangmicin.hotmovie.ui.main.DataItemFragment
 import com.kangmicin.hotmovie.ui.main.movies.MoviesFragment
 import javax.inject.Inject
 
-class TvsFragment : DataItemFragment() {
+class TvsFragment : DataItemFragment<Tv>() {
+    override fun startDetail(t: Tv): Intent {
+        val intent = Intent(this.activity, TvShowActivity::class.java)
+        intent.putExtra(TvShowActivity.TV_SHOW_KEY, t.id)
+        return intent
+    }
+
     override fun initData(): LiveData<List<DisplayData>> {
         return Transformations.map(viewModel.getTvs()){ it as List<DisplayData> }
     }
@@ -31,7 +40,9 @@ class TvsFragment : DataItemFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this, factory).get(TvsViewModel::class.java)
+        activity?.run {
+            viewModel = ViewModelProviders.of(this, factory).get(TvsViewModel::class.java)
+        }
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 }
