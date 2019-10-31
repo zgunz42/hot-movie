@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-        <TextView
-                android:id="@+id/rating_amount"
-                style="@style/AppTheme.Rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <TextView
-                android:id="@+id/rating_tag"
-                android:text="@string/imdb"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <data>
+                <variable
+                        name="rating"
+                        type="com.kangmicin.hotmovie.data.entity.Rating" />
+        </data>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/rating_amount"
+                        android:text="@{rating.amount}"
+                        style="@style/AppTheme.Rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                <TextView
+                        android:id="@+id/rating_tag"
+                        android:text="@{rating.source}"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+        </LinearLayout>
+</layout>

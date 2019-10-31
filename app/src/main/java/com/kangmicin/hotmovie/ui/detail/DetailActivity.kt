@@ -24,8 +24,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.R
-import com.kangmicin.hotmovie.data.Person
-import com.kangmicin.hotmovie.data.Rating
+import com.kangmicin.hotmovie.data.entity.Person
+import com.kangmicin.hotmovie.data.entity.Rating
 import com.kangmicin.hotmovie.ui.AppActivity
 import com.kangmicin.hotmovie.utilities.Helper
 import kotlinx.android.synthetic.main.activity_detail.*

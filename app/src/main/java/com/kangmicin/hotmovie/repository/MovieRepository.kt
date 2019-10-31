@@ -1,39 +1,32 @@
 package com.kangmicin.hotmovie.repository
 
-import com.kangmicin.hotmovie.network.MovieDataSource
-import com.kangmicin.hotmovie.storage.MovieDao
+import com.kangmicin.hotmovie.data.core.MovieDAO
+import com.kangmicin.hotmovie.data.entity.Movie
+import com.kangmicin.hotmovie.network.WebClient
+import com.kangmicin.hotmovie.network.poko.DiscoverMovie
+import com.kangmicin.hotmovie.network.poko.MovieDetail
 import com.kangmicin.hotmovie.utilities.AppExecutors
+import io.reactivex.observers.DisposableSingleObserver
+import javax.inject.Inject
 
-class MovieRepository private constructor(
-    appExecutors: AppExecutors,
-    private val dao: MovieDao
-){
-    private val service = MovieDataSource.getInstance(appExecutors, dao)
+class MovieRepository @Inject constructor(
+    executors: AppExecutors,
+    private val dao: MovieDAO,
+    private val webClient: WebClient
+): Repository<Movie, DiscoverMovie, MovieDetail>(executors){
+    override fun fetchLocale() = dao.getAll()
 
-    companion object {
-
-        @Volatile private var instance: MovieRepository? = null
-
-        fun getInstance(appExecutors: AppExecutors, dao: MovieDao) =
-            instance ?: synchronized(this) {
-                instance
-                    ?: MovieRepository(appExecutors, dao).also { instance = it }
-            }
+    override fun fetchItemSource(observer: DisposableSingleObserver<DiscoverMovie>) {
+        webClient.getDiscoverMovieFromServer(observer)
     }
 
-    fun loadServiceMovies() {
-        service.fetchDiscoverMovie()
+    override fun onDataFetched(target: List<Movie>) {
+        dao.insertMovies(*target.toTypedArray())
     }
 
-    fun clearError() = dao.toggleError(false)
-
-    fun errorEvent() = dao.getErrorEvent()
-
-    fun fetchEvent() = dao.getFetchEvent()
-
-    fun getMovies() = dao.getMovies()
-
-    fun loadServiceMovie(id: Int) {
-        service.fetchMovieDetail(id)
+    override fun fromSource(to: DiscoverMovie): MutableList<Movie> {
+        return webClient.convertToMovieList(to)
     }
+
+    override fun fromDetail(from: Movie, to: MovieDetail) {}
 }

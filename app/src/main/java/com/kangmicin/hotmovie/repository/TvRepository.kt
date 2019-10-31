@@ -1,34 +1,31 @@
 package com.kangmicin.hotmovie.repository
 
-import com.kangmicin.hotmovie.network.TvDataSource
-import com.kangmicin.hotmovie.storage.TvShowDao
+import com.kangmicin.hotmovie.data.core.TvDAO
+import com.kangmicin.hotmovie.data.entity.Tv
+import com.kangmicin.hotmovie.network.WebClient
+import com.kangmicin.hotmovie.network.poko.DiscoverTv
+import com.kangmicin.hotmovie.network.poko.TvDetail
 import com.kangmicin.hotmovie.utilities.AppExecutors
+import io.reactivex.observers.DisposableSingleObserver
+import javax.inject.Inject
 
-class TvRepository private constructor(
-    appExecutors: AppExecutors,
-    private val dao: TvShowDao
-){
-    private val service = TvDataSource.getInstance(appExecutors, dao)
+class TvRepository @Inject constructor(
+    executors: AppExecutors,
+    private val dao: TvDAO,
+    private val webClient: WebClient
+): Repository<Tv, DiscoverTv, TvDetail>(executors) {
+    override fun fetchLocale() = dao.getAll()
 
-    companion object {
-        @Volatile private var instance: TvRepository? = null
-
-        fun getInstance(appExecutors: AppExecutors, dao: TvShowDao) =
-            instance ?: synchronized(this) {
-                instance
-                    ?: TvRepository(appExecutors, dao).also { instance = it }
-            }
+    override fun fetchItemSource(observer: DisposableSingleObserver<DiscoverTv>) {
+        webClient.getDiscoverTvFromServer(observer)
     }
 
-    fun loadServiceTvShow() = service.fetchDiscoverTv()
+    override fun onDataFetched(target: List<Tv>) {
+        dao.insertTvs(*target.toTypedArray())
+    }
 
-    fun getTvShows() = dao.getTvShows()
-
-    fun clearError() = dao.toggleError(false)
-
-    fun errorEvent() = dao.getErrorEvent()
-
-    fun fetchEvent() = dao.getFetchEvent()
-
-    fun loadServiceTv(id: Int) = service.fetchTvDetail(id)
+    override fun fromSource(to: DiscoverTv): MutableList<Tv> {
+        return webClient.convertToTvShowList(to)
+    }
+    override fun fromDetail(from: Tv, to: TvDetail) {}
 }

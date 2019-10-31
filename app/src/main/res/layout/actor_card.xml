@@ -1,47 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <ImageView
-            android:id="@+id/movie_actor_picture"
-            tools:src="@tools:sample/avatars"
-            android:layout_width="107dp"
-            android:layout_gravity="center"
-            android:layout_height="125dp"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-            android:id="@+id/movie_actor_name"
-            android:paddingLeft="8dp"
-            android:gravity="center"
-            android:paddingRight="8dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textColor="#000"
-            tools:text="@sample/movie_title"
-            android:textStyle="bold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/movie_actor_picture"
-            app:layout_constraintEnd_toEndOf="@+id/movie_actor_picture"
-            app:layout_constraintStart_toStartOf="@+id/movie_actor_picture" android:layout_marginTop="16dp"
-    />
-    <TextView
-            android:id="@+id/movie_actor_role"
-            android:paddingLeft="@dimen/content_spacing"
-            android:paddingRight="@dimen/content_spacing"
-            android:maxLines="2"
-            android:textColor="#444"
-            android:ellipsize="end"
-            android:gravity="center"
-            tools:text="@sample/movie_title"
-            android:layout_width="0dp"
-            android:lines="2"
-            android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/movie_actor_name"
-            android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="@+id/movie_actor_picture"
-            app:layout_constraintStart_toStartOf="@+id/movie_actor_picture"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="role"
+                type="String" />
+        <variable
+                name="person"
+                type="com.kangmicin.hotmovie.data.entity.Person" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/movie_actor_picture"
+                tools:src="@tools:sample/avatars"
+                android:layout_width="107dp"
+                android:layout_gravity="center"
+                android:layout_height="125dp"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:glideImage="@{person.profileUrl}"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/movie_actor_name"
+                android:paddingLeft="8dp"
+                android:gravity="center"
+                android:paddingRight="8dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textColor="#000"
+                tools:text="@{person.name}"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/movie_actor_picture"
+                app:layout_constraintEnd_toEndOf="@+id/movie_actor_picture"
+                app:layout_constraintStart_toStartOf="@+id/movie_actor_picture"
+                android:layout_marginTop="16dp" />
+
+        <TextView
+                android:id="@+id/movie_actor_role"
+                android:paddingLeft="@dimen/content_spacing"
+                android:paddingRight="@dimen/content_spacing"
+                android:maxLines="2"
+                android:textColor="#444"
+                android:ellipsize="end"
+                android:gravity="center"
+                tools:text="@{role}"
+                android:layout_width="0dp"
+                android:lines="2"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/movie_actor_name"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/movie_actor_picture"
+                app:layout_constraintStart_toStartOf="@+id/movie_actor_picture" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

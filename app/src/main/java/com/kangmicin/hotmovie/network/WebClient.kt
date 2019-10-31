@@ -2,47 +2,29 @@ package com.kangmicin.hotmovie.network
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.kangmicin.hotmovie.data.Movie
-import com.kangmicin.hotmovie.data.Tv
+import com.kangmicin.hotmovie.data.entity.Movie
+import com.kangmicin.hotmovie.data.entity.Tv
 import com.kangmicin.hotmovie.network.poko.*
 import com.kangmicin.hotmovie.utilities.Constant
 import com.kangmicin.hotmovie.utilities.Helper
-import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
-import okhttp3.logging.HttpLoggingInterceptor
+import javax.inject.Inject
 
+// TODO: mark to remove
+class WebClient @Inject constructor(
+    private val api: WebApi,
+    private val retrofit: Retrofit) {
 
-
-
-object NetworkUtils {
-
-    private fun getRetrofit(): Retrofit {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BASIC
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
-
-        return Retrofit.Builder()
-            .baseUrl(Constant.baseUrl)
-            .client(client)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
-
-    }
-
-    fun getImageUrl(id: String, size: ImageSize): String {
+    private fun getImageUrl(id: String, size: ImageSize): String {
         return Constant.ImageUrl + size.value + id
     }
 
     @SuppressLint("LongLogTag")
-    fun <T> getFromServer(observer: DisposableObserver<T>, observable: Observable<T>): DisposableObserver<T>? {
+    fun <T> getFromServer(observer: DisposableSingleObserver<T>, observable: Single<T>): DisposableSingleObserver<T>? {
         return try {
             observable
                 .subscribeOn(Schedulers.io())
@@ -55,44 +37,36 @@ object NetworkUtils {
         }
     }
 
-    fun getDiscoverMovieFromServer(observer: DisposableObserver<DiscoverMovie>): DisposableObserver<DiscoverMovie>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getDiscoverMovie(Constant.apiKey, Helper.languageParam())
+    fun getDiscoverMovieFromServer(observer: DisposableSingleObserver<DiscoverMovie>): DisposableSingleObserver<DiscoverMovie>? {
+        val observable = api.getDiscoverMovie(Constant.apiKey, Helper.languageParam())
+        return getFromServer(observer, observable)
+    }
+
+    fun getDiscoverTvFromServer(observer: DisposableSingleObserver<DiscoverTv>): DisposableSingleObserver<DiscoverTv>? {
+        val observable = api.getDiscoverTv(Constant.apiKey, Helper.languageParam())
+        return getFromServer(observer, observable)
+    }
+
+    fun getTvDetailFromServer(id: String, observer: DisposableSingleObserver<TvDetail>): DisposableSingleObserver<TvDetail>? {
+        val observable = api.getTvDetail(id, Constant.apiKey, Helper.languageParam())
+        return getFromServer(observer, observable)
+    }
+
+    fun getMovieDetailFromServer(id: String, observer: DisposableSingleObserver<MovieDetail>): DisposableSingleObserver<MovieDetail>? {
+        val observable = api.getMovieDetail(id, Constant.apiKey, Helper.languageParam())
+        return getFromServer(observer, observable)
+    }
+
+    fun getTvCrewFromServer(id: String, observer: DisposableSingleObserver<Credits>): DisposableSingleObserver<Credits>? {
+        
+        val observable = api.getTvCrew(id, Constant.apiKey, Helper.languageParam())
 
         return getFromServer(observer, observable)
     }
 
-    fun getDiscoverTvFromServer(observer: DisposableObserver<DiscoverTv>): DisposableObserver<DiscoverTv>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getDiscoverTv(Constant.apiKey, Helper.languageParam())
-
-        return getFromServer(observer, observable)
-    }
-
-    fun getTvDetailFromServer(id: String, observer: DisposableObserver<TvDetail>): DisposableObserver<TvDetail>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getTvDetail(id, Constant.apiKey, Helper.languageParam())
-
-        return getFromServer(observer, observable)
-    }
-
-    fun getMovieDetailFromServer(id: String, observer: DisposableObserver<MovieDetail>): DisposableObserver<MovieDetail>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getMovieDetail(id, Constant.apiKey, Helper.languageParam())
-
-        return getFromServer(observer, observable)
-    }
-
-    fun getTvCrewFromServer(id: String, observer: DisposableObserver<Credits>): DisposableObserver<Credits>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getTvCrew(id, Constant.apiKey, Helper.languageParam())
-
-        return getFromServer(observer, observable)
-    }
-
-    fun getMovieCrewFromServer(id: String, observer: DisposableObserver<Credits>): DisposableObserver<Credits>? {
-        val apiService = getRetrofit().create(RestApi::class.java)
-        val observable = apiService.getMovieCrew(id, Constant.apiKey, Helper.languageParam())
+    fun getMovieCrewFromServer(id: String, observer: DisposableSingleObserver<Credits>): DisposableSingleObserver<Credits>? {
+        
+        val observable = api.getMovieCrew(id, Constant.apiKey, Helper.languageParam())
 
         return getFromServer(observer, observable)
     }
@@ -108,8 +82,8 @@ object NetworkUtils {
                 Log.i("ThreadNetwork", result.posterPath + ":" + result.title + ":" + result.backdropPath)
                 val posterUrl = getImageUrl(result.posterPath, ImageSize.Small)
                 val backdropUrl = getImageUrl(result.backdropPath, ImageSize.Medium)
-                val movie = Movie(result.id)
-                movie.title = result.title
+                val movie = Movie(result.id + 0L, language = Helper.languageParam())
+                movie.name = result.title
                 movie.backdrop = backdropUrl
                 movie.poster = posterUrl
                 movie.plot = result.overview
@@ -133,7 +107,7 @@ object NetworkUtils {
             for (i in 0 until results.size) {
                 val result = results[i]
                 val posterUrl = getImageUrl(result.posterPath, ImageSize.Small)
-                val tvShow = Tv(result.id)
+                val tvShow = Tv(result.id + 0L, language = Helper.languageParam())
                 val backdropUrl = getImageUrl(result.backdropPath, ImageSize.Medium)
                 tvShow.name = result.name
                 tvShow.backdrop = backdropUrl

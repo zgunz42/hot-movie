@@ -6,4 +6,5 @@
     <color name="colorTitleSpan">#CBFFFFFF</color>
     <color name="colorAccent">#D81B60</color>
     <color name="image_hero_filter_color">#50000000</color>
+    <color name="iconInactiveColor">#f4f4f4</color>
 </resources>

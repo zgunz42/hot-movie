@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.CallSuper
-import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import dagger.android.support.DaggerAppCompatActivity
 import java.util.*
 
-abstract class AppActivity: AppCompatActivity() {
+abstract class AppActivity: DaggerAppCompatActivity() {
 
     protected var language: String? = null
     private var locale: Locale = Locale.getDefault()

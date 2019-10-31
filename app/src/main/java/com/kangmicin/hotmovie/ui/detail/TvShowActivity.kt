@@ -1,17 +1,15 @@
 package com.kangmicin.hotmovie.ui.detail
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kangmicin.hotmovie.R
-import com.kangmicin.hotmovie.data.Tv
-import com.kangmicin.hotmovie.ui.main.TvsViewModel
-import com.kangmicin.hotmovie.ui.main.TvsViewModelFactory
-import com.kangmicin.hotmovie.utilities.InjectorUtils
+import com.kangmicin.hotmovie.data.entity.Tv
+import com.kangmicin.hotmovie.ui.main.tvs.TvsViewModel
+import com.kangmicin.hotmovie.utilities.ViewModelProviderFactory
 
 class TvShowActivity : DetailActivity() {
     lateinit var tv: Tv
-    private lateinit var tvFactory: TvsViewModelFactory
+    private lateinit var tvFactory: ViewModelProviderFactory<TvsViewModel>
     private lateinit var tvModel: TvsViewModel
 
     companion object {
@@ -21,16 +19,15 @@ class TvShowActivity : DetailActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tvFactory = InjectorUtils.provideTvViewModelFactory()
         tvModel = ViewModelProviders.of(this, tvFactory).get(TvsViewModel::class.java)
 
         tv = intent.getParcelableExtra(TV_SHOW_KEY)
 
-        tvModel.getTv(tv.id).observe(this, Observer<Tv> {
-            if (it != null) {
-                initDisplay(it)
-            }
-        })
+//        tvModel.getTv(tv.id).observe(this, Observer<Tv> {
+//            if (it != null) {
+//                initDisplay(it)
+//            }
+//        })
 
         tvModel.loadTv(tv.id)
 
