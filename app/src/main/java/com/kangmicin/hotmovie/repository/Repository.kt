@@ -9,12 +9,7 @@ abstract class Repository<T, S, D>(
     private val executors: AppExecutors
 ) {
 
-    private val mItemList = mutableListOf<T>()
     private val mItems = MutableLiveData<List<T>>()
-
-    init {
-        mItems.value = mItemList
-    }
 
     fun getItems(): LiveData<List<T>> {
         doFetchSourceItems()
@@ -22,14 +17,12 @@ abstract class Repository<T, S, D>(
     }
 
     fun addItems(items:List<T>) {
-        mItemList.addAll(items)
         mItems.postValue(items)
     }
 
-    fun clearItems() {
-        mItemList.clear()
-        mItems.postValue(emptyList())
-    }
+//    fun clearItems() {
+//        mItemList.clear()
+//    }
 
     private fun doFetchSourceItems() {
         executors.networkIO().execute {
@@ -60,7 +53,7 @@ abstract class Repository<T, S, D>(
             val items = fetchLocale()
 
             if (items.isNotEmpty()) {
-                clearItems()
+//                clearItems()
                 addItems(items)
             }else {
                 doFetchSourceItems()

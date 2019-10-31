@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.kangmicin.hotmovie.R
 import com.kangmicin.hotmovie.data.entity.DisplayData
 import com.kangmicin.hotmovie.data.entity.Movie
@@ -68,6 +69,9 @@ abstract class DataItemFragment : DaggerFragment() {
 
     fun getData() {
         disposable = Helper.hasInternetConnection().doOnSuccess {
+            if (it == false) {
+                displaySnackError()
+            }
             initData().observe(this, Observer { data ->
                 if (data?.isNotEmpty() == true) {
                     binding.progressBar.visibility = View.GONE
@@ -81,6 +85,12 @@ abstract class DataItemFragment : DaggerFragment() {
         }.doOnError {
             showNoInternet()
         }.subscribe()
+    }
+
+    private fun displaySnackError() {
+        Snackbar.make(binding.container, R.string.error_subtitle, Snackbar.LENGTH_LONG)
+            .setAction(R.string.tap_to_retry) {Handler()}
+            .show()
     }
 
     abstract fun initData(): LiveData<List<DisplayData>>

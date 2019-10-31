@@ -71,6 +71,7 @@ class MainActivity : AppActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         binding.bottomNavigation.selectedItemId = bottom_navigation?.selectedItemId ?: R.id.show_movie_menu
+        setSupportActionBar(binding.toolbar)
     }
 
     override fun onLanguageChange() {
