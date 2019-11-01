@@ -17,7 +17,7 @@ object BindingAdapters {
     @BindingAdapter("glideImage")
     fun loadImage(view: ImageView, imageUrl: String) {
 
-        val placeholder = ColorDrawable(Color.GRAY)
+        val placeholder = view.drawable ?: ColorDrawable(Color.GRAY)
         Glide.with(view.context)
             .load(imageUrl)
             .placeholder(placeholder)

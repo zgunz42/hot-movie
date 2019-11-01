@@ -19,7 +19,7 @@ class WebClient @Inject constructor(
     private val api: WebApi,
     private val retrofit: Retrofit) {
 
-    private fun getImageUrl(id: String, size: ImageSize): String {
+    fun getImageUrl(id: String, size: ImageSize): String {
         return Constant.ImageUrl + size.value + id
     }
 

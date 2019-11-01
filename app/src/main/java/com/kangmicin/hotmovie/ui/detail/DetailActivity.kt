@@ -19,6 +19,7 @@ import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.core.text.HtmlCompat
 import androidx.core.view.updatePadding
+import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -26,10 +27,10 @@ import com.google.android.material.appbar.AppBarLayout
 import com.kangmicin.hotmovie.R
 import com.kangmicin.hotmovie.data.entity.Person
 import com.kangmicin.hotmovie.data.entity.Rating
+import com.kangmicin.hotmovie.databinding.ActorCardBinding
 import com.kangmicin.hotmovie.ui.AppActivity
 import com.kangmicin.hotmovie.utilities.Helper
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.actor_card.view.*
 import kotlinx.android.synthetic.main.content_detail.*
 import kotlinx.android.synthetic.main.review_item.view.*
 import java.text.SimpleDateFormat
@@ -121,13 +122,13 @@ abstract class DetailActivity: AppActivity() {
         val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
-        genres.forEach {
+        setOf(*genres.toTypedArray()).filter { it.isNotEmpty() }.forEach {
             detail_genres.addView(makeGenreView(it), param)
         }
     }
 
-    protected fun displayTopActor(actors: Map<Person, String>) {
-        val topActors = actors.toSortedMap(compareBy { it.order })
+    protected fun displayTopActor(actors: Map<String, Person>) {
+        val topActors = actors.toSortedMap(compareBy { actors[it]?.order })
         val param = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         param.gravity = Gravity.START
         param.marginEnd = resources.getDimensionPixelSize(R.dimen.content_spacing)
@@ -135,7 +136,7 @@ abstract class DetailActivity: AppActivity() {
         detail_actors.removeAllViews() // clear child
         topActors.forEach {
             Log.i("actor", "actor: $it")
-            detail_actors.addView(makeActorView(it.value, it.key), param)
+            detail_actors.addView(makeActorView(it.key, it.value), param)
         }
     }
 
@@ -146,30 +147,21 @@ abstract class DetailActivity: AppActivity() {
 
     private fun makeActorView(role: String, actor: Person): View {
         val view = layoutInflater.inflate(R.layout.actor_card, detail_actors, false)
+        val binding = DataBindingUtil.bind<ActorCardBinding>(view)
 
-        view.movie_actor_picture.clipToOutline = true
-        view.movie_actor_picture.outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View?, outline: Outline?) {
-                if (view != null && outline != null) {
-                    outline.setRoundRect(0, 0, view.width, view.height, 10f)
+        binding?.let {
+            it.movieActorPicture.clipToOutline = true
+            it.movieActorPicture.outlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: View?, outline: Outline?) {
+                    if (view != null && outline != null) {
+                        outline.setRoundRect(0, 0, view.width, view.height, 10f)
+                    }
                 }
+
             }
-
+            it.role = role
+            it.person = actor
         }
-
-        actor.profileUrl?.let {
-
-            Glide
-                .with(view.context)
-                .load(it) // valid url
-                .placeholder(ColorDrawable(Color.GRAY))
-                .fallback(R.drawable.avatar)
-                .error(R.drawable.avatar)
-                .into(view.movie_actor_picture)
-        }
-
-        view.movie_actor_name?.text = actor.name
-        view.movie_actor_role?.text = role
 
         return view
     }

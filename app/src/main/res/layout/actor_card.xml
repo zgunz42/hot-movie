@@ -19,7 +19,7 @@
 
         <ImageView
                 android:id="@+id/movie_actor_picture"
-                tools:src="@tools:sample/avatars"
+                android:src="@drawable/avatar"
                 android:layout_width="107dp"
                 android:layout_gravity="center"
                 android:layout_height="125dp"

@@ -7,7 +7,7 @@ import androidx.lifecycle.Transformations
 import com.kangmicin.hotmovie.utilities.AppExecutors
 import io.reactivex.observers.DisposableSingleObserver
 
-abstract class Repository<T, S, D>(
+abstract class Repository<T, S>(
     private val executors: AppExecutors
 ) {
 
@@ -24,16 +24,38 @@ abstract class Repository<T, S, D>(
 
     fun getItem(id: Long): LiveData<T> {
         // do prefetch
+        var preftech = false
         return Transformations.switchMap(mItems){
             val target = MediatorLiveData<T>()
             if (it != null) {
                 val item = getItemId(id, it)
                 if (item != null) {
+                    if (!preftech) {
+                        doFetchSourceItem(item)
+                        preftech = true
+                    }
                     target.value = item
                 }
             }
 
             return@switchMap target
+        }
+    }
+
+    private fun doFetchSourceItem(item: T) {
+        executors.networkIO().execute {
+            val observer = object : DisposableSingleObserver<T>() {
+                override fun onSuccess(t: T) {
+                    doDataFetched(listOf(item))
+                    doFetchLocale()
+                }
+
+                override fun onError(e: Throwable) {
+                    doFetchLocale()
+                }
+
+            }
+            fetchItemDetailSource(item, observer)
         }
     }
 
@@ -84,5 +106,7 @@ abstract class Repository<T, S, D>(
 
     abstract fun fromSource(to: S): MutableList<T>
 
-    abstract fun fromDetail(from: T, to: D)
+    abstract fun fromDetail(from: T, to: Any): T
+
+    abstract fun fetchItemDetailSource(item: T, observer: DisposableSingleObserver<T>)
 }

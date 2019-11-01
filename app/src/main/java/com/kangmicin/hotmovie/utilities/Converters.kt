@@ -64,15 +64,15 @@ object Converters {
 
     @TypeConverter
     @JvmStatic
-    fun toMap(value: String): Map<Person, String>? {
-        val type = Types.newParameterizedType(Map::class.java, Person::class.java, String::class.java)
-        return Moshi.Builder().build().adapter<Map<Person, String>>(type).fromJson(value)
+    fun toMap(value: String): Map<String, Person>? {
+        val type = Types.newParameterizedType(Map::class.java, String::class.java, Person::class.java)
+        return Moshi.Builder().build().adapter<Map<String, Person>>(type).fromJson(value)
     }
 
     @TypeConverter
     @JvmStatic
-    fun fromMap(value: Map<Person, String>): String? {
-        val type = Types.newParameterizedType(Map::class.java, Person::class.java, String::class.java)
-        return Moshi.Builder().build().adapter<Map<Person, String>>(type).toJson(value)
+    fun fromMap(value: Map<String, Person>): String? {
+        val type = Types.newParameterizedType(Map::class.java, String::class.java, Person::class.java)
+        return Moshi.Builder().build().adapter<Map<String, Person>>(type).toJson(value)
     }
 }
