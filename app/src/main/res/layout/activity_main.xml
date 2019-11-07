@@ -11,7 +11,7 @@
         <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appbar"
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
+                android:layout_height="wrap_content"
                 android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
@@ -27,10 +27,30 @@
                     app:title="@string/app_name">
 
             </androidx.appcompat.widget.Toolbar>
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    app:tabGravity="center"
+                    android:visibility="gone"
+                    app:tabMode="scrollable"
+                    android:clipToPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize">
+                <com.google.android.material.tabs.TabItem
+                        android:text="@string/movies"
+                        android:tag="movies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <com.google.android.material.tabs.TabItem
+                        android:text="@string/tv_show"
+                        android:tag="tvs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </com.google.android.material.tabs.TabLayout>
         </com.google.android.material.appbar.AppBarLayout>
-
         <androidx.core.widget.NestedScrollView
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_marginBottom="?actionBarSize"
+                android:layout_gravity="clip_vertical|top"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <FrameLayout

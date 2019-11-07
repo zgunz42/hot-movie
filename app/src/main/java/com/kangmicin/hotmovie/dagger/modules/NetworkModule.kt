@@ -58,6 +58,6 @@ class NetworkModule {
     @Singleton
     @Provides
     internal fun provideWebClient(webApi: WebApi, retrofit: Retrofit): WebClient {
-        return WebClient(webApi, retrofit)
+        return WebClient(webApi)
     }
 }

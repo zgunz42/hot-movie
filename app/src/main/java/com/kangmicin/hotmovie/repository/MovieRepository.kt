@@ -17,6 +17,9 @@ class MovieRepository @Inject constructor(
     private val dao: MovieDAO,
     private val webClient: WebClient
 ): Repository<Movie, DiscoverMovie>(executors){
+    override fun updateDBItem(item: Movie) {
+        dao.updateMovies(item)
+    }
 
     override fun getItemId(id: Long, data: List<Movie>): Movie? {
         var movie: Movie? = null

@@ -14,11 +14,6 @@ abstract class AppActivity: DaggerAppCompatActivity() {
     private var locale: Locale = Locale.getDefault()
     private var isChangeLanguage = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        title = appTitle()
-    }
-
     override fun onStart() {
         val manager = PreferenceManager(this)
         val language = manager.sharedPreferences.getString("language", Locale.getDefault().language)
@@ -27,8 +22,6 @@ abstract class AppActivity: DaggerAppCompatActivity() {
         isChangeLanguage = getAppLanguage(this) != language
         super.onStart()
     }
-
-    protected abstract fun appTitle(): String?
 
 
     override fun attachBaseContext(newBase: Context?) {

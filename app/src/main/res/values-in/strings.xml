@@ -25,4 +25,5 @@
     <string name="tap_to_retry">Coba lagi</string>
     <string name="icon_erorr">Ikon Erorr</string>
     <string name="no_interet_icon">Tidak Ada Internet</string>
+    <string name="favorite">Favorite</string>
 </resources>

@@ -34,5 +34,6 @@
     <string name="tap_to_retry">Retry</string>
     <string name="icon_erorr">Icon Erorr</string>
     <string name="no_interet_icon">No Interet</string>
+    <string name="favorite">Favorite</string>
 
 </resources>

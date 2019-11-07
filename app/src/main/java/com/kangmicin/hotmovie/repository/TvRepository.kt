@@ -17,6 +17,9 @@ class TvRepository @Inject constructor(
     private val dao: TvDAO,
     private val webClient: WebClient
 ): Repository<Tv, DiscoverTv>(executors) {
+    override fun updateDBItem(item: Tv) {
+        dao.updateTvs(item)
+    }
 
     override fun getItemId(id: Long, data: List<Tv>): Tv? {
         var tv: Tv? = null

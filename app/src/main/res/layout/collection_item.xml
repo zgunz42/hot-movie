@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="click"
-                type="com.kangmicin.hotmovie.ui.main.DataItemFragment.Handler"/>
+                type="com.kangmicin.hotmovie.ui.main.PreloadFragment.Handler"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -20,10 +20,8 @@ data class Tv(
     var creators: List<Person> = emptyList(),
     var release: Date = Date(),
     var actors: Map<String, Person> = emptyMap(),
-    var language: String,
     var created: Date = Date(),
-    var updated: Date = Date(),
-    val isFavorite: Boolean = false
+    var updated: Date = Date()
 ) : Parcelable, DisplayData {
     override fun getTitle() = name
 

@@ -1,5 +1,6 @@
 package com.kangmicin.hotmovie.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,7 @@ abstract class Repository<T, S>(
     }
 
     fun addItems(items:List<T>) {
+        Log.i("favorite", "update $items")
         mItems.postValue(items)
     }
 
@@ -88,11 +90,18 @@ abstract class Repository<T, S>(
             val items = fetchLocale()
 
             if (items.isNotEmpty()) {
-//                clearItems()
                 addItems(items)
             }else {
                 doFetchSourceItems()
             }
+        }
+    }
+
+    fun updateItem(value: T) {
+        executors.diskIO().execute {
+            Log.i("favorite", "update $value")
+            updateDBItem(value)
+            doFetchLocale()
         }
     }
 
@@ -109,4 +118,6 @@ abstract class Repository<T, S>(
     abstract fun fromDetail(from: T, to: Any): T
 
     abstract fun fetchItemDetailSource(item: T, observer: DisposableSingleObserver<T>)
+
+    abstract fun updateDBItem(item: T)
 }

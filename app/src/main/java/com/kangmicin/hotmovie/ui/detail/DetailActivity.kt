@@ -10,10 +10,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.Gravity
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewOutlineProvider
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.StringRes
@@ -39,10 +36,25 @@ import kotlin.math.absoluteValue
 
 abstract class DetailActivity: AppActivity() {
     private lateinit var collapseListener: AppBarLayout.OnOffsetChangedListener
+    private var favoriteMenuItem: MenuItem? = null
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        menu?.findItem(R.id.action_favorite)?.run {
+            favoriteMenuItem = this
+        }
+        return true
+    }
 
-    override fun appTitle(): String? {
-        return null
+    fun setFavorite(status: Boolean) {
+        when(status) {
+            true -> {
+                favoriteMenuItem?.icon = getDrawable(R.drawable.ic_favorite_black_24dp)
+            }
+            false -> {
+                favoriteMenuItem?.icon = getDrawable(R.drawable.ic_favorite_border_black_24dp)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

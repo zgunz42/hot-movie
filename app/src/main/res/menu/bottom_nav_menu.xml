@@ -8,4 +8,7 @@
     <item android:id="@+id/show_tvshow_menu"
           android:icon="@drawable/ic_ondemand_video_black_24dp"
           android:title="@string/tv_show"/>
+    <item android:id="@+id/show_favorite_menu"
+          android:icon="@drawable/ic_favorite_black_24dp"
+          android:title="@string/favorite"/>
 </menu>

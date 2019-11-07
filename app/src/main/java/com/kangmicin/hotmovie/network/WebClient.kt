@@ -11,13 +11,11 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 import javax.inject.Inject
 
-// TODO: mark to remove
 class WebClient @Inject constructor(
-    private val api: WebApi,
-    private val retrofit: Retrofit) {
+    private val api: WebApi
+) {
 
     fun getImageUrl(id: String, size: ImageSize): String {
         return Constant.ImageUrl + size.value + id
@@ -82,7 +80,7 @@ class WebClient @Inject constructor(
                 Log.i("ThreadNetwork", result.posterPath + ":" + result.title + ":" + result.backdropPath)
                 val posterUrl = getImageUrl(result.posterPath, ImageSize.Small)
                 val backdropUrl = getImageUrl(result.backdropPath, ImageSize.Medium)
-                val movie = Movie(result.id + 0L, language = Helper.languageParam())
+                val movie = Movie(result.id + 0L)
                 movie.name = result.title
                 movie.backdrop = backdropUrl
                 movie.poster = posterUrl
@@ -107,7 +105,7 @@ class WebClient @Inject constructor(
             for (i in 0 until results.size) {
                 val result = results[i]
                 val posterUrl = getImageUrl(result.posterPath, ImageSize.Small)
-                val tvShow = Tv(result.id + 0L, language = Helper.languageParam())
+                val tvShow = Tv(result.id + 0L)
                 val backdropUrl = getImageUrl(result.backdropPath, ImageSize.Medium)
                 tvShow.name = result.name
                 tvShow.backdrop = backdropUrl

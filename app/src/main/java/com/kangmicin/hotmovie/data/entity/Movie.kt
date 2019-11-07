@@ -21,10 +21,8 @@ data class Movie(
     var release: Date = Date(),
     var rating: List<Rating> = emptyList(),
     var actors: Map<String, Person> = emptyMap(),
-    var language: String,
     var created: Date = Date(),
-    var updated: Date = Date(),
-    val isFavorite: Boolean = false
+    var updated: Date = Date()
 ) : Parcelable, DisplayData {
     override fun getTitle() = name
 

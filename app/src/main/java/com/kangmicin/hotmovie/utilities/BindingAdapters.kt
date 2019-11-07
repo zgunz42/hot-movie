@@ -21,7 +21,6 @@ object BindingAdapters {
         Glide.with(view.context)
             .load(imageUrl)
             .placeholder(placeholder)
-            .error(placeholder)
             .apply(
                 RequestOptions
                     .centerCropTransform()

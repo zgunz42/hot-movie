@@ -15,7 +15,7 @@ import com.kangmicin.hotmovie.ui.detail.MovieActivity
 import com.kangmicin.hotmovie.ui.main.DataItemFragment
 import javax.inject.Inject
 
-class MoviesFragment: DataItemFragment<Movie>() {
+open class MoviesFragment: DataItemFragment<Movie>() {
     override fun startDetail(t: Movie): Intent {
         val intent = Intent(this.activity, MovieActivity::class.java)
         intent.putExtra(MovieActivity.MOVIE_KEY, t.id)

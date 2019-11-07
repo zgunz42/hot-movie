@@ -13,10 +13,9 @@ import com.kangmicin.hotmovie.data.entity.DisplayData
 import com.kangmicin.hotmovie.data.entity.Tv
 import com.kangmicin.hotmovie.ui.detail.TvShowActivity
 import com.kangmicin.hotmovie.ui.main.DataItemFragment
-import com.kangmicin.hotmovie.ui.main.movies.MoviesFragment
 import javax.inject.Inject
 
-class TvsFragment : DataItemFragment<Tv>() {
+open class TvsFragment : DataItemFragment<Tv>() {
     override fun startDetail(t: Tv): Intent {
         val intent = Intent(this.activity, TvShowActivity::class.java)
         intent.putExtra(TvShowActivity.TV_SHOW_KEY, t.id)
@@ -28,7 +27,7 @@ class TvsFragment : DataItemFragment<Tv>() {
     }
 
     companion object {
-        fun newInstance() = MoviesFragment()
+        fun newInstance() = TvsFragment()
     }
 
     @Inject

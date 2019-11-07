@@ -9,10 +9,6 @@ import com.kangmicin.hotmovie.utilities.Ui
 
 class SettingsActivity : AppActivity() {
 
-    override fun appTitle(): String {
-        return getString(R.string.title_activity_settings)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
